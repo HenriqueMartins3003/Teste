@@ -1,0 +1,779 @@
+﻿<Project ToolsVersion="3.5" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.30729</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{505EA139-CFC9-456F-9B32-DE1FB1B73FB4}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>_webPainelVerisys</RootNamespace>
+    <AssemblyName>_webPainelVerisys</AssemblyName>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="AjaxControlToolkit, Version=3.5.60623.0, Culture=neutral, PublicKeyToken=28f01b0e84b6d53e, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\AjaxControlToolkit.Binary.NET35\AjaxControlToolkit.dll</HintPath>
+    </Reference>
+    <Reference Include="clsTools, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\clsTools\clsTools\bin\Release\clsTools.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Core">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data.DataSetExtensions">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Net">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Web.DataVisualization, Version=3.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\..\Windows\assembly\GAC_MSIL\System.Web.DataVisualization\3.5.0.0__31bf3856ad364e35\System.Web.DataVisualization.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Extensions">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Xml.Linq">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="System.Web.Mobile" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="css\login.css" />
+    <Content Include="img\bg-login.png" />
+    <Content Include="img\btn-entrar.gif" />
+    <Content Include="img\icon_page.png" />
+    <Content Include="Login.aspx" />
+    <Content Include="Web.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AEC\ControleMailing.aspx.cs">
+      <DependentUpon>ControleMailing.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AEC\ControleMailing.aspx.designer.cs">
+      <DependentUpon>ControleMailing.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Campanha\CampanhaGrupos.aspx.cs">
+      <DependentUpon>CampanhaGrupos.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Campanha\CampanhaGrupos.aspx.designer.cs">
+      <DependentUpon>CampanhaGrupos.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Campanha\CampanhaHistoricoCalculo.aspx.cs">
+      <DependentUpon>CampanhaHistoricoCalculo.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Campanha\CampanhaHistoricoCalculo.aspx.designer.cs">
+      <DependentUpon>CampanhaHistoricoCalculo.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Campanha\CampanhaMetralhadora.aspx.cs">
+      <DependentUpon>CampanhaMetralhadora.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Campanha\CampanhaMetralhadora.aspx.designer.cs">
+      <DependentUpon>CampanhaMetralhadora.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Campanha\CampanhaModulo.aspx.cs">
+      <DependentUpon>CampanhaModulo.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Campanha\CampanhaModulo.aspx.designer.cs">
+      <DependentUpon>CampanhaModulo.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Campanha\CampanhaParametros.aspx.cs">
+      <DependentUpon>CampanhaParametros.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Campanha\CampanhaParametros.aspx.designer.cs">
+      <DependentUpon>CampanhaParametros.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Campanha\CampanhaDefinicaoSequenciamento.aspx.cs">
+      <DependentUpon>CampanhaDefinicaoSequenciamento.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Campanha\CampanhaDefinicaoSequenciamento.aspx.designer.cs">
+      <DependentUpon>CampanhaDefinicaoSequenciamento.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Campanha\CampanhaRegraSequenciamento.aspx.cs">
+      <DependentUpon>CampanhaRegraSequenciamento.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Campanha\CampanhaRegraSequenciamento.aspx.designer.cs">
+      <DependentUpon>CampanhaRegraSequenciamento.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Campanha\GruposDacParametros.aspx.cs">
+      <DependentUpon>GruposDacParametros.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Campanha\GruposDacParametros.aspx.designer.cs">
+      <DependentUpon>GruposDacParametros.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Campanha\GruposDacParametrosPrioridade.aspx.cs">
+      <DependentUpon>GruposDacParametrosPrioridade.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Campanha\GruposDacParametrosPrioridade.aspx.designer.cs">
+      <DependentUpon>GruposDacParametrosPrioridade.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Campanha\GruposDacPermissao.aspx.cs">
+      <DependentUpon>GruposDacPermissao.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Campanha\GruposDacPermissao.aspx.designer.cs">
+      <DependentUpon>GruposDacPermissao.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Campanha\RotasDialingRules.aspx.cs">
+      <DependentUpon>RotasDialingRules.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Campanha\RotasDialingRules.aspx.designer.cs">
+      <DependentUpon>RotasDialingRules.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Campanha\Rules.aspx.cs">
+      <DependentUpon>Rules.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Campanha\Rules.aspx.designer.cs">
+      <DependentUpon>Rules.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="doNotCallList\doNotCallCampanha.aspx.cs">
+      <DependentUpon>doNotCallCampanha.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="doNotCallList\doNotCallCampanha.aspx.designer.cs">
+      <DependentUpon>doNotCallCampanha.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="doNotCallList\doNotCallReceptivo.aspx.cs">
+      <DependentUpon>doNotCallReceptivo.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="doNotCallList\doNotCallReceptivo.aspx.designer.cs">
+      <DependentUpon>doNotCallReceptivo.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Fidelity\AuthorizationCode.aspx.cs">
+      <DependentUpon>AuthorizationCode.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Fidelity\AuthorizationCode.aspx.designer.cs">
+      <DependentUpon>AuthorizationCode.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Fidelity\CartaoCredito.aspx.cs">
+      <DependentUpon>CartaoCredito.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Fidelity\CartaoCredito.aspx.designer.cs">
+      <DependentUpon>CartaoCredito.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Fidelity\GrupoXCore.aspx.cs">
+      <DependentUpon>GrupoXCore.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Fidelity\GrupoXCore.aspx.designer.cs">
+      <DependentUpon>GrupoXCore.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Fidelity\RamaisForaRange.aspx.cs">
+      <DependentUpon>RamaisForaRange.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Fidelity\RamaisForaRange.aspx.designer.cs">
+      <DependentUpon>RamaisForaRange.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Fidelity\RamaisNaoGravam.aspx.cs">
+      <DependentUpon>RamaisNaoGravam.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Fidelity\RamaisNaoGravam.aspx.designer.cs">
+      <DependentUpon>RamaisNaoGravam.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Fidelity\ScreenCaptureACDList.aspx.cs">
+      <DependentUpon>ScreenCaptureACDList.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Fidelity\ScreenCaptureACDList.aspx.designer.cs">
+      <DependentUpon>ScreenCaptureACDList.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="FrontEnd\Auditor.aspx.cs">
+      <DependentUpon>Auditor.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="FrontEnd\Auditor.aspx.designer.cs">
+      <DependentUpon>Auditor.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="FrontEnd\MeioCobranca_Affinity.aspx.cs">
+      <DependentUpon>MeioCobranca_Affinity.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="FrontEnd\MeioCobranca_Affinity.aspx.designer.cs">
+      <DependentUpon>MeioCobranca_Affinity.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="FrontEnd\Parcelamento_Affinity.aspx.cs">
+      <DependentUpon>Parcelamento_Affinity.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="FrontEnd\Parcelamento_Affinity.aspx.designer.cs">
+      <DependentUpon>Parcelamento_Affinity.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="FrontEnd\Plano_Affinity.aspx.cs">
+      <DependentUpon>Plano_Affinity.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="FrontEnd\Plano_Affinity.aspx.designer.cs">
+      <DependentUpon>Plano_Affinity.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="FrontEnd\Produto_Affinity.aspx.cs">
+      <DependentUpon>Produto_Affinity.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="FrontEnd\Produto_Affinity.aspx.designer.cs">
+      <DependentUpon>Produto_Affinity.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="FrontEnd\TipoCartao_Affinity.aspx.cs">
+      <DependentUpon>TipoCartao_Affinity.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="FrontEnd\TipoCartao_Affinity.aspx.designer.cs">
+      <DependentUpon>TipoCartao_Affinity.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="FrontEnd\TipoMeioCobranca_Affinity.aspx.cs">
+      <DependentUpon>TipoMeioCobranca_Affinity.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="FrontEnd\TipoMeioCobranca_Affinity.aspx.designer.cs">
+      <DependentUpon>TipoMeioCobranca_Affinity.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="FrontEnd\TipoPlano_Affinity.aspx.cs">
+      <DependentUpon>TipoPlano_Affinity.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="FrontEnd\TipoPlano_Affinity.aspx.designer.cs">
+      <DependentUpon>TipoPlano_Affinity.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ImportExport\Columns.aspx.cs">
+      <DependentUpon>Columns.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ImportExport\Columns.aspx.designer.cs">
+      <DependentUpon>Columns.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ImportExport\ExecutionPlan.aspx.cs">
+      <DependentUpon>ExecutionPlan.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ImportExport\ExecutionPlan.aspx.designer.cs">
+      <DependentUpon>ExecutionPlan.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ImportExport\ExportQuery.aspx.cs">
+      <DependentUpon>ExportQuery.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ImportExport\ExportQuery.aspx.designer.cs">
+      <DependentUpon>ExportQuery.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ImportExport\Files.aspx.cs">
+      <DependentUpon>Files.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ImportExport\Files.aspx.designer.cs">
+      <DependentUpon>Files.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ImportExport\Header.aspx.cs">
+      <DependentUpon>Header.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ImportExport\Header.aspx.designer.cs">
+      <DependentUpon>Header.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ImportExport\LogFiles.aspx.cs">
+      <DependentUpon>LogFiles.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ImportExport\LogFiles.aspx.designer.cs">
+      <DependentUpon>LogFiles.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ImportExport\LogImportExport.aspx.cs">
+      <DependentUpon>LogImportExport.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ImportExport\LogImportExport.aspx.designer.cs">
+      <DependentUpon>LogImportExport.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ImportExport\LogRegistry.aspx.cs">
+      <DependentUpon>LogRegistry.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ImportExport\LogRegistry.aspx.designer.cs">
+      <DependentUpon>LogRegistry.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ImportExport\Process.aspx.cs">
+      <DependentUpon>Process.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ImportExport\Process.aspx.designer.cs">
+      <DependentUpon>Process.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ImportExport\Registry.aspx.cs">
+      <DependentUpon>Registry.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ImportExport\Registry.aspx.designer.cs">
+      <DependentUpon>Registry.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ImportExport\Rules.aspx.cs">
+      <DependentUpon>Rules.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ImportExport\Rules.aspx.designer.cs">
+      <DependentUpon>Rules.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ImportExport\RulesAfterProcess.aspx.cs">
+      <DependentUpon>RulesAfterProcess.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ImportExport\RulesAfterProcess.aspx.designer.cs">
+      <DependentUpon>RulesAfterProcess.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ImportExport\RulesBeforeProcess.aspx.cs">
+      <DependentUpon>RulesBeforeProcess.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ImportExport\RulesBeforeProcess.aspx.designer.cs">
+      <DependentUpon>RulesBeforeProcess.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ImportExport\RulesCampaign.aspx.cs">
+      <DependentUpon>RulesCampaign.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ImportExport\RulesCampaign.aspx.designer.cs">
+      <DependentUpon>RulesCampaign.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ImportExport\Trailer.aspx.cs">
+      <DependentUpon>Trailer.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ImportExport\Trailer.aspx.designer.cs">
+      <DependentUpon>Trailer.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Login.aspx.cs">
+      <DependentUpon>Login.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Login.aspx.designer.cs">
+      <DependentUpon>Login.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="doNotCallList\doNotCallMailing.aspx.cs">
+      <DependentUpon>doNotCallMailing.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="doNotCallList\doNotCallMailing.aspx.designer.cs">
+      <DependentUpon>doNotCallMailing.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Mailing\BuscaMailing.aspx.cs">
+      <DependentUpon>BuscaMailing.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Mailing\BuscaMailing.aspx.designer.cs">
+      <DependentUpon>BuscaMailing.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Mailing\ExportacaoMailingMetralhadora.aspx.cs">
+      <DependentUpon>ExportacaoMailingMetralhadora.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Mailing\ExportacaoMailingMetralhadora.aspx.designer.cs">
+      <DependentUpon>ExportacaoMailingMetralhadora.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Mailing\ImportacaoHistorico.aspx.cs">
+      <DependentUpon>ImportacaoHistorico.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Mailing\ImportacaoHistorico.aspx.designer.cs">
+      <DependentUpon>ImportacaoHistorico.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Mailing\ImportacaoIdentificadoresLotes.aspx.cs">
+      <DependentUpon>ImportacaoIdentificadoresLotes.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Mailing\ImportacaoIdentificadoresLotes.aspx.designer.cs">
+      <DependentUpon>ImportacaoIdentificadoresLotes.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Mailing\ImportacaoLotes.aspx.cs">
+      <DependentUpon>ImportacaoLotes.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Mailing\ImportacaoLotes.aspx.designer.cs">
+      <DependentUpon>ImportacaoLotes.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Mailing\RessubmissaoHistorico.aspx.cs">
+      <DependentUpon>RessubmissaoHistorico.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Mailing\RessubmissaoHistorico.aspx.designer.cs">
+      <DependentUpon>RessubmissaoHistorico.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Mailing\RessubmissaoMailing.aspx.cs">
+      <DependentUpon>RessubmissaoMailing.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Mailing\RessubmissaoMailing.aspx.designer.cs">
+      <DependentUpon>RessubmissaoMailing.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Mailing\SegmentacaoCampos.aspx.cs">
+      <DependentUpon>SegmentacaoCampos.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Mailing\SegmentacaoCampos.aspx.designer.cs">
+      <DependentUpon>SegmentacaoCampos.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Mailing\SegmentacaoHistorico.aspx.cs">
+      <DependentUpon>SegmentacaoHistorico.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Mailing\SegmentacaoHistorico.aspx.designer.cs">
+      <DependentUpon>SegmentacaoHistorico.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Mailing\SegmentacaoMailing.aspx.cs">
+      <DependentUpon>SegmentacaoMailing.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Mailing\SegmentacaoMailing.aspx.designer.cs">
+      <DependentUpon>SegmentacaoMailing.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Mailing\SegmentacaoProcesso.aspx.cs">
+      <DependentUpon>SegmentacaoProcesso.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Mailing\SegmentacaoProcesso.aspx.designer.cs">
+      <DependentUpon>SegmentacaoProcesso.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Mailing\SegmentacaoRegra.aspx.cs">
+      <DependentUpon>SegmentacaoRegra.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Mailing\SegmentacaoRegra.aspx.designer.cs">
+      <DependentUpon>SegmentacaoRegra.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="MP.Master.cs">
+      <DependentUpon>MP.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="MP.Master.designer.cs">
+      <DependentUpon>MP.Master</DependentUpon>
+    </Compile>
+    <Compile Include="Painel\DashBoard.aspx.cs">
+      <DependentUpon>DashBoard.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Painel\DashBoard.aspx.designer.cs">
+      <DependentUpon>DashBoard.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Painel\DashBoardEstatisticas.aspx.cs">
+      <DependentUpon>DashBoardEstatisticas.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Painel\DashBoardEstatisticas.aspx.designer.cs">
+      <DependentUpon>DashBoardEstatisticas.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Painel\DashBoardGrafico.aspx.cs">
+      <DependentUpon>DashBoardGrafico.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Painel\DashBoardGrafico.aspx.designer.cs">
+      <DependentUpon>DashBoardGrafico.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Painel\DashBoardMetralhadora.aspx.cs">
+      <DependentUpon>DashBoardMetralhadora.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Painel\DashBoardMetralhadora.aspx.designer.cs">
+      <DependentUpon>DashBoardMetralhadora.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Painel\DashBoardReceptivo.aspx.cs">
+      <DependentUpon>DashBoardReceptivo.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Painel\DashBoardReceptivo.aspx.designer.cs">
+      <DependentUpon>DashBoardReceptivo.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Painel\DashBoard_Affinity.aspx.cs">
+      <DependentUpon>DashBoard_Affinity.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Painel\DashBoard_Affinity.aspx.designer.cs">
+      <DependentUpon>DashBoard_Affinity.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Painel\DashBoard_FAV.aspx.cs">
+      <DependentUpon>DashBoard_FAV.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Painel\DashBoard_FAV.aspx.designer.cs">
+      <DependentUpon>DashBoard_FAV.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Painel\Default.aspx.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Painel\Default.aspx.designer.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ResultadoOperacao\ResultadoOperacao.aspx.cs">
+      <DependentUpon>ResultadoOperacao.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ResultadoOperacao\ResultadoOperacao.aspx.designer.cs">
+      <DependentUpon>ResultadoOperacao.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ResultadoOperacao\ResultadoOperacaoCampanha.aspx.cs">
+      <DependentUpon>ResultadoOperacaoCampanha.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ResultadoOperacao\ResultadoOperacaoCampanha.aspx.designer.cs">
+      <DependentUpon>ResultadoOperacaoCampanha.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ResultadoOperacao\ResultadoOperacaoCampanha_Fidelity.aspx.cs">
+      <DependentUpon>ResultadoOperacaoCampanha_Fidelity.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ResultadoOperacao\ResultadoOperacaoCampanha_Fidelity.aspx.designer.cs">
+      <DependentUpon>ResultadoOperacaoCampanha_Fidelity.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ResultadoOperacao\ResultadoOperacaoClassificacao.aspx.cs">
+      <DependentUpon>ResultadoOperacaoClassificacao.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ResultadoOperacao\ResultadoOperacaoClassificacao.aspx.designer.cs">
+      <DependentUpon>ResultadoOperacaoClassificacao.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ResultadoOperacao\ResultadoOperacaoTipo.aspx.cs">
+      <DependentUpon>ResultadoOperacaoTipo.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ResultadoOperacao\ResultadoOperacaoTipo.aspx.designer.cs">
+      <DependentUpon>ResultadoOperacaoTipo.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ResultadoOperacao\ResultadoOperacao_Fidelity.aspx.cs">
+      <DependentUpon>ResultadoOperacao_Fidelity.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ResultadoOperacao\ResultadoOperacao_Fidelity.aspx.designer.cs">
+      <DependentUpon>ResultadoOperacao_Fidelity.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Sair.aspx.cs">
+      <DependentUpon>Sair.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Sair.aspx.designer.cs">
+      <DependentUpon>Sair.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Toolbar\AtualizacaoToolbar.aspx.cs">
+      <DependentUpon>AtualizacaoToolbar.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Toolbar\AtualizacaoToolbar.aspx.designer.cs">
+      <DependentUpon>AtualizacaoToolbar.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Tribanco\PriorizacaoMailing.aspx.cs">
+      <DependentUpon>PriorizacaoMailing.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Tribanco\PriorizacaoMailing.aspx.designer.cs">
+      <DependentUpon>PriorizacaoMailing.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Usuario\PerfilUsuario.aspx.cs">
+      <DependentUpon>PerfilUsuario.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Usuario\PerfilUsuario.aspx.designer.cs">
+      <DependentUpon>PerfilUsuario.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Usuario\Usuarios.aspx.cs">
+      <DependentUpon>Usuarios.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Usuario\Usuarios.aspx.designer.cs">
+      <DependentUpon>Usuarios.aspx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\_webPainelVerisys.BLL\_webPainelVerisys.BLL.csproj">
+      <Project>{75EAE01F-F862-45B6-AC4B-416786F5C228}</Project>
+      <Name>_webPainelVerisys.BLL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\_webPainelVerisys.DTO\_webPainelVerisys.DTO.csproj">
+      <Project>{57D1E0B3-181F-4BF7-9D92-C6457B88F4C1}</Project>
+      <Name>_webPainelVerisys.DTO</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="AEC\ControleMailing.aspx" />
+    <Content Include="Campanha\CampanhaGrupos.aspx" />
+    <Content Include="Campanha\CampanhaHistoricoCalculo.aspx" />
+    <Content Include="Campanha\CampanhaMetralhadora.aspx" />
+    <Content Include="Campanha\CampanhaModulo.aspx" />
+    <Content Include="Campanha\CampanhaParametros.aspx" />
+    <Content Include="Campanha\CampanhaDefinicaoSequenciamento.aspx" />
+    <Content Include="Campanha\CampanhaRegraSequenciamento.aspx" />
+    <Content Include="Campanha\GruposDacParametros.aspx" />
+    <Content Include="Campanha\GruposDacParametrosPrioridade.aspx" />
+    <Content Include="Campanha\GruposDacPermissao.aspx" />
+    <Content Include="Campanha\RotasDialingRules.aspx" />
+    <Content Include="Campanha\Rules.aspx" />
+    <Content Include="css\layout.css" />
+    <Content Include="css\thickbox.css" />
+    <Content Include="doNotCallList\doNotCallCampanha.aspx" />
+    <Content Include="doNotCallList\doNotCallReceptivo.aspx" />
+    <Content Include="Fidelity\AuthorizationCode.aspx" />
+    <Content Include="Fidelity\CartaoCredito.aspx" />
+    <Content Include="Fidelity\GrupoXCore.aspx" />
+    <Content Include="Fidelity\RamaisForaRange.aspx" />
+    <Content Include="Fidelity\RamaisNaoGravam.aspx" />
+    <Content Include="Fidelity\ScreenCaptureACDList.aspx" />
+    <Content Include="FrontEnd\Auditor.aspx" />
+    <Content Include="FrontEnd\MeioCobranca_Affinity.aspx" />
+    <Content Include="FrontEnd\Parcelamento_Affinity.aspx" />
+    <Content Include="FrontEnd\Plano_Affinity.aspx" />
+    <Content Include="FrontEnd\Produto_Affinity.aspx" />
+    <Content Include="FrontEnd\TipoCartao_Affinity.aspx" />
+    <Content Include="FrontEnd\TipoMeioCobranca_Affinity.aspx" />
+    <Content Include="FrontEnd\TipoPlano_Affinity.aspx" />
+    <Content Include="img\ajax-loader-mini.gif" />
+    <Content Include="img\arrow-left.gif" />
+    <Content Include="img\arrow-right.gif" />
+    <Content Include="img\bg.png" />
+    <Content Include="img\btn-cancelar.gif" />
+    <Content Include="img\btn-filtrar-disable.gif" />
+    <Content Include="img\btn-filtrar.gif" />
+    <Content Include="img\btn-limpar.gif" />
+    <Content Include="img\btn-nao.gif" />
+    <Content Include="img\btn-pesquisar.gif" />
+    <Content Include="img\btn-salvar-disable.gif" />
+    <Content Include="img\btn-salvar.gif" />
+    <Content Include="img\btn-sim-disable.gif" />
+    <Content Include="img\btn-sim.gif" />
+    <Content Include="img\calendar.gif" />
+    <Content Include="img\delete.gif" />
+    <Content Include="img\edit.gif" />
+    <Content Include="img\gear_16.png" />
+    <Content Include="img\listar.gif" />
+    <Content Include="img\logo_Verisys.gif" />
+    <Content Include="img\tree.gif" />
+    <Content Include="ImportExport\Columns.aspx" />
+    <Content Include="ImportExport\ExecutionPlan.aspx" />
+    <Content Include="ImportExport\ExportQuery.aspx" />
+    <Content Include="ImportExport\Files.aspx" />
+    <Content Include="ImportExport\Header.aspx" />
+    <Content Include="ImportExport\LogFiles.aspx" />
+    <Content Include="ImportExport\LogImportExport.aspx" />
+    <Content Include="ImportExport\LogRegistry.aspx" />
+    <Content Include="ImportExport\Process.aspx" />
+    <Content Include="ImportExport\Registry.aspx" />
+    <Content Include="ImportExport\Rules.aspx" />
+    <Content Include="ImportExport\RulesAfterProcess.aspx" />
+    <Content Include="ImportExport\RulesBeforeProcess.aspx" />
+    <Content Include="ImportExport\RulesCampaign.aspx" />
+    <Content Include="ImportExport\Trailer.aspx" />
+    <Content Include="includes\DD_roundies_0.0.2a-min.js" />
+    <Content Include="includes\jquery-1.3.2.min.js" />
+    <Content Include="includes\scripts.js" />
+    <Content Include="includes\thickbox.js" />
+    <Content Include="includes\WebKit.js" />
+    <Content Include="doNotCallList\doNotCallMailing.aspx" />
+    <Content Include="Mailing\BuscaMailing.aspx" />
+    <Content Include="Mailing\ExportacaoMailingMetralhadora.aspx" />
+    <Content Include="Mailing\ImportacaoHistorico.aspx" />
+    <Content Include="Mailing\ImportacaoIdentificadoresLotes.aspx" />
+    <Content Include="Mailing\ImportacaoLotes.aspx" />
+    <Content Include="Mailing\RessubmissaoHistorico.aspx" />
+    <Content Include="Mailing\RessubmissaoMailing.aspx" />
+    <Content Include="Mailing\SegmentacaoCampos.aspx" />
+    <Content Include="Mailing\SegmentacaoHistorico.aspx" />
+    <Content Include="Mailing\SegmentacaoMailing.aspx" />
+    <Content Include="Mailing\SegmentacaoProcesso.aspx" />
+    <Content Include="Mailing\SegmentacaoRegra.aspx" />
+    <Content Include="MP.Master" />
+    <Content Include="Painel\DashBoard.aspx" />
+    <Content Include="Painel\DashBoardEstatisticas.aspx" />
+    <Content Include="Painel\DashBoardGrafico.aspx" />
+    <Content Include="Painel\DashBoardMetralhadora.aspx" />
+    <Content Include="Painel\DashBoardReceptivo.aspx" />
+    <Content Include="Painel\DashBoard_Affinity.aspx" />
+    <Content Include="Painel\DashBoard_FAV.aspx" />
+    <Content Include="Painel\Default.aspx" />
+    <Content Include="ResultadoOperacao\ResultadoOperacao.aspx" />
+    <Content Include="ResultadoOperacao\ResultadoOperacaoCampanha.aspx" />
+    <Content Include="ResultadoOperacao\ResultadoOperacaoCampanha_Fidelity.aspx" />
+    <Content Include="ResultadoOperacao\ResultadoOperacaoClassificacao.aspx" />
+    <Content Include="ResultadoOperacao\ResultadoOperacaoTipo.aspx" />
+    <Content Include="ResultadoOperacao\ResultadoOperacao_Fidelity.aspx" />
+    <Content Include="Sair.aspx" />
+    <Content Include="Toolbar\AtualizacaoToolbar.aspx" />
+    <Content Include="Tribanco\PriorizacaoMailing.aspx" />
+    <Content Include="Usuario\PerfilUsuario.aspx" />
+    <Content Include="Usuario\Usuarios.aspx" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Data\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v9.0\WebApplications\Microsoft.WebApplication.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>False</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>54547</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>
+          </IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+</Project>

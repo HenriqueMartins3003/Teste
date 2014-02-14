@@ -1,0 +1,48 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 10.00
+# Visual Studio 2008
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "_webPainelVerisys", "_webPainelVerisys\_webPainelVerisys.csproj", "{505EA139-CFC9-456F-9B32-DE1FB1B73FB4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "_webPainelVerisys.DTO", "..\_webPainelVerisys.DTO\_webPainelVerisys.DTO.csproj", "{57D1E0B3-181F-4BF7-9D92-C6457B88F4C1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "_webPainelVerisys.BLL", "..\_webPainelVerisys.BLL\_webPainelVerisys.BLL.csproj", "{75EAE01F-F862-45B6-AC4B-416786F5C228}"
+EndProject
+Global
+	GlobalSection(SourceCodeControl) = preSolution
+		SccNumberOfProjects = 4
+		SccProjectName0 = \u0022$/Web/VerisysPainel/_webPainelVerisys.root/_webPainelVerisys\u0022,\u0020EYXBAAAA
+		SccLocalPath0 = ..
+		SccProvider0 = MSSCCI:Microsoft\u0020Visual\u0020SourceSafe
+		SccProjectFilePathRelativizedFromConnection0 = _webPainelVerisys\\
+		SccProjectUniqueName1 = ..\\_webPainelVerisys.BLL\\_webPainelVerisys.BLL.csproj
+		SccLocalPath1 = ..
+		SccProjectFilePathRelativizedFromConnection1 = _webPainelVerisys.BLL\\
+		SccProjectUniqueName2 = ..\\_webPainelVerisys.DTO\\_webPainelVerisys.DTO.csproj
+		SccLocalPath2 = ..
+		SccProjectFilePathRelativizedFromConnection2 = _webPainelVerisys.DTO\\
+		SccProjectUniqueName3 = _webPainelVerisys\\_webPainelVerisys.csproj
+		SccLocalPath3 = ..
+		SccProjectFilePathRelativizedFromConnection3 = _webPainelVerisys\\_webPainelVerisys\\
+	EndGlobalSection
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{505EA139-CFC9-456F-9B32-DE1FB1B73FB4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{505EA139-CFC9-456F-9B32-DE1FB1B73FB4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{505EA139-CFC9-456F-9B32-DE1FB1B73FB4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{505EA139-CFC9-456F-9B32-DE1FB1B73FB4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{57D1E0B3-181F-4BF7-9D92-C6457B88F4C1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{57D1E0B3-181F-4BF7-9D92-C6457B88F4C1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{57D1E0B3-181F-4BF7-9D92-C6457B88F4C1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{57D1E0B3-181F-4BF7-9D92-C6457B88F4C1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{75EAE01F-F862-45B6-AC4B-416786F5C228}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{75EAE01F-F862-45B6-AC4B-416786F5C228}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{75EAE01F-F862-45B6-AC4B-416786F5C228}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{75EAE01F-F862-45B6-AC4B-416786F5C228}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

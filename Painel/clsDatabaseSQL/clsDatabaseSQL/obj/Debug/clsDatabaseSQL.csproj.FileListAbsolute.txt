@@ -1,0 +1,5 @@
+C:\Projetos\clsDatabaseSQL\clsDatabaseSQL\bin\Debug\clsDatabaseSQL.dll
+C:\Projetos\clsDatabaseSQL\clsDatabaseSQL\bin\Debug\clsDatabaseSQL.pdb
+C:\Projetos\clsDatabaseSQL\clsDatabaseSQL\obj\Debug\ResolveAssemblyReference.cache
+C:\Projetos\clsDatabaseSQL\clsDatabaseSQL\obj\Debug\clsDatabaseSQL.dll
+C:\Projetos\clsDatabaseSQL\clsDatabaseSQL\obj\Debug\clsDatabaseSQL.pdb

@@ -1,0 +1,189 @@
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="ExecutionPlan.aspx.cs" Inherits="_webPainelVerisys.ImportExport.ExecutionPlan" MasterPageFile="~/MP.Master" Culture="pt-BR" %>
+<%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="asp" %>
+
+<asp:Content ID="cph_ImportExportExecutionPlan" runat="server" ContentPlaceHolderID="ContentPlaceHolder">
+
+<form id="frmImportExportExecutionPlan" runat="server">
+    <div class="containerInside">
+
+<%--        <asp:ScriptManager ID="ScriptManager" runat="server" EnableScriptGlobalization="true" EnableScriptLocalization="true">
+        </asp:ScriptManager>--%>
+        
+        <asp:ToolkitScriptManager ID="ToolkitScriptManager1" runat="server"></asp:ToolkitScriptManager>  
+
+        <asp:UpdatePanel ID="UpPanel" runat="server">
+        <ContentTemplate>
+
+        <div class="titleContentInside">
+            <asp:Label id="lblTitulo" runat="server" text="Titulo"></asp:Label>
+        </div>
+
+        <!-- content -->
+        <div class="contentInside">
+
+            <div class="ctn" id="modLista" runat="server" visible="true">
+                <!-- title[1] -->
+                <div class="cttTitle"><b>Cadastrados</b></div>
+
+                <!-- content[1] -->
+                <div class="ctt">
+
+                    <div id="ctnLista" runat="server">
+                        <asp:GridView ID="gdRegistros" runat="server" 
+                                AllowSorting="True"
+                                GridLines="None"
+                                CellPadding="4"
+                                AllowPaging="True"
+                                PageSize="50"
+                                AlternatingRowStyle-HorizontalAlign="Left"
+                                DataKeyNames="ExecutionPlanID, ExecutionPlan, ExecutionPlanDescription, ExecutionPlanTypeID, ExecutionPlanTypeDescription,
+                                              ExecutionDateTime, FrequencyID, FrequencyDescription, Monday, Tuesday, Wednesday, Thursday, Friday, Saturday,
+                                              Sunday, FirstWeek, SecondWeek, ThirdWeek, FourthWeek, FrequencyInterval, StartDateTime, EndDateTime,
+                                              ExecutionPlanStatus, ExecutionPlanStatusDescription"
+                                onrowcommand="gdRegistros_RowCommand"
+                                onsorting="gdRegistros_Sorting"
+                                onpageindexchanging="gdRegistros_PageIndexChanging" 
+                            onrowdatabound="gdRegistros_RowDataBound" 
+                            onrowcreated="gdRegistros_RowCreated" >
+                            <PagerSettings LastPageText="&amp;gt; &amp;gt;" Mode="NumericFirstLast" FirstPageText="&amp;lt;&amp;lt;" />
+                            <AlternatingRowStyle></AlternatingRowStyle>
+                        </asp:GridView>
+                    </div>
+                </div>
+            </div>
+
+            <div id="divResponse" runat="server" visible="false" class="ctt">
+                <asp:Label ID="lblResponse" runat="server"></asp:Label>
+            </div>
+
+            <!-- profile -->
+            <div class="ctn" id="modManutencao" visible="true" runat="server">
+                <!-- title -->
+                <div class="cttTitle">
+
+                    <div style="float:left;"><b>
+                        <asp:Label ID="lblTituloDiv" runat="server" Text="Cadastro"></asp:Label></b>
+                        <asp:Label ID="lblID" runat="server" Text="" Visible="false"></asp:Label></b>
+                    </div>
+
+                    <div style="float:right;">
+                        <asp:UpdateProgress ID="UpdateProgress1" runat="server">
+                        <ProgressTemplate>
+                            <img src="../img/ajax-loader-mini.gif" alt="aguarde..." align="right" style="margin:3px 10px 0px 0px;" /></ProgressTemplate>
+                        </asp:UpdateProgress>
+                    </div>
+
+                    <div class="clear"></div>
+
+                </div>
+
+                <!-- content -->
+                <div id="Div1" class="ctt" runat="server">
+
+                    <div id="Div3" class="contentBoxListsContentL" runat="server" style="height:150px; border:0px">
+
+                        <asp:label ID="lblExecutionPlan" CssClass="lb_Inside" Text="Nome" runat="server" Width="100"></asp:label>
+                        <asp:TextBox ID="txtExecutionPlan" runat="server" CssClass="form" Width="200" MaxLength="200" ></asp:TextBox>
+                        <br />
+                        
+                        <asp:label ID="lblExecutionPlanDescription" CssClass="lb_Inside" Text="Descrição" runat="server" Width="100"></asp:label>
+                        <asp:TextBox ID="txtExecutionPlanDescription" runat="server" CssClass="form" Width="200" MaxLength="200" ></asp:TextBox>
+                        <br />
+                        
+                        <asp:label ID="lblExecutionPlanTypeID" CssClass="lb_Inside" Text="Tipo" runat="server" Width="100"></asp:label>
+                        <asp:DropDownList ID="ddlExecutionPlanTypeID" runat="server" CssClass="form" Width="205" 
+                                          onselectedindexchanged="ddlExecutionPlanTypeID_SelectedIndexChanged" AutoPostBack="true"></asp:DropDownList>
+                        <br />
+                        
+                        <asp:label ID="lblFrequencyID" CssClass="lb_Inside" Text="Frequência" runat="server" Width="100"></asp:label>
+                        <asp:DropDownList ID="ddlFrequencyID" runat="server" CssClass="form" Width="205"></asp:DropDownList>
+                        <br />
+                        
+                        <asp:label ID="lblFrequencyInterval" CssClass="lb_Inside" Text="Intervalo" runat="server" Width="100"></asp:label>
+                        <asp:TextBox ID="txtFrequencyInterval" runat="server" CssClass="form" Width="30" MaxLength="12" ></asp:TextBox>
+                        
+
+                    </div>
+                    
+                    <div id="Div4" class="contentBoxListsContentR" runat="server" style="height:150px; border:0px">
+                    
+                        <asp:label ID="lblExecutionDate" CssClass="lb_Inside" Text="Execução" Width="100"  runat="server"></asp:label>
+                        <asp:TextBox ID="txtExecutionDate" runat="server" CssClass="form" Width="80" MaxLength="10" ></asp:TextBox>
+                        <asp:CalendarExtender runat="server" ID="calExecutionDate" TargetControlID="txtExecutionDate" Format="dd/MM/yyyy"></asp:CalendarExtender>
+                        
+                        <asp:TextBox ID="txtExecutionTime"  runat="server" CssClass="form" Width="50" Text="00:00:00"
+                                 onkeypress="startTabCheck();return MM_formatoDigitos(event,this,'##:##:##');" 
+                                 onkeyup="exibeValor(this, 8, 0)" onfocus="stopTabCheck(this)" MaxLength="8"></asp:TextBox>
+                                 
+                        <br />
+                        
+                        <asp:label ID="lblStartDate" CssClass="lb_Inside" Text="Inicio" runat="server" Width="100"></asp:label>
+                        <asp:TextBox ID="txtStartDate" runat="server" CssClass="form" Width="80" MaxLength="10" ></asp:TextBox>
+                        <asp:CalendarExtender runat="server" ID="calStartDate" TargetControlID="txtStartDate" Format="dd/MM/yyyy"></asp:CalendarExtender>
+                        <asp:TextBox ID="txtStartTime"  runat="server" CssClass="form" Width="50" Text="00:00:00"
+                                 onkeypress="startTabCheck();return MM_formatoDigitos(event,this,'##:##:##');" 
+                                 onkeyup="exibeValor(this, 8, 0)" onfocus="stopTabCheck(this)" MaxLength="8"></asp:TextBox>
+                        <br />
+                        
+                        <asp:label ID="lblEndDate" CssClass="lb_Inside" Text="Fim" runat="server" Width="100"></asp:label>
+                        <asp:TextBox ID="txtEndDate" runat="server" CssClass="form" Width="80" MaxLength="10" ></asp:TextBox>
+                        <asp:CalendarExtender runat="server" ID="calEndDate" TargetControlID="txtEndDate" Format="dd/MM/yyyy"></asp:CalendarExtender>
+                        <asp:TextBox ID="txtEndTime"  runat="server" CssClass="form" Width="50" Text="00:00:00"
+                                 onkeypress="startTabCheck();return MM_formatoDigitos(event,this,'##:##:##');" 
+                                 onkeyup="exibeValor(this, 8, 0)" onfocus="stopTabCheck(this)" MaxLength="8"></asp:TextBox>
+                        <br /><br /><br />
+                        
+                        <asp:label ID="lblExecutionPlanStatus" CssClass="lb_Inside" Text="Ativo ?" runat="server" Width="100"></asp:label>
+                        <asp:DropDownList ID="ddlExecutionPlanStatus" runat="server" CssClass="form" Width="205">
+                            <asp:ListItem Value="True" Text="Sim"></asp:ListItem>
+                            <asp:ListItem Value="False" Text="Não"></asp:ListItem>
+                        </asp:DropDownList>
+
+
+
+                    </div>
+                </div>
+            </div>
+            
+            <div class="ctn" id="modExcluir" visible="false" runat="server">
+                <!-- title -->
+                <div class="cttTitle">
+
+                    <div style="float:left;"><b>
+                        <asp:Label ID="Label1" runat="server" Text="Exclusão"></asp:Label></b>
+                    </div>
+
+                    <div style="float:right;">
+                        <asp:UpdateProgress ID="UpdateProgress2" runat="server">
+                        <ProgressTemplate>
+                            <img src="../img/ajax-loader-mini.gif" alt="aguarde..." align="right" style="margin:3px 10px 0px 0px;" /></ProgressTemplate>
+                        </asp:UpdateProgress>
+                    </div>
+                    
+                    <div class="clear"></div>
+
+                </div>
+                
+                <!-- content -->
+                <div id="Div2" class="ctt" runat="server">
+
+                    <center>
+                    <asp:label ID="lblMensagemExclusao" Text="Confirma a exclusão do Registro :" runat="server"></asp:label>
+                    <br /><br />
+                    <asp:label ID="lblExclusao" CssClass="lb_InsideConfirm" Text="" runat="server"></asp:label>
+                    </center>
+                
+                </div>
+            </div>
+
+            <br />
+            <asp:ImageButton ID="buttonImageSalvar" runat="server" ImageUrl="~/img/btn-salvar.gif" OnClick="Manager_Click"/>&nbsp;
+            <asp:ImageButton ID="buttonImageLimpar" runat="server" ImageUrl="~/img/btn-limpar.gif" OnClick="buttonImageLimpar_Click"/>
+
+        </div>
+
+        </ContentTemplate>
+        </asp:UpdatePanel>
+    </div>
+</form>
+</asp:Content>

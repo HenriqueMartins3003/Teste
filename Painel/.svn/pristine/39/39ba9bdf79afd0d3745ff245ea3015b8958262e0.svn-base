@@ -1,0 +1,864 @@
+﻿using System;
+using System.Data;
+using System.Web.UI;
+using System.Web.UI.WebControls;
+using System.Globalization;
+using _webPainelVerisys.BLL;
+using _webPainelVerisys.DTO;
+using clsTools;
+
+
+namespace _webPainelVerisys.ImportExport
+{
+    public partial class ExecutionPlan : System.Web.UI.Page
+    {
+        dtoUsers objUsers = null;
+        UsersProfiles objUsersProfiles = new UsersProfiles();
+        bllImportExport objImportExport = new bllImportExport();
+        Validadores objValidadores = new Validadores();
+
+        protected void Page_Load(object sender, EventArgs e)
+        {
+            if (Session["ObjUsers"] != null)
+            {
+                objUsers = (dtoUsers)Session["ObjUsers"];
+            }
+            else
+            {
+                Response.Redirect("../login.aspx");
+            }
+
+            if (!IsPostBack)
+            {
+                PageConfig();
+                AccessSecurity();
+                gdRegistros_Lista();
+                ListExecutionPlanType();
+                ExecutionPlanFrequency();
+            }
+        }
+
+        private void AccessSecurity()
+        {
+            if (objUsersProfiles.AccessProfile(this.Form.ID, dtoUsersProfiles.AccessType.CONSULTA, objUsers.IdProfile) == 0)
+            {
+                Response.Redirect("../Painel/Default.aspx");
+            }
+
+            objUsersProfiles.AcessProfileButton(buttonImageSalvar, "~/img/btn-salvar-disable.gif", this.Form.ID, dtoUsersProfiles.AccessType.INCLUSAO, Convert.ToInt32(objUsers.IdProfile));
+        }
+
+        private void PageConfig()
+        {
+            dtoPageConfig objdtoPageConfig = null;
+            bllPageConfig objPageConfig = new bllPageConfig();
+
+            String strApplication = Session["ObjApplication"].ToString();
+            objdtoPageConfig = objPageConfig.listPageConfig(this.Form.ID, strApplication);
+
+            lblTitulo.Text = objdtoPageConfig.Descricao;
+        }
+
+        protected void ListExecutionPlanType()
+        {
+            ddlExecutionPlanTypeID.DataSource = objImportExport.UINT_LISTEXECUTIONPLANTYPE();
+            ddlExecutionPlanTypeID.DataTextField = "ExecutionPlanType";
+            ddlExecutionPlanTypeID.DataValueField = "ExecutionPlanTypeID";
+            ddlExecutionPlanTypeID.DataBind();
+            ddlExecutionPlanTypeID.Items.Insert(0, new ListItem("Tipo ...", "0"));
+        }
+
+        protected void ExecutionPlanFrequency()
+        {
+            ddlFrequencyID.DataSource = objImportExport.UINT_LISTEXECUTIONPLANFREQUENCY();
+            ddlFrequencyID.DataTextField = "Frequency";
+            ddlFrequencyID.DataValueField = "FrequencyID";
+            ddlFrequencyID.DataBind();
+            ddlFrequencyID.Items.Insert(0, new ListItem("Frequência ...", "0"));
+        }
+
+        protected void gdRegistros_Lista()
+        {
+            gdRegistros.AutoGenerateColumns = false;
+            gdRegistros.Columns.Clear();
+
+            // Botoes
+            ButtonField btnUpdate = new ButtonField();
+            btnUpdate.ButtonType = ButtonType.Image;
+            btnUpdate.ImageUrl = "../img/edit.gif";
+            btnUpdate.CommandName = "Upd";
+            btnUpdate.ItemStyle.Width = 25;
+            btnUpdate.ItemStyle.HorizontalAlign = HorizontalAlign.Center;
+            btnUpdate.HeaderText = "";
+            btnUpdate.HeaderStyle.CssClass = "gridViewHeader";
+            btnUpdate.Visible = true;
+            gdRegistros.Columns.Add(btnUpdate);
+
+            ButtonField btnDelete = new ButtonField();
+            btnDelete.ButtonType = ButtonType.Image;
+            btnDelete.ImageUrl = "../img/delete.gif";
+            btnDelete.CommandName = "Del";
+            btnDelete.ItemStyle.Width = 25;
+            btnDelete.ItemStyle.HorizontalAlign = HorizontalAlign.Center;
+            btnDelete.HeaderText = "";
+            btnDelete.HeaderStyle.CssClass = "gridViewHeader";
+            btnDelete.Visible = true;
+            gdRegistros.Columns.Add(btnDelete);
+
+
+
+
+
+            // Campos
+            BoundField bfExecutionPlanID = new BoundField();
+            bfExecutionPlanID.DataField = "ExecutionPlanID";
+            bfExecutionPlanID.HeaderText = "ExecutionPlanID";
+            bfExecutionPlanID.HeaderStyle.CssClass = "gridViewHeader1";
+            bfExecutionPlanID.ItemStyle.CssClass = "gridViewValues3";
+            bfExecutionPlanID.ItemStyle.Width = 50;
+            bfExecutionPlanID.Visible = false;
+            bfExecutionPlanID.SortExpression = "ExecutionPlanID";
+            gdRegistros.Columns.Add(bfExecutionPlanID);
+
+            BoundField bfExecutionPlan = new BoundField();
+            bfExecutionPlan.DataField = "ExecutionPlan";
+            bfExecutionPlan.HeaderText = "Nome";
+            bfExecutionPlan.HeaderStyle.CssClass = "gridViewHeader1";
+            bfExecutionPlan.ItemStyle.CssClass = "gridViewValues2";
+            bfExecutionPlan.ItemStyle.Width = 100;
+            bfExecutionPlan.Visible = true;
+            bfExecutionPlan.SortExpression = "ExecutionPlan";
+            gdRegistros.Columns.Add(bfExecutionPlan);
+
+            BoundField bfExecutionPlanDescription = new BoundField();
+            bfExecutionPlanDescription.DataField = "ExecutionPlanDescription";
+            bfExecutionPlanDescription.HeaderText = "Descrição";
+            bfExecutionPlanDescription.HeaderStyle.CssClass = "gridViewHeader1";
+            bfExecutionPlanDescription.ItemStyle.CssClass = "gridViewValues2";
+            bfExecutionPlanDescription.ItemStyle.Width = 100;
+            bfExecutionPlanDescription.Visible = false;
+            bfExecutionPlanDescription.SortExpression = "ExecutionPlanDescription";
+            gdRegistros.Columns.Add(bfExecutionPlanDescription);
+
+            BoundField bfExecutionPlanTypeID = new BoundField();
+            bfExecutionPlanTypeID.DataField = "ExecutionPlanTypeID";
+            bfExecutionPlanTypeID.HeaderText = "ExecutionPlanTypeID";
+            bfExecutionPlanTypeID.HeaderStyle.CssClass = "gridViewHeader1";
+            bfExecutionPlanTypeID.ItemStyle.CssClass = "gridViewValues3";
+            bfExecutionPlanTypeID.ItemStyle.Width = 50;
+            bfExecutionPlanTypeID.Visible = false;
+            bfExecutionPlanTypeID.SortExpression = "ExecutionPlanTypeID";
+            gdRegistros.Columns.Add(bfExecutionPlanTypeID);
+
+            BoundField bfExecutionPlanTypeDescription = new BoundField();
+            bfExecutionPlanTypeDescription.DataField = "ExecutionPlanTypeDescription";
+            bfExecutionPlanTypeDescription.HeaderText = "Tipo";
+            bfExecutionPlanTypeDescription.HeaderStyle.CssClass = "gridViewHeader1";
+            bfExecutionPlanTypeDescription.ItemStyle.CssClass = "gridViewValues3";
+            bfExecutionPlanTypeDescription.ItemStyle.Width = 50;
+            bfExecutionPlanTypeDescription.Visible = true;
+            bfExecutionPlanTypeDescription.SortExpression = "ExecutionPlanTypeDescription";
+            gdRegistros.Columns.Add(bfExecutionPlanTypeDescription);
+
+            BoundField bfExecutionDateTime = new BoundField();
+            bfExecutionDateTime.DataField = "ExecutionDateTime";
+            bfExecutionDateTime.HeaderText = "Execução";
+            bfExecutionDateTime.HeaderStyle.CssClass = "gridViewHeader1";
+            bfExecutionDateTime.ItemStyle.CssClass = "gridViewValues3";
+            bfExecutionDateTime.ItemStyle.Width = 100;
+            bfExecutionDateTime.Visible = true;
+            bfExecutionDateTime.SortExpression = "ExecutionDateTime";
+            bfExecutionDateTime.DataFormatString = "{0:dd/MM/yyyy HH:mm:ss}";
+            gdRegistros.Columns.Add(bfExecutionDateTime);
+
+            BoundField bfFrequencyID = new BoundField();
+            bfFrequencyID.DataField = "FrequencyID";
+            bfFrequencyID.HeaderText = "FrequencyID";
+            bfFrequencyID.HeaderStyle.CssClass = "gridViewHeader1";
+            bfFrequencyID.ItemStyle.CssClass = "gridViewValues3";
+            bfFrequencyID.ItemStyle.Width = 50;
+            bfFrequencyID.Visible = false;
+            bfFrequencyID.SortExpression = "FrequencyID";
+            gdRegistros.Columns.Add(bfFrequencyID);
+
+            BoundField bfFrequencyDescription = new BoundField();
+            bfFrequencyDescription.DataField = "FrequencyDescription";
+            bfFrequencyDescription.HeaderText = "Frequência";
+            bfFrequencyDescription.HeaderStyle.CssClass = "gridViewHeader1";
+            bfFrequencyDescription.ItemStyle.CssClass = "gridViewValues3";
+            bfFrequencyDescription.ItemStyle.Width = 100;
+            bfFrequencyDescription.Visible = true;
+            bfFrequencyDescription.SortExpression = "FrequencyDescription";
+            gdRegistros.Columns.Add(bfFrequencyDescription);
+
+            BoundField bfMonday = new BoundField();
+            bfMonday.DataField = "Monday";
+            bfMonday.HeaderText = "Monday";
+            bfMonday.HeaderStyle.CssClass = "gridViewHeader1";
+            bfMonday.ItemStyle.CssClass = "gridViewValues3";
+            bfMonday.ItemStyle.Width = 50;
+            bfMonday.Visible = false;
+            bfMonday.SortExpression = "Monday";
+            gdRegistros.Columns.Add(bfMonday);
+
+            BoundField bfTuesday = new BoundField();
+            bfTuesday.DataField = "Tuesday";
+            bfTuesday.HeaderText = "Tuesday";
+            bfTuesday.HeaderStyle.CssClass = "gridViewHeader1";
+            bfTuesday.ItemStyle.CssClass = "gridViewValues3";
+            bfTuesday.ItemStyle.Width = 50;
+            bfTuesday.Visible = false;
+            bfTuesday.SortExpression = "Tuesday";
+            gdRegistros.Columns.Add(bfTuesday);
+
+            BoundField bfWednesday = new BoundField();
+            bfWednesday.DataField = "Wednesday";
+            bfWednesday.HeaderText = "Wednesday";
+            bfWednesday.HeaderStyle.CssClass = "gridViewHeader1";
+            bfWednesday.ItemStyle.CssClass = "gridViewValues3";
+            bfWednesday.ItemStyle.Width = 50;
+            bfWednesday.Visible = false;
+            bfWednesday.SortExpression = "Wednesday";
+            gdRegistros.Columns.Add(bfWednesday);
+
+            BoundField bfThursday = new BoundField();
+            bfThursday.DataField = "Thursday";
+            bfThursday.HeaderText = "Thursday";
+            bfThursday.HeaderStyle.CssClass = "gridViewHeader1";
+            bfThursday.ItemStyle.CssClass = "gridViewValues3";
+            bfThursday.ItemStyle.Width = 50;
+            bfThursday.Visible = false;
+            bfThursday.SortExpression = "Thursday";
+            gdRegistros.Columns.Add(bfThursday);
+
+            BoundField bfFriday = new BoundField();
+            bfFriday.DataField = "Friday";
+            bfFriday.HeaderText = "Friday";
+            bfFriday.HeaderStyle.CssClass = "gridViewHeader1";
+            bfFriday.ItemStyle.CssClass = "gridViewValues3";
+            bfFriday.ItemStyle.Width = 50;
+            bfFriday.Visible = false;
+            bfFriday.SortExpression = "Friday";
+            gdRegistros.Columns.Add(bfFriday);
+
+            BoundField bfSaturday = new BoundField();
+            bfSaturday.DataField = "Saturday";
+            bfSaturday.HeaderText = "Saturday";
+            bfSaturday.HeaderStyle.CssClass = "gridViewHeader1";
+            bfSaturday.ItemStyle.CssClass = "gridViewValues3";
+            bfSaturday.ItemStyle.Width = 50;
+            bfSaturday.Visible = false;
+            bfSaturday.SortExpression = "Saturday";
+            gdRegistros.Columns.Add(bfSaturday);
+
+            BoundField bfSunday = new BoundField();
+            bfSunday.DataField = "Sunday";
+            bfSunday.HeaderText = "Sunday";
+            bfSunday.HeaderStyle.CssClass = "gridViewHeader1";
+            bfSunday.ItemStyle.CssClass = "gridViewValues3";
+            bfSunday.ItemStyle.Width = 50;
+            bfSunday.Visible = false;
+            bfSunday.SortExpression = "Sunday";
+            gdRegistros.Columns.Add(bfSunday);
+
+            BoundField bfFirstWeek = new BoundField();
+            bfFirstWeek.DataField = "FirstWeek";
+            bfFirstWeek.HeaderText = "FirstWeek";
+            bfFirstWeek.HeaderStyle.CssClass = "gridViewHeader1";
+            bfFirstWeek.ItemStyle.CssClass = "gridViewValues3";
+            bfFirstWeek.ItemStyle.Width = 50;
+            bfFirstWeek.Visible = false;
+            bfFirstWeek.SortExpression = "FirstWeek";
+            gdRegistros.Columns.Add(bfFirstWeek);
+
+            BoundField bfSecondWeek = new BoundField();
+            bfSecondWeek.DataField = "SecondWeek";
+            bfSecondWeek.HeaderText = "SecondWeek";
+            bfSecondWeek.HeaderStyle.CssClass = "gridViewHeader1";
+            bfSecondWeek.ItemStyle.CssClass = "gridViewValues3";
+            bfSecondWeek.ItemStyle.Width = 50;
+            bfSecondWeek.Visible = false;
+            bfSecondWeek.SortExpression = "SecondWeek";
+            gdRegistros.Columns.Add(bfSecondWeek);
+
+            BoundField bfThirdWeek = new BoundField();
+            bfThirdWeek.DataField = "ThirdWeek";
+            bfThirdWeek.HeaderText = "ThirdWeek";
+            bfThirdWeek.HeaderStyle.CssClass = "gridViewHeader1";
+            bfThirdWeek.ItemStyle.CssClass = "gridViewValues3";
+            bfThirdWeek.ItemStyle.Width = 50;
+            bfThirdWeek.Visible = false;
+            bfThirdWeek.SortExpression = "ThirdWeek";
+            gdRegistros.Columns.Add(bfThirdWeek);
+
+            BoundField bfFourthWeek = new BoundField();
+            bfFourthWeek.DataField = "FourthWeek";
+            bfFourthWeek.HeaderText = "FourthWeek";
+            bfFourthWeek.HeaderStyle.CssClass = "gridViewHeader1";
+            bfFourthWeek.ItemStyle.CssClass = "gridViewValues3";
+            bfFourthWeek.ItemStyle.Width = 50;
+            bfFourthWeek.Visible = false;
+            bfFourthWeek.SortExpression = "FourthWeek";
+            gdRegistros.Columns.Add(bfFourthWeek);
+
+            BoundField bfFrequencyInterval = new BoundField();
+            bfFrequencyInterval.DataField = "FrequencyInterval";
+            bfFrequencyInterval.HeaderText = "Intervalo";
+            bfFrequencyInterval.HeaderStyle.CssClass = "gridViewHeader1";
+            bfFrequencyInterval.ItemStyle.CssClass = "gridViewValues3";
+            bfFrequencyInterval.ItemStyle.Width = 50;
+            bfFrequencyInterval.Visible = true;
+            bfFrequencyInterval.SortExpression = "FrequencyInterval";
+            gdRegistros.Columns.Add(bfFrequencyInterval);
+
+            BoundField bfStartTime = new BoundField();
+            bfStartTime.DataField = "StartDateTime";
+            bfStartTime.HeaderText = "Inicial";
+            bfStartTime.HeaderStyle.CssClass = "gridViewHeader1";
+            bfStartTime.ItemStyle.CssClass = "gridViewValues3";
+            bfStartTime.ItemStyle.Width = 50;
+            bfStartTime.Visible = true;
+            bfStartTime.SortExpression = "StartDateTime";
+            gdRegistros.Columns.Add(bfStartTime);
+
+            BoundField bfEndTime = new BoundField();
+            bfEndTime.DataField = "EndDateTime";
+            bfEndTime.HeaderText = "Final";
+            bfEndTime.HeaderStyle.CssClass = "gridViewHeader1";
+            bfEndTime.ItemStyle.CssClass = "gridViewValues3";
+            bfEndTime.ItemStyle.Width = 50;
+            bfEndTime.Visible = true;
+            bfEndTime.SortExpression = "EndDateTime";
+            gdRegistros.Columns.Add(bfEndTime);
+
+          
+
+            BoundField bfExecutionPlanStatus = new BoundField();
+            bfExecutionPlanStatus.DataField = "ExecutionPlanStatus";
+            bfExecutionPlanStatus.HeaderText = "ExecutionPlanStatus";
+            bfExecutionPlanStatus.HeaderStyle.CssClass = "gridViewHeader1";
+            bfExecutionPlanStatus.ItemStyle.CssClass = "gridViewValues3";
+            bfExecutionPlanStatus.ItemStyle.Width = 50;
+            bfExecutionPlanStatus.Visible = false;
+            bfExecutionPlanStatus.SortExpression = "ExecutionPlanStatus";
+            gdRegistros.Columns.Add(bfExecutionPlanStatus);
+
+            BoundField bfExecutionPlanStatusDescription = new BoundField();
+            bfExecutionPlanStatusDescription.DataField = "ExecutionPlanStatusDescription";
+            bfExecutionPlanStatusDescription.HeaderText = "Ativo?";
+            bfExecutionPlanStatusDescription.HeaderStyle.CssClass = "gridViewHeader1";
+            bfExecutionPlanStatusDescription.ItemStyle.CssClass = "gridViewValues3";
+            bfExecutionPlanStatusDescription.ItemStyle.Width = 50;
+            bfExecutionPlanStatusDescription.Visible = false;
+            bfExecutionPlanStatusDescription.SortExpression = "ExecutionPlanStatusDescription";
+            gdRegistros.Columns.Add(bfExecutionPlanStatusDescription);
+
+            gdRegistros.PagerStyle.HorizontalAlign = HorizontalAlign.Center;
+            gdRegistros.PagerStyle.BackColor = System.Drawing.ColorTranslator.FromHtml("#E1E1E1");
+            gdRegistros.FooterStyle.CssClass = "gridViewHeader";
+
+            DataSet dsQuery = objImportExport.UINT_LISTEXECUTIONPLAN(objUsers);
+            if (dsQuery.Tables[0].Rows.Count > 0)
+            {
+                gdRegistros.DataSource = dsQuery;
+            }
+            else
+            {
+                divResponse.Visible = true;
+                ctnLista.Visible = false;
+                lblResponse.Text = "<div class='ROK'> Não existem dados Cadastrados !! </div>";
+            }
+
+            gdRegistros.DataBind();
+        }
+
+        protected void gdRegistros_RowCommand(object sender, GridViewCommandEventArgs e)
+        {
+            if (e.CommandName == "Upd")
+            {
+                divResponse.Visible = false;
+                modManutencao.Visible = true;
+                modExcluir.Visible = false;
+
+                int index = int.Parse((string)e.CommandArgument);
+                lblTituloDiv.Text = "Alteração";
+                lblID.Text = gdRegistros.DataKeys[index]["ExecutionPlanID"].ToString();
+
+                DateTime ExecutionDate = DateTime.Parse(gdRegistros.DataKeys[index]["ExecutionDateTime"].ToString());
+                string strExecutionDate = ExecutionDate.ToString("dd/MM/yyyy");
+                string strExecutionHour = ExecutionDate.ToString("HH:mm:ss");
+
+                txtExecutionPlan.Text = gdRegistros.DataKeys[index]["ExecutionPlan"].ToString();
+                txtExecutionPlanDescription.Text = gdRegistros.DataKeys[index]["ExecutionPlanDescription"].ToString();
+                ddlExecutionPlanTypeID.SelectedValue = gdRegistros.DataKeys[index]["ExecutionPlanTypeID"].ToString();
+                
+                //txtExecutionDate.Text = gdRegistros.DataKeys[index]["ExecutionDateTime"].ToString().Substring(0, 10);
+                //txtExecutionTime.Text = gdRegistros.DataKeys[index]["ExecutionDateTime"].ToString().Substring(11, 8);
+
+                txtExecutionDate.Text = strExecutionDate;
+                txtExecutionTime.Text = strExecutionHour;                
+                
+                ddlFrequencyID.SelectedValue = gdRegistros.DataKeys[index]["FrequencyID"].ToString();
+                txtFrequencyInterval.Text = gdRegistros.DataKeys[index]["FrequencyInterval"].ToString();
+                
+                txtStartTime.Text = gdRegistros.DataKeys[index]["StartDateTime"].ToString();
+                txtEndTime.Text = gdRegistros.DataKeys[index]["EndDateTime"].ToString();
+                
+                            
+                
+                ddlExecutionPlanStatus.SelectedValue = gdRegistros.DataKeys[index]["ExecutionPlanStatus"].ToString();
+
+                objUsersProfiles.AcessProfileButton(buttonImageSalvar, "~/img/btn-salvar-disable.gif", this.Form.ID, dtoUsersProfiles.AccessType.ALTERACAO, Convert.ToInt32(objUsers.IdProfile));
+            }
+
+            if (e.CommandName == "Del")
+            {
+                divResponse.Visible = false;
+                modManutencao.Visible = false;
+                modExcluir.Visible = true;
+
+                int index = int.Parse((string)e.CommandArgument);
+                lblTituloDiv.Text = "Exclusão";
+                lblID.Text = gdRegistros.DataKeys[index]["ExecutionPlanID"].ToString();
+                lblExclusao.Text = gdRegistros.DataKeys[index]["ExecutionPlan"].ToString();
+
+                objUsersProfiles.AcessProfileButton(buttonImageSalvar, "~/img/btn-salvar-disable.gif", this.Form.ID, dtoUsersProfiles.AccessType.EXCLUSAO, Convert.ToInt32(objUsers.IdProfile));
+            }
+        }
+
+        protected void gdRegistros_Sorting(object sender, GridViewSortEventArgs e)
+        {
+            DataSet dsRegistros = objImportExport.UINT_LISTEXECUTIONPLAN(objUsers);
+            if (dsRegistros.Tables[0].Rows.Count > 0)
+            {
+                DataTable dtRegistros = (DataTable)dsRegistros.Tables[0];
+                String _coluna = e.SortExpression;
+
+                if (_coluna.Equals(Session["ULTIMOSORT"]))
+                    _coluna = _coluna + " desc";
+
+                Session.Add("ULTIMOSORT", _coluna);
+                dtRegistros.DefaultView.Sort = _coluna;
+
+                gdRegistros.DataSource = dtRegistros;
+                gdRegistros.DataBind();
+            }
+        }
+
+        protected void gdRegistros_PageIndexChanging(object sender, GridViewPageEventArgs e)
+        {
+            gdRegistros.PageIndex = e.NewPageIndex;
+            gdRegistros_Lista();
+        }
+
+        protected void gdRegistros_RowDataBound(object sender, GridViewRowEventArgs e)
+        {
+            if (e.Row.RowType == DataControlRowType.DataRow)
+            {
+                string Color = "#E8F3FF";
+
+                if (((e.Row.RowIndex + 1) % 2) == 0)
+                {
+                    e.Row.CssClass = "gridViewValues1";
+                    e.Row.BackColor = System.Drawing.ColorTranslator.FromHtml(Color);
+                }
+            }
+        }
+
+        protected void buttonImageLimpar_Click(object sender, ImageClickEventArgs e)
+        {
+            Limpar();
+            divResponse.Visible = false;
+        }
+
+        protected void Manager_Click(object sender, ImageClickEventArgs e)
+        {
+            if (lblTituloDiv.Text == "Cadastro")
+            {
+                Cadastro();
+            }
+            else if (lblTituloDiv.Text == "Alteração")
+            {
+                Alteracao();
+            }
+            else if (lblTituloDiv.Text == "Exclusão")
+            {
+                Exclusao();
+            }
+
+            Limpar();
+        }
+
+        protected void Cadastro()
+        {
+            dtoImportExport_ExecutionPlan dtoAux = new dtoImportExport_ExecutionPlan();
+
+            try
+            {
+                if (txtExecutionPlan.Text == String.Empty)
+                {
+                    divResponse.Visible = true;
+                    lblResponse.Text = "<div class='RNOK'>O Campo <b>Nome</b> não pode ficar em Branco !! </div>";
+                    return;
+                }
+
+                if (ddlExecutionPlanTypeID.SelectedValue == "0")
+                {
+                    divResponse.Visible = true;
+                    lblResponse.Text = "<div class='RNOK'>O Campo <b>Tipo</b> não pode ficar em Branco !! </div>";
+                    return;
+                }
+                else
+                {
+                    if (ddlExecutionPlanTypeID.SelectedValue == "2")
+                    {
+                        if (txtExecutionDate.Text == String.Empty)
+                        {
+                            divResponse.Visible = true;
+                            lblResponse.Text = "<div class='RNOK'>O Campo <b>Execução</b> não pode ficar em Branco !! </div>";
+                            return;
+                        }
+
+                        if (txtExecutionTime.Text == String.Empty)
+                        {
+                            divResponse.Visible = true;
+                            lblResponse.Text = "<div class='RNOK'>O Campo <b>Execução</b> não pode ficar em Branco !! </div>";
+                            return;
+                        }
+                    }
+                    else if (ddlExecutionPlanTypeID.SelectedValue == "1")
+                    {
+                        if (ddlFrequencyID.SelectedValue == "0")
+                        {
+                            divResponse.Visible = true;
+                            lblResponse.Text = "<div class='RNOK'>O Campo <b>Frequência</b> não pode ficar em Branco !! </div>";
+                            return;
+                        }
+
+                        if ((txtFrequencyInterval.Text == String.Empty) || (!objValidadores.isNumero(txtFrequencyInterval.Text)))
+                        {
+                            divResponse.Visible = true;
+                            lblResponse.Text = "<div class='RNOK'>O Campo <b>Intervalo</b> deve ser numerico e não pode ficar em Branco !! </div>";
+                            return;
+                        }
+
+                        if ((txtStartDate.Text == String.Empty) || (txtStartTime.Text == String.Empty))
+                        {
+                            divResponse.Visible = true;
+                            lblResponse.Text = "<div class='RNOK'>O Campo <b>Inicio</b> deve ser numerico e não pode ficar em Branco !! </div>";
+                            return;
+                        }
+
+                        if ((txtEndDate.Text == String.Empty) || (txtEndTime.Text == String.Empty))
+                        {
+                            divResponse.Visible = true;
+                            lblResponse.Text = "<div class='RNOK'>O Campo <b>Fim</b> deve ser numerico e não pode ficar em Branco !! </div>";
+                            return;
+                        }
+                    }
+                }
+
+                
+                dtoAux.Task = 1;
+                dtoAux.ExecutionPlan = txtExecutionPlan.Text;
+                dtoAux.ExecutionPlanDescription = txtExecutionPlanDescription.Text;
+                dtoAux.ExecutionPlanTypeID = Convert.ToInt64(ddlExecutionPlanTypeID.SelectedValue);
+
+                if (txtExecutionDate.Text != String.Empty)
+                    dtoAux.ExecutionDateTime = Convert.ToDateTime(Convert.ToDateTime(txtExecutionDate.Text + " " + txtExecutionTime.Text).ToString("yyyy-MM-dd HH:mm:ss"));
+
+                if (!String.IsNullOrEmpty(txtStartTime.Text))
+                    dtoAux.StartTime = Convert.ToDateTime(txtStartTime.Text);
+
+                if (!String.IsNullOrEmpty(txtEndTime.Text))
+                    dtoAux.EndTime = Convert.ToDateTime(txtEndTime.Text);
+
+                if (!String.IsNullOrEmpty(txtStartDate.Text))
+                    dtoAux.StartDate = Convert.ToDateTime(txtStartDate.Text);
+
+                if (!String.IsNullOrEmpty(txtEndDate.Text))
+                    dtoAux.EndDate = Convert.ToDateTime(txtEndDate.Text);
+
+                dtoAux.FrequencyID = Convert.ToInt64(ddlFrequencyID.SelectedValue);
+                dtoAux.Monday = false;
+                dtoAux.Tuesday = false;
+                dtoAux.Wednesday = false;
+                dtoAux.Thursday = false;
+                dtoAux.Friday = false;
+                dtoAux.Saturday = false;
+                dtoAux.Sunday = false;
+                dtoAux.FirstWeek = false;
+                dtoAux.SecondWeek = false;
+                dtoAux.ThirdWeek = false;
+                dtoAux.FourthWeek = false;
+                dtoAux.FrequencyInterval = Convert.ToInt64(txtFrequencyInterval.Text == String.Empty ? "0" : txtFrequencyInterval.Text);
+                dtoAux.ExecutionPlanStatus = Convert.ToBoolean(ddlExecutionPlanStatus.Text);
+
+                dtoResponse dtoResponse = objImportExport.UINT_MANAGER_EXECUTIONPLAN(dtoAux, objUsers);
+                if (dtoResponse.ResultCode == 0)
+                {
+                    lblResponse.Text = "<div class='ROK'> Registro Cadastrado com sucesso !!</div>";
+                    divResponse.Visible = true;
+                }
+                else
+                {
+                    lblResponse.Text = "<div class='RNOK'> Erro durante o Cadastro do Registro !! </div>";
+                    divResponse.Visible = true;
+                }
+            }
+            catch (Exception eCadastro)
+            {
+                lblResponse.Text = "<div class='RNOK'> Erro durante o Cadastro do Registro !! </div>";
+                divResponse.Visible = true;
+                throw new Exception(eCadastro.Message + " >>> " +
+                dtoAux.Task + " - " +
+                dtoAux.ExecutionPlan + " - " +
+                dtoAux.ExecutionPlanDescription + " - " +
+                dtoAux.ExecutionPlanTypeID + " - " +
+                dtoAux.ExecutionDateTime + " - " +
+                dtoAux.StartTime + " - " +
+                dtoAux.EndTime + " - " +
+                dtoAux.StartDate + " - " +
+                dtoAux.EndDate + " - " +
+                dtoAux.FrequencyID + " - " +
+                dtoAux.FrequencyInterval + " - " +
+                dtoAux.ExecutionPlanStatus);
+            }
+        }
+
+        protected void Alteracao()
+        {
+            try
+            {
+                if (txtExecutionPlan.Text == String.Empty)
+                {
+                    divResponse.Visible = true;
+                    lblResponse.Text = "<div class='RNOK'>O Campo <b>Nome</b> não pode ficar em Branco !! </div>";
+                    return;
+                }
+
+                if (ddlExecutionPlanTypeID.SelectedValue == "0")
+                {
+                    divResponse.Visible = true;
+                    lblResponse.Text = "<div class='RNOK'>O Campo <b>Tipo</b> não pode ficar em Branco !! </div>";
+                    return;
+                }
+                else
+                {
+                    if (ddlExecutionPlanTypeID.SelectedValue == "2")
+                    {
+                        if (txtExecutionDate.Text == String.Empty)
+                        {
+                            divResponse.Visible = true;
+                            lblResponse.Text = "<div class='RNOK'>O Campo <b>Execução</b> não pode ficar em Branco !! </div>";
+                            return;
+                        }
+
+                        if (txtExecutionTime.Text == String.Empty)
+                        {
+                            divResponse.Visible = true;
+                            lblResponse.Text = "<div class='RNOK'>O Campo <b>Execução</b> não pode ficar em Branco !! </div>";
+                            return;
+                        }
+                    }
+                    else if (ddlExecutionPlanTypeID.SelectedValue == "1")
+                    {
+                        if (ddlFrequencyID.SelectedValue == "0")
+                        {
+                            divResponse.Visible = true;
+                            lblResponse.Text = "<div class='RNOK'>O Campo <b>Frequência</b> não pode ficar em Branco !! </div>";
+                            return;
+                        }
+
+                        if ((txtFrequencyInterval.Text == String.Empty) || (!objValidadores.isNumero(txtFrequencyInterval.Text)))
+                        {
+                            divResponse.Visible = true;
+                            lblResponse.Text = "<div class='RNOK'>O Campo <b>Intervalo</b> deve ser numerico e não pode ficar em Branco !! </div>";
+                            return;
+                        }
+
+                        if ((txtStartDate.Text == String.Empty) || (txtStartTime.Text == String.Empty))
+                        {
+                            divResponse.Visible = true;
+                            lblResponse.Text = "<div class='RNOK'>O Campo <b>Inicio</b> deve ser numerico e não pode ficar em Branco !! </div>";
+                            return;
+                        }
+
+                        if ((txtEndDate.Text == String.Empty) || (txtEndTime.Text == String.Empty))
+                        {
+                            divResponse.Visible = true;
+                            lblResponse.Text = "<div class='RNOK'>O Campo <b>Fim</b> deve ser numerico e não pode ficar em Branco !! </div>";
+                            return;
+                        }
+                    }
+                }
+
+                dtoImportExport_ExecutionPlan dtoAux = new dtoImportExport_ExecutionPlan();
+                dtoAux.Task = 2;
+                dtoAux.ExecutionPlanID = Convert.ToInt64(lblID.Text);
+                dtoAux.ExecutionPlan = txtExecutionPlan.Text;
+                dtoAux.ExecutionPlanDescription = txtExecutionPlanDescription.Text;
+                dtoAux.ExecutionPlanTypeID = Convert.ToInt64(ddlExecutionPlanTypeID.SelectedValue);
+                
+                if (txtExecutionDate.Text != String.Empty)
+                    dtoAux.ExecutionDateTime = Convert.ToDateTime(txtExecutionDate.Text + " " + txtExecutionTime.Text);
+
+                dtoAux.FrequencyID = Convert.ToInt64(ddlFrequencyID.SelectedValue);
+                dtoAux.Monday = false;
+                dtoAux.Tuesday = false;
+                dtoAux.Wednesday = false;
+                dtoAux.Thursday = false;
+                dtoAux.Friday = false;
+                dtoAux.Saturday = false;
+                dtoAux.Sunday = false;
+                dtoAux.FirstWeek = false;
+                dtoAux.SecondWeek = false;
+                dtoAux.ThirdWeek = false;
+                dtoAux.FourthWeek = false;
+                dtoAux.FrequencyInterval = Convert.ToInt64(txtFrequencyInterval.Text == String.Empty ? "0" : txtFrequencyInterval.Text);
+                dtoAux.StartTime = Convert.ToDateTime(txtStartTime.Text);
+                dtoAux.EndTime = Convert.ToDateTime(txtEndTime.Text);
+                dtoAux.StartDate = Convert.ToDateTime(txtStartDate.Text);
+                dtoAux.EndDate = Convert.ToDateTime(txtEndDate.Text);
+                dtoAux.ExecutionPlanStatus = Convert.ToBoolean(ddlExecutionPlanStatus.Text);
+
+                dtoResponse dtoResponse = objImportExport.UINT_MANAGER_EXECUTIONPLAN(dtoAux, objUsers);
+                if (dtoResponse.ResultCode == 0)
+                {
+                    lblResponse.Text = "<div class='ROK'> Registro Alterado com sucesso !!</div>";
+                    divResponse.Visible = true;
+                }
+                else
+                {
+                    lblResponse.Text = "<div class='RNOK'> Erro durante a Alteração do Registro !! </div>";
+                    divResponse.Visible = true;
+                }
+            }
+            catch (Exception eAlteracao)
+            {
+                divResponse.Visible = true;
+                lblResponse.Text = "<div class='RNOK'> Erro durante a Alteração do Registro !! </div>";
+            }
+        }
+
+        protected void Exclusao()
+        {
+            try
+            {
+                dtoImportExport_ExecutionPlan dtoAux = new dtoImportExport_ExecutionPlan();
+                dtoAux.Task = 3;
+                dtoAux.ExecutionPlanID = Convert.ToInt32(lblID.Text);
+
+                dtoResponse dtoResponse = objImportExport.UINT_MANAGER_EXECUTIONPLAN(dtoAux, objUsers);
+                if (dtoResponse.ResultCode == 0)
+                {
+                    lblResponse.Text = "<div class='ROK'> Registro Excluido com sucesso !!</div>";
+                    divResponse.Visible = true;
+                }
+                else
+                {
+                    lblResponse.Text = "<div class='RNOK'> Erro durante a Exclusão do Registro !! </div>";
+                    divResponse.Visible = true;
+                }
+            }
+            catch (Exception eExclusao)
+            {
+                lblResponse.Text = "<div class='RNOK'> Erro durante a Exclusão do Registro !! </div>";
+                divResponse.Visible = true;
+            }
+        }
+
+        protected void Limpar()
+        {
+            try
+            {
+                objUsersProfiles.AcessProfileButton(buttonImageSalvar, "~/img/btn-salvar-disable.gif", this.Form.ID, dtoUsersProfiles.AccessType.INCLUSAO, Convert.ToInt32(objUsers.IdProfile));
+                lblTituloDiv.Text = "Cadastro";
+                modManutencao.Visible = true;
+                modExcluir.Visible = false;
+                ctnLista.Visible = true;
+                gdRegistros_Lista();
+
+                // CAMPOS
+                txtExecutionPlan.Text = "";
+                txtExecutionPlanDescription.Text = "";
+                ddlExecutionPlanTypeID.SelectedValue = "0";
+                txtExecutionDate.Text = "";
+                txtExecutionTime.Text = "";
+                ddlFrequencyID.SelectedValue = "0";
+                ddlExecutionPlanTypeID.SelectedValue = "0";
+                txtStartTime.Text = "";
+                txtEndTime.Text = "";
+                txtStartDate.Text = "";
+                txtEndDate.Text = "";
+                ddlExecutionPlanStatus.Text = "0";
+            }
+            catch
+            {
+
+            }
+        }
+
+        protected void gdRegistros_RowCreated(object sender, GridViewRowEventArgs e)
+        {
+            if (e.Row.RowType == DataControlRowType.Header)
+            {
+                GridView oGridView = (GridView)sender;
+                GridViewRow oGridViewRow = new GridViewRow(0, 0, DataControlRowType.Header, DataControlRowState.Insert);
+                TableCell oTableCell = new TableCell();
+
+                // Coluna 1
+                oTableCell.Text = "";
+                oTableCell.ColumnSpan = 7;
+                oTableCell.CssClass = "gridViewHeader1";
+                oGridViewRow.Cells.Add(oTableCell);
+
+                //Ativos
+                oTableCell = new TableCell();
+                oTableCell.Text = "Data/Hora";
+                oTableCell.ColumnSpan = 2;
+                oTableCell.CssClass = "gridViewHeader1";
+                oGridViewRow.Cells.Add(oTableCell);
+                oGridView.Controls[0].Controls.AddAt(0, oGridViewRow);
+
+            }
+        }
+
+        protected void ddlExecutionPlanTypeID_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (ddlExecutionPlanTypeID.SelectedValue != "0")
+            {
+                if (ddlExecutionPlanTypeID.SelectedValue == "2")
+                {
+                    ddlFrequencyID.SelectedValue = "0";
+                    ddlFrequencyID.Enabled = false;
+                    txtFrequencyInterval.Text = "";
+                    txtFrequencyInterval.Enabled = false;
+                    txtExecutionDate.Enabled = true;
+                    txtExecutionTime.Enabled = true;
+                    txtStartDate.Text = "";
+                    txtStartDate.Enabled = false;
+                    txtEndDate.Text = "";
+                    txtEndDate.Enabled = false;
+                    txtStartTime.Text = "";
+                    txtStartTime.Enabled = false;
+                    txtEndTime.Text = "";
+                    txtEndTime.Enabled = false;
+                }
+                else
+                {
+                    ddlFrequencyID.Enabled = true;
+                    txtFrequencyInterval.Enabled = true;
+                    txtExecutionDate.Text = "";
+                    txtExecutionTime.Text = "";
+                    txtExecutionDate.Enabled = false;
+                    txtExecutionTime.Enabled = false;
+                    txtStartDate.Enabled = true;
+                    txtEndDate.Enabled = true;
+                    txtStartTime.Enabled = true;
+                    txtEndTime.Enabled = true;
+                }
+            }
+        }
+    }
+}

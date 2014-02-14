@@ -1,0 +1,104 @@
+-- Atualizaá∆o v2.0.0.0
+--------------------------------------------------------------------------------
+Alteraá∆o nos metodos de conex∆o do banco de dados
+Otimizaá∆o do processo de verificaá∆o de necessidade de processamento
+Otimizaá∆o de processos de Consulta e gravaá∆o em Banco de Dados
+Remoá∆o de processos n∆o correspondentes a plataforma Unique
+
+--------------------------------------------------------------------------------
+a)	Caso uma linha de registro tenha tamanho em caracteres informado, diferente do recebido: Rejeitado a linha apenas;
+b)	Caso uma linha de registro tenha uma coluna, com um valor informado diferente do cadastrado: Rejeitado a linha apenas;
+c)	Qualquer outra situaá∆o com a linha do registro n∆o tratada: Rejeitado a linha apenas;
+d)	Qualquer situaá∆o n∆o tratada com relaá∆o ao arquivo: Rejeitado o arquivo inteiro;
+e)	Impossibilidade de geraá∆o de lote ou campanha: Rejeitado o arquivo inteiro;
+f)	Impossibilidade de, caso solicitado, desabilitar lotes antigos, o processo n∆o ser† abortado e o arquivo ser† importado;
+g)	Erro na inserá∆o do registro na base, exemplo causado por registros configurado de forma errada, ex: coluna numÇrica inserindo string: Rejeitado a linha apenas; 
+    a.	Obs.: Neste caso todas as linhas provavelmente
+h)  Incluido a opá∆o de cadastro de valor default, caso a coluna do registro no mailing esteja em branco.
+--------------------------------------------------------------------------------
+1 - Efetuar a Parada no Serviáo da aplicaá∆o.
+  - Ir em Start Menu > Painel de Controle > Ferramentas Administrativas > Servicos
+  - Localizar Verisys - Importador de Arquivos
+  - Clicar com o bot∆o direito sobre o Serviáo e selecionar Parar / Stop
+
+2 - Banco de dados: 
+  * Todas as alteraá‰es a serem realizada no database do Importador/Exportador, 
+    salvo as que forem informadas em databases diferentes.
+  * Em alguns casos, em alteraá‰es e/ou exclus‰es podem ser necess†rio a execuá∆o 
+    de um ou outro processo antes.  
+
+  - Criaá∆o/Alteraá∆o/Exclus∆o de funá∆o(‰es): 
+    [dbo].[FNC_Parametros]
+
+  ---------------------------  
+  - Criaá∆o/Alteraá∆o/Exclus∆o de Procedure(s) 
+    [dbo].[SP_SCHEDULEPROCESS]
+    [dbo].[SP_RULES]
+    [dbo].[SP_FILES]
+    [dbo].[SP_EXECUTIONPLAN]
+  * [dbo].[SP_DISABLEANCIENTID]
+    [dbo].[SP_LOT]
+    [dbo].[SP_RULESCAMPAIGN]
+    [dbo].[SP_REGISTRYCOLUMN]
+
+    DROP PROCEDURE SP_RULESBEFOREPROCESS
+
+  * Procedures que possuem necessidade de update, por conter linkedserver em sua composiá∆o
+
+  ---------------------------
+  - Indice(s)
+    Sugest∆o de criaá∆o de indice em todas as bases de mailing (Tabela Discador)
+    devido a processos de desativaá∆o de mailing.
+
+      CREATE NONCLUSTERED INDEX [<Name of Missing Index, sysname,>]
+      ON [dbo].[Tb_Discador] ([ID_Campanha],[Lote_Ativo])
+      INCLUDE ([RegistroID])
+
+  ---------------------------
+  - Criaá∆o/Alteraá∆o/Exclus∆o de Tabela(s)
+    ALTER TABLE [dbo].[Rules] ADD OldLotStatus BIT
+    ALTER TABLE [dbo].[Rules] ADD CONSTRAINT [DF_Rules_OldLotStatus]  DEFAULT ((0)) FOR [OldLotStatus]
+    ALTER TABLE [dbo].[Rules] DROP COLUMN SERVERADDRESS
+    ALTER TABLE [dbo].[Rules] DROP COLUMN SERVERDATABASE
+    ALTER TABLE [dbo].[Rules] DROP COLUMN DATABASEUSER
+    ALTER TABLE [dbo].[Rules] DROP COLUMN DATABASEPASSWORD
+    ALTER TABLE [dbo].[Rules] DROP COLUMN AMBIENTID
+    ALTER TABLE [dbo].[Rules] DROP COLUMN CLAUSEWHERE
+    ALTER TABLE [dbo].[Rules] DROP CONSTRAINT [DF_Rules_ExportPhones]
+    ALTER TABLE [dbo].[Rules] DROP COLUMN EXPORTPHONES
+
+    UPDATE [dbo].[Rules] SET [OldLotStatus] = 1
+
+    DROP TABLE [RulesBeforeProcess]
+
+    ALTER TABLE [dbo].[ExecutionPlan] ADD StartDateTime DATETIME
+    ALTER TABLE [dbo].[ExecutionPlan] ADD EndDateTime DATETIME
+    ALTER TABLE [dbo].[ExecutionPlan] DROP CONSTRAINT DF_ExecutionPlan_EndDate
+    ALTER TABLE [dbo].[ExecutionPlan] DROP CONSTRAINT DF_ExecutionPlan_StartDate
+    ALTER TABLE [dbo].[ExecutionPlan] DROP COLUMN [StartTime]
+    ALTER TABLE [dbo].[ExecutionPlan] DROP COLUMN [StartDate]
+    ALTER TABLE [dbo].[ExecutionPlan] DROP COLUMN [EndTime]
+    ALTER TABLE [dbo].[ExecutionPlan] DROP COLUMN [EndDate]
+
+    ALTER TABLE [dbo].[RegistryColumn] DROP CONSTRAINT [DF_RegistryColumn_ColumnGroup]
+    ALTER TABLE [dbo].[RegistryColumn] DROP CONSTRAINT [DF_RegistryColumn_TableOrder]
+    ALTER TABLE [dbo].[RegistryColumn] DROP COLUMN [ColumnGroup]
+	  ALTER TABLE [dbo].[RegistryColumn] DROP COLUMN [DatabaseTable]
+	  ALTER TABLE [dbo].[RegistryColumn] DROP COLUMN [TableID]
+
+
+
+
+  
+
+3 - Backup da Aplicaá∆o
+  - Realizar o Backup da pasta que contem a atual instalaá∆o dos Arquivos
+  
+4 - Atualizaá∆o de Arquivos
+  - Substituir o conteudo da pasta com o novo Pacote de Atualizaá∆o
+  
+5 - Iniciar o Serviáo da aplicaá∆o.
+  - Ir em Start Menu > Painel de Controle > Ferramentas Administrativas > Servicos
+  - Localizar Verisys - Importador de Arquivos
+  - Clicar com o bot∆o direito sobre o Serviáo e selecionar Iniciar / Start
+ 

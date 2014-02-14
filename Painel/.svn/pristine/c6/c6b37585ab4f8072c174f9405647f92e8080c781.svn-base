@@ -1,0 +1,662 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Data;
+using System.Linq;
+using System.Web;
+using System.Web.UI;
+using System.Web.UI.WebControls;
+
+using _webPainelVerisys.BLL;
+using _webPainelVerisys.DTO;
+
+namespace _webPainelVerisys.Usuario
+{
+    public partial class Usuario : System.Web.UI.Page
+    {
+        dtoUsers objUsers = null;
+        UsersProfiles objUsersProfiles = new UsersProfiles();
+        Campaigns objCampaign = new Campaigns();
+        Users bllUsers = new Users();
+
+        protected void Page_Load(object sender, EventArgs e)
+        {
+            if (Session["ObjUsers"] != null)
+            {
+                objUsers = (dtoUsers)Session["ObjUsers"];
+            }
+            else
+            {
+                Response.Redirect("../login.aspx");
+            }
+
+            if (!IsPostBack)
+            {
+                AccessSecurity();
+                loadProfiles();
+
+                dtoUsers objAuxUsers = new dtoUsers();
+                gridLista(objAuxUsers);
+            }
+        }
+
+        private void AccessSecurity()
+        {
+            if (objUsersProfiles.AccessProfile(this.Form.ID, dtoUsersProfiles.AccessType.CONSULTA, objUsers.IdProfile) == 0)
+            {
+                Response.Redirect("../Painel/DashBoard.aspx");
+            }
+
+            objUsersProfiles.AcessProfileButton(buttonImageSalvar, "~/img/btn-salvar-disable.gif", this.Form.ID, dtoUsersProfiles.AccessType.INCLUSAO, Convert.ToInt32(objUsers.IdProfile));
+        }
+
+        protected void loadProfiles()
+        {
+            Users bll = new Users();
+
+            ddlProfile.DataSource = bll.listUserProfile(objUsers);
+            ddlProfile.DataValueField = "IdProfile";
+            ddlProfile.DataTextField = "DescriptProfile";
+            ddlProfile.DataBind();
+            ddlProfile.Items.Insert(0, new ListItem("Selecione o perfil...", "0"));
+        }
+
+        protected void gridLista(dtoUsers getValues)
+        {
+            gdRegistros.AutoGenerateColumns = false;
+            gdRegistros.Columns.Clear();
+
+            ButtonField btnUpdate = new ButtonField();
+            btnUpdate.ButtonType = ButtonType.Image;
+            btnUpdate.ImageUrl = "../img/edit.gif";
+            btnUpdate.CommandName = "Upd";
+            btnUpdate.ItemStyle.Width = 25;
+            btnUpdate.ItemStyle.HorizontalAlign = HorizontalAlign.Center;
+            btnUpdate.HeaderText = "";
+            btnUpdate.HeaderStyle.CssClass = "gridViewHeader";
+            gdRegistros.Columns.Add(btnUpdate);
+
+            ButtonField btnDelete = new ButtonField();
+            btnDelete.ButtonType = ButtonType.Image;
+            btnDelete.ImageUrl = "../img/delete.gif";
+            btnDelete.CommandName = "Del";
+            btnDelete.ItemStyle.Width = 25;
+            btnDelete.ItemStyle.HorizontalAlign = HorizontalAlign.Center;
+            btnDelete.HeaderText = "";
+            btnDelete.HeaderStyle.CssClass = "gridViewHeader";
+            gdRegistros.Columns.Add(btnDelete);
+
+            BoundField user = new BoundField();
+            user.DataField = "CODIGO";
+            user.HeaderText = "Código";
+            user.HeaderStyle.CssClass = "gridViewHeader1";
+            user.ItemStyle.CssClass = "gridViewValues2";
+            user.ItemStyle.Width = 100;
+            user.SortExpression = "CODIGO";
+            gdRegistros.Columns.Add(user);
+
+            BoundField name = new BoundField();
+            name.DataField = "NOME";
+            name.HeaderText = "Nome";
+            name.HeaderStyle.CssClass = "gridViewHeader";
+            name.ItemStyle.CssClass = "gridViewValues1";
+            name.ItemStyle.Width = 400;
+            name.SortExpression = "NOME";
+            gdRegistros.Columns.Add(name);
+
+            BoundField typeProfile = new BoundField();
+            typeProfile.DataField = "DESCRICAO";
+            typeProfile.HeaderText = "Perfil";
+            typeProfile.HeaderStyle.CssClass = "gridViewHeader";
+            typeProfile.ItemStyle.CssClass = "gridViewValues1";
+            typeProfile.ItemStyle.Width = 200;
+            typeProfile.SortExpression = "DESCRICAO";
+            gdRegistros.Columns.Add(typeProfile);
+
+            gdRegistros.PagerStyle.HorizontalAlign = HorizontalAlign.Center;
+            gdRegistros.PagerStyle.BackColor = System.Drawing.ColorTranslator.FromHtml("#E1E1E1");
+            gdRegistros.FooterStyle.CssClass = "gridViewHeader";
+
+            DataSet dsQuery = bllUsers.listUsersAssociated(getValues, objUsers);
+            if (dsQuery.Tables[0].Rows.Count > 0)
+            {
+                gdRegistros.DataSource = dsQuery;
+            }
+            else
+            {
+                divResponse.Visible = true;
+                lblResponse.Text = "<div class='ROK'> Não existem Usuarios Cadastrados !! </div>";
+            }
+
+            gdRegistros.DataBind();
+        }
+
+        protected void gdRegistros_RowCommand(object sender, GridViewCommandEventArgs e)
+        {
+            if (e.CommandName == "Upd")
+            {
+                divResponse.Visible = false;
+                divContent.Visible = true;
+                modManutencao.Visible = true;
+                modExcluir.Visible = false;
+                int index = int.Parse((string)e.CommandArgument);
+                lblTituloDiv.Text = "Alteração de Usuário";
+
+                lblID.Text = gdRegistros.DataKeys[index]["CODIGO"].ToString();
+                ddlProfile.SelectedValue = gdRegistros.DataKeys[index]["IDPERFILUSUARIO"].ToString();
+                lbUsersNotAssociated.Items.Clear();
+
+                dtoUsers objAuxUser = new dtoUsers();
+                List<dtoUsers> listUser = new List<dtoUsers>();
+                objAuxUser.User = gdRegistros.DataKeys[index]["CODIGO"].ToString();
+                objAuxUser.UserName = gdRegistros.DataKeys[index]["NOME"].ToString();
+                listUser.Add(objAuxUser);
+                lbUsersNotAssociatedSelected.DataSource = listUser;
+                lbUsersNotAssociatedSelected.DataValueField = "User";
+                lbUsersNotAssociatedSelected.DataTextField = "UserName";
+                lbUsersNotAssociatedSelected.DataBind();
+
+                dtoCampaign objAuxCampaign = new dtoCampaign();
+                lbCampaignsSelected.DataSource = objCampaign.listCampaignAssociated(objAuxUser);
+                lbCampaignsSelected.DataValueField = "Campaign";
+                lbCampaignsSelected.DataTextField = "NomeCampanha";
+                lbCampaignsSelected.DataBind();
+
+                lbCampaigns.DataSource = objCampaign.listCampaignNotAssociated(objAuxUser);
+                lbCampaigns.DataValueField = "Campaign";
+                lbCampaigns.DataTextField = "NomeCampanha";
+                lbCampaigns.DataBind();
+
+                lbCampaignsSelectedGroups.DataSource = objCampaign.listCampaignAssociatedGroupUser(objAuxUser);
+                lbCampaignsSelectedGroups.DataValueField = "GrupoID";
+                lbCampaignsSelectedGroups.DataTextField = "Grupo";
+                lbCampaignsSelectedGroups.DataBind();
+
+                lbCampaignsGroups.DataSource = objCampaign.listCampaignNotAssociatedGroupUser(objAuxUser);
+                lbCampaignsGroups.DataValueField = "GrupoID";
+                lbCampaignsGroups.DataTextField = "Grupo";
+                lbCampaignsGroups.DataBind();
+
+                objUsersProfiles.AcessProfileButton(buttonImageSalvar, "~/img/btn-salvar-disable.gif", this.Form.ID, dtoUsersProfiles.AccessType.ALTERACAO, Convert.ToInt32(objUsers.IdProfile));
+            }
+
+            if (e.CommandName == "Del")
+            {
+                divResponse.Visible = false;
+                lblTituloDiv.Text = "Exclusão de Usuário";
+                divContent.Visible = true;
+                modManutencao.Visible = false;
+                modExcluir.Visible = true;
+                int index = int.Parse((string)e.CommandArgument);
+
+                lblID.Text = gdRegistros.DataKeys[index]["CODIGO"].ToString();
+                lblExclusao.Text = gdRegistros.DataKeys[index]["NOME"].ToString();
+
+                objUsersProfiles.AcessProfileButton(buttonImageSalvar, "~/img/btn-salvar-disable.gif", this.Form.ID, dtoUsersProfiles.AccessType.EXCLUSAO, Convert.ToInt32(objUsers.IdProfile));
+            }
+        }
+
+        protected void gdRegistros_Sorting(object sender, GridViewSortEventArgs e)
+        {
+            dtoUsers objAuxUsers = new dtoUsers();
+            DataSet dsRegistros = bllUsers.listUsersAssociated(objAuxUsers, objUsers);
+
+            DataTable dtRegistros = (DataTable)dsRegistros.Tables[0];
+            String _coluna = e.SortExpression;
+
+            if (_coluna.Equals(Session["ULTIMOSORT"]))
+                _coluna = _coluna + " desc";
+
+            Session.Add("ULTIMOSORT", _coluna);
+            dtRegistros.DefaultView.Sort = _coluna;
+
+            gdRegistros.DataSource = dtRegistros;
+            gdRegistros.DataBind();
+        }
+
+        protected void gdRegistros_PageIndexChanging(object sender, GridViewPageEventArgs e)
+        {
+            gdRegistros.PageIndex = e.NewPageIndex;
+            //gridLista(objUsers);
+            dtoUsers objAuxUsers = new dtoUsers();
+            gridLista(objAuxUsers);
+        }
+
+        protected void gdRegistros_RowDataBound(object sender, GridViewRowEventArgs e)
+        {
+            if (e.Row.RowType == DataControlRowType.DataRow)
+            {
+                if (((e.Row.RowIndex + 1) % 2) == 0)
+                {
+                    e.Row.CssClass = "gridViewLine1";
+                }
+                else
+                {
+                    e.Row.CssClass = "gridViewLine2";
+                }
+            }
+        }
+
+        protected void Manager_Click(object sender, ImageClickEventArgs e)
+        {
+            dtoUsers dtoAuxUsers = new dtoUsers();
+
+            if (lblTituloDiv.Text == "Cadastrar novo Usuário")
+            {
+                try
+                {
+                    if (lbUsersNotAssociatedSelected.Items.Count == 0)
+                    {
+                        lblResponse.Text = "<div class='RNOK'>É necessário selecionar o Usuario a ser cadastrado !! </div>";
+                        divResponse.Visible = true;
+                        return;
+                    }
+
+                    if (lbCampaignsSelected.Items.Count == 0)
+                    {
+                        lblResponse.Text = "<div class='RNOK'>É necessário selecionar a Campanha para associação !! </div>";
+                        divResponse.Visible = true;
+                        return;
+                    }
+
+                    if (ddlProfile.SelectedIndex == 0)
+                    {
+                        lblResponse.Text = "<div class='RNOK'>Selecione o <b>Perfil de Acesso</b> !! </div>";
+                        divResponse.Visible = true;
+                        return;
+                    }
+
+                    dtoAuxUsers.Task = "1";
+                    dtoAuxUsers.IdProfile = Convert.ToInt16(ddlProfile.SelectedValue.ToString());
+
+                    foreach (ListItem _listCampaign in lbCampaignsSelected.Items)
+                    {
+                        dtoAuxUsers.ListCampaign = dtoAuxUsers.ListCampaign + ";" + _listCampaign.Value;
+                    }
+                    dtoAuxUsers.ListCampaign = dtoAuxUsers.ListCampaign.Substring(1, dtoAuxUsers.ListCampaign.Length - 1);
+
+                    foreach (ListItem _listGroups in lbCampaignsSelectedGroups.Items)
+                    {
+                        dtoAuxUsers.ListGroups = dtoAuxUsers.ListGroups + ";" + _listGroups.Value;
+                    }
+                    if (!String.IsNullOrEmpty(dtoAuxUsers.ListGroups))
+                        dtoAuxUsers.ListGroups = dtoAuxUsers.ListGroups.Substring(1, dtoAuxUsers.ListGroups.Length - 1);
+
+                    foreach (ListItem _listUser in lbUsersNotAssociatedSelected.Items)
+                    {
+                        dtoAuxUsers.User = _listUser.Value;
+
+                        String Result = bllUsers.ManagerUsers(dtoAuxUsers, objUsers);
+                        if (Result.Substring(0, 4).ToString().ToUpper() == "ERROR")
+                        {
+                            lblResponse.Text = "<div class='RNOK'>" + Result + "</div>";
+                            divResponse.Visible = true;
+                            return;
+                        }
+                        else
+                        {
+                            lblResponse.Text = "<div class='ROK'>" + Result + "</div>";
+                            divResponse.Visible = true;
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    lblResponse.Text = "<div class='RNOK'> Erro durante o processo de Cadastramento de Usuario !! </div>";
+                    divResponse.Visible = true;
+                }
+            }
+            else if (lblTituloDiv.Text == "Alteração de Usuário")
+            {
+                try
+                {
+                    if (lbUsersNotAssociatedSelected.Items.Count == 0)
+                    {
+                        lblResponse.Text = "<div class='RNOK'>É necessário selecionar o Usuario a ser cadastrado !! </div>";
+                        divResponse.Visible = true;
+                        return;
+                    }
+
+                    if (lbCampaignsSelected.Items.Count == 0)
+                    {
+                        lblResponse.Text = "<div class='RNOK'>É necessário selecionar a Campanha para associação !! </div>";
+                        divResponse.Visible = true;
+                        return;
+                    }
+
+                    if (ddlProfile.SelectedIndex == 0)
+                    {
+                        lblResponse.Text = "<div class='RNOK'>Selecione o <b>Perfil de Acesso</b> !! </div>";
+                        divResponse.Visible = true;
+                        return;
+                    }
+
+                    dtoAuxUsers.Task = "2";
+                    dtoAuxUsers.IdProfile = Convert.ToInt16(ddlProfile.SelectedValue.ToString());
+
+                    foreach (ListItem _listCampaign in lbCampaignsSelected.Items)
+                    {
+                        dtoAuxUsers.ListCampaign = dtoAuxUsers.ListCampaign + ";" + _listCampaign.Value;
+                    }
+                    dtoAuxUsers.ListCampaign = dtoAuxUsers.ListCampaign.Substring(1, dtoAuxUsers.ListCampaign.Length - 1);
+
+                    foreach (ListItem _listGroups in lbCampaignsSelectedGroups.Items)
+                    {
+                        dtoAuxUsers.ListGroups = dtoAuxUsers.ListGroups + ";" + _listGroups.Value;
+                    }
+                    if (!String.IsNullOrEmpty(dtoAuxUsers.ListGroups))
+                        dtoAuxUsers.ListGroups = dtoAuxUsers.ListGroups.Substring(1, dtoAuxUsers.ListGroups.Length - 1);
+
+                    foreach (ListItem _listUser in lbUsersNotAssociatedSelected.Items)
+                    {
+                        dtoAuxUsers.User = _listUser.Value;
+
+                        String Result = bllUsers.ManagerUsers(dtoAuxUsers, objUsers);
+                        if (Result.Substring(0, 4).ToString().ToUpper() == "ERROR")
+                        {
+                            lblResponse.Text = "<div class='RNOK'>" + Result + "</div>";
+                            divResponse.Visible = true;
+                            return;
+                        }
+                        else
+                        {
+                            lblResponse.Text = "<div class='ROK'>" + Result + "</div>";
+                            divResponse.Visible = true;
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    lblResponse.Text = "<div class='RNOK'> Erro durante o processo de Alteração de Cadastramento de Usuario !! </div>";
+                    divResponse.Visible = true;
+                }
+            }
+            else if (lblTituloDiv.Text == "Exclusão de Usuário")
+            {
+                try
+                {
+                    dtoAuxUsers.Task = "3";
+                    dtoAuxUsers.User = lblID.Text;
+
+                    String Result = bllUsers.ManagerUsers(dtoAuxUsers, objUsers);
+                    if (Result.Substring(0, 4).ToString().ToUpper() == "ERROR")
+                    {
+                        lblResponse.Text = "<div class='RNOK'>" + Result + "</div>";
+                        divResponse.Visible = true;
+                        return;
+                    }
+                    else
+                    {
+                        lblResponse.Text = "<div class='ROK'>" + Result + "</div>";
+                        divResponse.Visible = true;
+                    }
+                }
+                catch (Exception ex)
+                {
+                    lblResponse.Text = "<div class='RNOK'> Erro durante o processo de Exclusão de Usuario !! </div>";
+                    divResponse.Visible = true;
+                }
+            }
+
+            Limpar();
+        }
+
+        protected void buttonImageLimpar_Click(object sender, ImageClickEventArgs e)
+        {
+            Limpar();
+            divResponse.Visible = false;
+        }
+
+        protected void Limpar()
+        {
+            try
+            {
+                objUsersProfiles.AcessProfileButton(buttonImageSalvar, "~/img/btn-salvar-disable.gif", this.Form.ID, dtoUsersProfiles.AccessType.INCLUSAO, Convert.ToInt32(objUsers.IdProfile));
+                lblTituloDiv.Text = "Cadastrar novo Usuário";
+                divContent.Visible = false;
+                modExcluir.Visible = false;
+                txtUsuarioCadastrado.Text = "";
+                txtUsuarioNaoCadastrado.Text = "";
+                lbUsersNotAssociatedSelected.Items.Clear();
+                lbCampaignsSelected.Items.Clear();
+                lbUsersNotAssociated.Items.Clear();
+                lbCampaigns.Items.Clear();
+                lbCampaignsGroups.Items.Clear();
+                lbCampaignsSelectedGroups.Items.Clear();
+                ddlProfile.SelectedIndex = 0;
+
+                dtoUsers objAuxUsers = new dtoUsers();
+                gridLista(objAuxUsers);
+            }
+            catch
+            {
+
+            }
+        }
+
+        protected void buttonArrowLeftUserNotAssociated_Click(object sender, ImageClickEventArgs e)
+        {
+            foreach (ListItem li in lbUsersNotAssociatedSelected.Items)
+            {
+                if (li.Selected)
+                {
+                    lbUsersNotAssociated.Items.Add(li);
+                }
+            }
+
+            foreach (ListItem li in lbUsersNotAssociated.Items)
+            {
+                foreach (ListItem li2 in lbUsersNotAssociatedSelected.Items)
+                {
+                    if (li.Value == li2.Value)
+                    {
+                        lbUsersNotAssociatedSelected.Items.Remove(li2);
+                        break;
+                    }
+                }
+            }
+        }
+
+        protected void buttonArrowRightUserNotAssociated_Click(object sender, ImageClickEventArgs e)
+        {
+            foreach (ListItem li in lbUsersNotAssociated.Items)
+            {
+                if (li.Selected)
+                {
+                    lbUsersNotAssociatedSelected.Items.Add(li);
+                }
+            }
+
+            foreach (ListItem li in lbUsersNotAssociatedSelected.Items)
+            {
+                foreach (ListItem li2 in lbUsersNotAssociated.Items)
+                {
+                    if (li.Value == li2.Value)
+                    {
+                        lbUsersNotAssociated.Items.Remove(li2);
+                        break;
+                    }
+                }
+            }
+        }
+
+
+
+        protected void buttonArrowLeftCampaign_Click(object sender, ImageClickEventArgs e)
+        {
+            foreach (ListItem li1 in lbCampaignsSelected.Items)
+            {
+                if (li1.Selected)
+                {
+                    lbCampaigns.Items.Add(li1);
+                }
+            }
+
+            foreach (ListItem li1 in lbCampaigns.Items)
+            {
+                foreach (ListItem li2 in lbCampaignsSelected.Items)
+                {
+                    if (li1.Value == li2.Value)
+                    {
+                        lbCampaignsSelected.Items.Remove(li2);
+                        break;
+                    }
+                }
+            }
+        }
+
+        protected void buttonArrowRightCampaign_Click(object sender, ImageClickEventArgs e)
+        {
+            foreach (ListItem li1 in lbCampaigns.Items)
+            {
+                if (li1.Selected)
+                {
+                    lbCampaignsSelected.Items.Add(li1);
+                }
+            }
+
+            foreach (ListItem li1 in lbCampaignsSelected.Items)
+            {
+                foreach (ListItem li2 in lbCampaigns.Items)
+                {
+                    if (li1.Value == li2.Value)
+                    {
+                        lbCampaigns.Items.Remove(li2);
+                        break;
+                    }
+                }
+            }
+        }
+
+
+
+
+
+
+        protected void buttonArrowLeftCampaignGroups_Click(object sender, ImageClickEventArgs e)
+        {
+            foreach (ListItem li1 in lbCampaignsSelectedGroups.Items)
+            {
+                if (li1.Selected)
+                {
+                    lbCampaignsGroups.Items.Add(li1);
+                }
+            }
+
+            foreach (ListItem li1 in lbCampaignsGroups.Items)
+            {
+                foreach (ListItem li2 in lbCampaignsSelectedGroups.Items)
+                {
+                    if (li1.Value == li2.Value)
+                    {
+                        lbCampaignsSelectedGroups.Items.Remove(li2);
+                        break;
+                    }
+                }
+            }
+        }
+
+        protected void buttonArrowRightCampaignGroups_Click(object sender, ImageClickEventArgs e)
+        {
+            foreach (ListItem li1 in lbCampaignsGroups.Items)
+            {
+                if (li1.Selected)
+                {
+                    lbCampaignsSelectedGroups.Items.Add(li1);
+                }
+            }
+
+            foreach (ListItem li1 in lbCampaignsSelectedGroups.Items)
+            {
+                foreach (ListItem li2 in lbCampaignsGroups.Items)
+                {
+                    if (li1.Value == li2.Value)
+                    {
+                        lbCampaignsGroups.Items.Remove(li2);
+                        break;
+                    }
+                }
+            }
+        }
+
+
+
+
+
+
+        protected void btnFiltroCadastrado_Click(object sender, ImageClickEventArgs e)
+        {
+            divResponse.Visible = false;
+            gdRegistros.AllowSorting = false;
+            gdRegistros.AllowPaging = false;
+
+            dtoUsers objAuxUsers = new dtoUsers();
+
+            if (txtUsuarioCadastrado.Text.Trim() != "")
+            {
+                if (ddlUsuarioCadastrado.SelectedValue == "1")
+                {
+                    objAuxUsers.User = txtUsuarioCadastrado.Text.Trim();
+                }
+                else if (ddlUsuarioCadastrado.SelectedValue == "2")
+                {
+                    objAuxUsers.Name = txtUsuarioCadastrado.Text.Trim();
+                }
+            }
+
+            gridLista(objAuxUsers);
+        }
+
+        protected void btnFiltroNaoCadastrado_Click(object sender, ImageClickEventArgs e)
+        {
+            dtoUsers objAuxUsers = new dtoUsers();
+
+            if (txtUsuarioNaoCadastrado.Text.Trim() != "")
+            {
+                switch (ddlUsuarioNaoCadastrado.SelectedValue)
+                {
+                    case "1":
+                        objAuxUsers.User = txtUsuarioNaoCadastrado.Text.Trim();
+                        break;
+
+                    case "2":
+                        objAuxUsers.Name = txtUsuarioNaoCadastrado.Text.Trim();
+                        break;
+                }
+            }
+
+            List<dtoUsers> listUsersNotAssociated = bllUsers.listUsersNotAssociated(objAuxUsers, objUsers);
+
+            if (listUsersNotAssociated.Count > 0)
+            {
+                divContent.Visible = true;
+
+                lbUsersNotAssociated.DataSource = listUsersNotAssociated;
+                lbUsersNotAssociated.DataValueField = "User";
+                lbUsersNotAssociated.DataTextField = "UserName";
+                lbUsersNotAssociated.DataBind();
+
+                lbCampaigns.DataSource = objCampaign.listCampaign();
+                lbCampaigns.DataValueField = "Campaign";
+                lbCampaigns.DataTextField = "NomeCampanha";
+                lbCampaigns.DataBind();
+
+                lbCampaignsGroups.DataSource = objCampaign.listGroupsDto(null);
+                lbCampaignsGroups.DataValueField = "GrupoID";
+                lbCampaignsGroups.DataTextField = "Grupo";
+                lbCampaignsGroups.DataBind();
+            }
+            else
+            {
+                divResponse.Visible = true;
+                lblResponse.Text = "<div class='RNOK'>Nenhum registro encontrado!</div>";
+
+                lbUsersNotAssociated.Items.Clear();
+                lbUsersNotAssociatedSelected.Items.Clear();
+                lbCampaigns.Items.Clear();
+                lbCampaignsSelected.Items.Clear();
+                lbCampaignsGroups.Items.Clear();
+                lbCampaignsSelectedGroups.Items.Clear();
+            }
+        }
+    }
+}

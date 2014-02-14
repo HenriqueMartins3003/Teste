@@ -1,0 +1,94 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="MP.master.cs" Inherits="_webPainelVerisys.MP" %>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head id="Head1" runat="server">
+
+    <title>VERISYS</title>
+
+    <link rel="SHORTCUT ICON" href="img/icon_page.png" />
+    <link rel="Stylesheet" href="css/layout.css" />
+    <%--<link rel="Stylesheet" href="css/jquery.click-calendario-1.0.css" />--%>
+
+    <script type="text/javascript" src="../includes/jquery-1.3.2.min.js"></script>
+    <%--<script type="text/javascript" src="includes/jquery.click-calendario-1.0-min.js"></script>--%>
+    <script type="text/javascript" src="../includes/scripts.js"></script>
+    <%--<script type="text/javascript" src="includes/DD_roundies_0.0.2a-min.js"></script>--%>
+
+</head>
+
+<!-- cabecalho -->
+<div class="body_Cabecalho">
+
+    <div class="main">
+        
+        <!-- container logo -->
+        <div class="containerLogo"><a href="../painel/default.aspx"><img src="../img/logo_Verisys.gif" alt="VerisysApps" width="126px" height="30px" /></a></div>
+        
+        <!-- name of app -->
+        <div class="contentNameApp"><asp:Label ID="lblNameApp" runat="server"></asp:Label></div>
+        
+        <!-- container user -->
+        <div class="containerUser">        
+        <asp:Label ID="lblDataUsers" runat="server"></asp:Label>&nbsp;&nbsp; | &nbsp;
+         <a href="../sair.aspx">Sair</a>
+        </div>
+        
+        <!-- clear -->
+        <div class="clear"></div>
+        
+    </div>
+
+</div>
+
+<!-- conteúdo -->
+<div class="body_Conteudo">
+    
+    <div class="main">
+    
+        <div class="containerContentMenu">
+        
+            <!-- container menu -->
+            <div class="containerMenu">
+               
+                <table cellpadding="0" cellspacing="0" class="odd">
+                  <asp:Repeater ID="rpMenuEsquerdo" runat="server">
+                    <ItemTemplate>
+                    <tr>
+                        <td align="left" valign="middle" style="padding:5px 3px;" class="<%# Eval("URL") == "SEP" ? "titleMenuSeparator" : (Eval("URL") == "" ? "titleMenuOptions" : "contentMenuOptions") %>" ><a href="<%# Eval("URL") %>" ><%# Eval("DESCRICAO") %></a></td>
+                    </tr>
+                    </ItemTemplate>
+                  </asp:Repeater>
+                </table>
+
+                <div class="clear"></div>
+                
+            </div>
+            
+        </div>
+        
+        <!-- place holder global -->
+        <div class="placeHolderGlobal">
+        <asp:ContentPlaceHolder ID="ContentPlaceHolder" runat="server">
+        
+        </asp:ContentPlaceHolder>
+        </div>
+        
+    </div>
+    
+</div>
+
+<div class="clear"></div>
+    
+<!-- rodapé -->
+<div class="body_Rodape">
+
+    <div class="main">
+        <div class="ctnInfoRodape">Verisys Tecnologia e Soluções S/A</div>
+    </div>
+    
+</div>
+
+</body>
+</html>

@@ -1,0 +1,21 @@
+﻿body { background:#F2F2F2; }
+.clear { clear:both; }
+
+/* login's class */
+.ctnResposta { margin:50px 0px 0px 0px; }
+.respostaErro { text-align:center; width:170px; padding:5px; font:11px Helvetica, Arial; color:#FFF; background:#D90000; border:1px solid #E6E6E6; }
+.div_formulario { margin:0px; width:160px; float:left; padding:0px 0px 0px 280px; font:12px  Arial, Helvetica, sans-serif; color:#000; }
+.containerLogin {
+    width:505px;
+    height:220px;
+    background:url(../img/bg-login.png) center no-repeat;
+    position:absolute;
+    top:50%;
+    left:50%;
+    margin-top:-110px;
+    margin-left:-260px;
+}
+
+.form { background:#F7F7F7; border:1px solid #999; font:12px  Arial, Helvetica, sans-serif; padding:2px; margin:2px 0px 5px 0px; }
+.form:focus { background:#FFFFE8; border:1px solid #999; }
+.btnDefault { margin:5px 0px 0px 0px; padding:4px 8px; font:13px Arial, Helvetica, sans-serif; color:#000; background:url(../img/bg-btns.png) top center repeat-x; border:1px solid #CCC; }
