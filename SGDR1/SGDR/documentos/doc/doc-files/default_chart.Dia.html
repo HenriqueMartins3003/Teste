@@ -1,0 +1,72 @@
+<HTML>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<SCRIPT LANGUAGE = "JavaScript">
+function loadFrame_diagramFrame(docHref) {
+  if (parent.diagramFrame != null)
+    parent.diagramFrame.location.href = docHref;
+  else
+    parent.location.href = docHref;
+}
+</SCRIPT>
+<SCRIPT LANGUAGE = "JavaScript">
+function loadImage() {
+try{ if((parseInt ( navigator.appVersion.charAt(0) )  >=4)  && ( (navigator.appName.indexOf("Microsoft") != -1)  || (navigator.appName.indexOf("Sun") != -1))) {
+  if (parent.isAppletFirstTime == true) {
+     parent.isAppletFirstTime = false;
+     return;
+  }
+  if (parent.appletFrame.document.navigApplet == null) {
+return; }
+  var imageFileName = "doc-images/default_ClassDiagram.gif";
+  var myWidth = document.body.scrollWidth;
+  if (myWidth <= document.body.clientWidth){
+    if (document.images[0].width>0){
+		myWidth = document.images[0].width+25;
+    } else {
+		myWidth = -1;
+    }
+  }
+  var myHeight = document.body.scrollHeight;
+  if (myHeight <= document.body.clientHeight){
+    if (document.images[0].height>0){
+		myHeight = document.images[0].height+25;
+    } else {
+		myHeight = -1;
+    }
+  }
+    parent.appletFrame.document.navigApplet.loadView(imageFileName, myWidth, myHeight);
+  resizeSpot();
+  moveSpot();
+ }}catch(Exception){
+}
+}
+
+function resizeSpot() {
+try{ if((parseInt ( navigator.appVersion.charAt(0) )  >=4)  && ( (navigator.appName.indexOf("Microsoft") != -1)  || (navigator.appName.indexOf("Sun") != -1))) {
+   if (parent.appletFrame.document.navigApplet == null) { return; }
+    parent.appletFrame.document.navigApplet.setSpotSize(document.body.clientWidth, document.body.clientHeight);
+    parent.appletFrame.document.navigApplet.repaint();
+ }}catch(Exception){}
+}
+
+function moveSpot() {
+try{ if((parseInt ( navigator.appVersion.charAt(0) )  >=4)  && ( (navigator.appName.indexOf("Microsoft") != -1)  || (navigator.appName.indexOf("Sun") != -1))) {
+   if (parent.appletFrame.document.navigApplet == null) { return; }
+    parent.appletFrame.document.navigApplet.moveSpot(document.body.scrollLeft, document.body.scrollTop);
+ }}catch(Exception){}
+}
+
+</SCRIPT>
+<STYLE>
+A:link {text-decoration: underline; color: blue;}
+A:visited {text-decoration: underline; color: darkmagenta;}
+#f0 { font-family: "Helvetica"; font-size: 10pt;  }
+#f1 { font-family: "Times New Roman"; font-size: 14pt;  }
+#f2 { font-family: "Times New Roman"; font-size: 14pt; font-weight: bold;  }
+</STYLE>
+<BODY BGCOLOR="white" onLoad="loadImage()" onResize="resizeSpot()" onScroll="moveSpot()">
+<BASEFONT ID="f0">
+<DIV STYLE="margin-top:6pt;"><FONT ID="f2">Class Diagram</FONT> <FONT ID="f1">&lt;default&gt;</FONT></DIV>
+<DIV STYLE="margin-top:8pt;margin-left:1pt;"><IMG SRC="../doc-images/default_ClassDiagram.gif" USEMAP="#M1"><MAP NAME="M1"><AREA SHAPE="rect" COORDS="58,158,218,174" HREF="../package-summary.html#R5" TARGET="detailsFrame"><AREA SHAPE="rect" COORDS="58,142,218,158" HREF="../package-summary.html#R4" TARGET="detailsFrame"><AREA SHAPE="rect" COORDS="58,126,218,142" HREF="../package-summary.html#R6" TARGET="detailsFrame"><AREA SHAPE="rect" COORDS="58,110,218,126" HREF="../package-summary.html#R3" TARGET="detailsFrame"><AREA SHAPE="rect" COORDS="58,94,218,110" HREF="../package-summary.html#R7" TARGET="detailsFrame"><AREA SHAPE="rect" COORDS="58,78,218,94" HREF="../package-summary.html#R2" TARGET="detailsFrame"><AREA SHAPE="rect" COORDS="58,62,218,78" HREF="../package-summary.html#R1" TARGET="detailsFrame"><AREA SHAPE="rect" COORDS="58,12,218,174" HREF="Use Case Diagram SGD.Dia.html" TARGET="detailsFrame" onClick="loadFrame_diagramFrame('Use Case Diagram SGD_chart.Dia.html')"><AREA SHAPE="rect" COORDS="218,243,304,259" HREF="../br/gov/doc-files/gov.Dia.html" TARGET="detailsFrame" onClick="loadFrame_diagramFrame('../br/gov/doc-files/gov_chart.Dia.html')"><AREA SHAPE="rect" COORDS="218,193,304,283" HREF="../br/doc-files/br.Dia.html" TARGET="detailsFrame" onClick="loadFrame_diagramFrame('../br/doc-files/br_chart.Dia.html')"></MAP></DIV>
+</BODY>
+</HTML>

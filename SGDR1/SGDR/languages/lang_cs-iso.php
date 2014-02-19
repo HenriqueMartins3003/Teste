@@ -1,0 +1,749 @@
+<?php
+/*
+LICENÇA PÚBLICA GERAL GNU
+Versão 2, junho de 1991
+
+Copyright (C) 1989, 1991 Free Software Foundation, Inc. 675 Mass Ave,
+Cambridge, MA 02139, USA
+
+A qualquer pessoa é permitido copiar e distribuir cópias deste documento de
+licença, desde que sem qualquer alteração.
+
+Introdução
+
+As licenças de software são normalmente desenvolvidas para restringir a
+liberdade de compartilhá-lo e modifica-lo. Pelo contrário, a Licença Pública
+Geral GNU pretende garantir a sua liberdade de compartilhar e modificar o
+software livre -- garantindo que o software será livre para os seus
+utilizadores. Esta Licença Pública Geral aplica-se à maioria do software da
+Free Software Foundation e a qualquer outro programa ao qual o seu autor decida
+aplicá-la. (Algum software da FSF é cobertos pela Licença Pública Geral de
+Bibliotecas.) Também poderá aplicá-la aos seus programas.
+
+Quando nos referimos a software livre, estamo-nos a referir à liberdade e não
+ao preço. A Licença Pública Geral (GPL - General Public Licence - em Inglês.)
+foi desenvolvida para garantir a sua liberdade de distribuir cópias de software
+livre (e cobrar por isso, se quiser); receber o código-fonte ou ter acesso a
+ele, se quiser; poder modificar o software ou utilizar partes dele em novos
+programas livres; e que saiba que está no seu direito de o fazer.
+
+Para proteger seus direitos, precisamos fazer restrições que impeçam a qualquer
+um negar estes direitos ou solicitar que você abdique deles. Estas restrições
+traduzem-se em certas responsabilidades para si, caso venha a distribuir cópias
+do software, ou modificá-lo.
+
+Por exemplo, se você distribuir cópias de um programa sobre este tipo de
+licenciamento, gratuitamente ou por alguma quantia, tem que fornecer igualmente
+todos os direitos que possui sobre ele. Tem igualmente que garantir que os
+destinatários recebam ou possam obter o código-fonte. Além disto, tem que
+fornecer-lhes estes termos para que possam conhecer seus direitos.
+
+Nós protegemos seus direitos por duas formas que se completam: (1) com
+copyright do software e (2) com a oferta desta licença, que lhe dá permissão
+legal para copiar, distribuir e/ou modificar o software.
+
+Além disso, tanto para a protecção do autor quanto a nossa, gostaríamos de
+certificar-nos de que todos entendam que não há qualquer garantia sobre o
+software livre. Se o software é modificado por alguém e redistribuído, queremos
+que seus destinatários saibam que o que eles obtiveram não é original, de forma
+que qualquer problema introduzido por terceiros não interfira na reputação do
+autor original.
+
+Finalmente, qualquer programa é ameaçado constantemente por patentes de
+software. Queremos evitar o perigo de que distribuidores de software livre
+obtenham patentes individuais sobre o software, o que teria o efeito de tornar
+o software proprietário. Para prevenir isso, deixamos claro que qualquer
+patente tem que ser licenciada para uso livre e gratuito por qualquer pessoa,
+ou então que nem necessite ser licenciada.
+
+Os termos e condições precisas para cópia, distribuição e modificação
+encontram-se abaixo:
+
+LICENÇA PÚBLICA GERAL GNU TERMOS E CONDIÇÕES PARA CÓPIA, DISTRIBUIÇÃO E
+MODIFICAÇÃO
+
+0. Esta licença aplica-se a qualquer programa ou outro trabalho que contenha um
+aviso colocado pelo detentor dos direitos autorais informando que aquele pode
+ser distribuído sob as condições desta Licença Pública Geral. O "Programa"
+abaixo refere-se a qualquer programa ou trabalho e "trabalho baseado no
+Programa" significa tanto o Programa em si, como quaisquer trabalhos derivados,
+de acordo com a lei de direitos de autor: isto quer dizer um trabalho que
+contenha o Programa ou parte dele, tanto na forma original ou modificado, e/ou
+tradução para outros idiomas. ***(Doravante o termo "modificação" ou sinónimos
+serão usados livremente.) *** Cada licenciado é mencionado como "você".
+
+Actividades outras que a cópia, a distribuição e modificação não estão cobertas
+por esta Licença; elas estão fora do seu âmbito. O acto de executar o Programa
+não é restringido e o resultado do Programa é coberto pela licença apenas se o
+seu conteúdo contenha trabalhos baseados no Programa (independentemente de
+terem sido gerados pela execução do Programa). Este último ponto depende das
+funcionalidades específicas de cada programa.
+
+1. Você pode copiar e distribuir cópias fiéis do código-fonte do Programa da
+mesma forma que você o recebeu, usando qualquer meio, deste que inclua em cada
+cópia um aviso de direitos de autor e uma declaração de inexistência de
+garantias; mantenha intactos todos os avisos que se referem a esta Licença e à
+ausência total de garantias; e forneça aos destinatários do Programa uma cópia
+desta Licença, em conjunto com o Programa.
+
+Você pode cobrar pelo acto físico de transferir uma cópia e pode,
+opcionalmente, oferecer garantias em troca de pagamento.
+
+2. Você pode modificar sua cópia ou cópias do Programa, ou qualquer parte dele,
+gerando assim um trabalho derivado, copiar e distribuir essas modificações ou
+trabalhos sob os termos da secção 1 acima, desde que se enquadre nas seguintes
+condições:
+
+a) Os arquivos modificados devem conter avisos proeminentes afirmando que você
+alterou os arquivos, incluindo a data de qualquer alteração.
+
+b) Deve ser licenciado, sob os termos desta Licença, integralmente e sem custo
+algum para terceiros, qualquer trabalho seu que contenha ou seja derivado do
+Programa ou de parte dele.
+
+c) Se qualquer programa modificado, quando executado, lê normalmente comandos
+interactivamente, tem que fazer com que, quando iniciado o uso interactivo,
+seja impresso ou mostrado um anúncio de que não há qualquer garantia (ou então
+que você fornece a garantia) e que os utilizadores podem redistribuir o
+programa sob estas condições, ainda informando os utilizadores como consultar
+uma cópia desta Licença. (Excepção: se o Programa em si é interactivo mas
+normalmente não imprime estes tipos de anúncios, então o seu trabalho derivado
+não precisa imprimir um anúncio.)
+
+Estas exigências aplicam-se ao trabalho derivado como um todo. Se secções
+identificáveis de tal trabalho não são derivadas do Programa, e podem ser
+razoavelmente consideradas trabalhos independentes e separados por si só, então
+esta Licença, e seus termos, não se aplicam a estas secções caso as distribua
+como um trabalho separado. Mas se distribuir as mesmas secções como parte de um
+todo que constitui trabalho derivado, a distribuição como um todo tem que
+enquadrar-se nos termos desta Licença, cujos direitos para outros licenciados
+se estendem ao todo, portanto também para toda e qualquer parte do programa,
+independente de quem a escreveu.
+
+Desta forma, esta secção não tem a intenção de reclamar direitos ou contestar
+seus direitos sobre o trabalho escrito completamente por si; ao invés disso, a
+intenção é a de exercitar o direito de controlar a distribuição de trabalhos,
+derivados ou colectivos, baseados no Programa.
+
+Adicionalmente, a mera adição ao Programa (ou a um trabalho derivado deste) de
+um outro trabalho num volume de armazenamento ou meio de distribuição não faz
+esse outro trabalho seja incluído no âmbito desta Licença.
+
+3. Você pode copiar e distribuir o Programa (ou trabalho derivado, conforme
+descrito na Secção 2) em código-objecto ou em forma executável sob os termos
+das Secções 1 e 2 acima, desde que cumpra uma das seguintes alienas:
+
+a) O faça acompanhar com o código-fonte completo e em forma acessível por
+máquinas, código esse que tem que ser distribuído sob os termos das Secções 1 e
+2 acima e em meio normalmente utilizado para o intercâmbio de software; ou,
+
+b) O acompanhe com uma oferta escrita, válida por pelo menos três anos, de
+fornecer a qualquer um, com um custo não superior ao custo de distribuição
+física do material, uma cópia do código-fonte completo e em forma acessível por
+máquinas,  código esse que tem que ser distribuído sob os termos das Secções 1
+e 2 acima e em meio normalmente utilizado para o intercâmbio de software; ou,
+
+c) O acompanhe com a informação que você recebeu em relação à oferta de
+distribuição do código-fonte correspondente. (Esta alternativa é permitida
+somente em distribuição não comerciais, e apenas se você recebeu o programa em
+forma de código-objecto ou executável, com uma oferta de acordo com a Subsecção
+b) acima.)
+
+O código-fonte de um trabalho corresponde à forma de trabalho preferida para se
+fazer modificações. Para um trabalho em forma executável, o código-fonte
+completo significa todo o código-fonte de todos os módulos que ele contém, mais
+quaisquer arquivos de definição de "interface", mais os "scripts" utilizados
+para se controlar a compilação e a instalação do executável. Contudo, como
+excepção especial, o código-fonte distribuído não precisa incluir qualquer
+componente normalmente distribuído (tanto em forma original quanto binária) com
+os maiores componentes (o compilador, o "kernel" etc.) do sistema operativo sob
+o qual o executável funciona, a menos que o componente em si acompanhe o
+executável.
+
+Se a distribuição do executável ou código-objecto é feita através da oferta de
+acesso a cópias em algum lugar, então oferecer o acesso equivalente a cópia, no
+mesmo lugar, do código-fonte, equivale à distribuição do código-fonte, mesmo
+que terceiros não sejam compelidos a copiar o código-fonte em conjunto com o
+código-objecto.
+
+4. Você não pode copiar, modificar, sublicenciar ou distribuir o Programa,
+excepto de acordo com as condições expressas nesta Licença. Qualquer outra
+tentativa de cópia, modificação, sublicenciamento ou distribuição do Programa
+não é valida, e cancelará automaticamente os direitos que lhe foram fornecidos
+por esta Licença. No entanto, terceiros que receberam de si cópias ou direitos,
+fornecidos sob os termos desta Licença, não terão a sua licença terminada,
+desde que permaneçam em total concordância com ela.
+
+5. Você não é obrigado a aceitar esta Licença já que não a assinou. No entanto,
+nada mais lhe dará permissão para modificar ou distribuir o Programa ou
+trabalhos derivados deste. Estas acções são proibidas por lei, caso você não
+aceite esta Licença. Desta forma, ao modificar ou distribuir o Programa (ou
+qualquer trabalho derivado do Programa), você estará a indicar a sua total
+concordância com os termos desta Licença, nomeadamente os termos e condições
+para copiar, distribuir ou modificar o Programa, ou trabalhos baseados nele.
+
+6. Cada vez que redistribuir o Programa (ou qualquer trabalho derivado), os
+destinatários adquirirão automaticamente do autor original uma licença para
+copiar, distribuir ou modificar o Programa, sujeitos a estes termos e
+condições. Você não poderá impor aos destinatários qualquer outra restrição ao
+exercício dos direitos então adquiridos. Você não é responsável em garantir a
+concordância de terceiros a esta Licença.
+
+7. Se, em consequência de decisões judiciais ou alegações de violação de
+patentes ou quaisquer outras razões (não limitadas a assuntos relacionados a
+patentes), lhe forem impostas condições (por ordem judicial, acordos ou outras
+formas) e que contradigam as condições desta Licença, elas não o livram das
+condições desta Licença. Se não puder distribuir de forma a satisfazer
+simultaneamente suas obrigações para com esta Licença e para com as outras
+obrigações pertinentes, então como consequência você não poderá distribuir o
+Programa. Por exemplo, se uma licença de patente não permitir a redistribuição,
+sem obrigação ao pagamento de "royalties", por todos aqueles que receberem
+cópias directa ou indirectamente de si, então a única forma de você satisfazer
+a licença de patente e a esta Licença seria a de desistir completamente de
+distribuir o Programa.
+
+Se qualquer parte desta secção for considerada inválida ou não aplicável em
+qualquer circunstância particular, o restante da secção aplica-se, e a secção
+como um todo aplicar-se-á em outras circunstâncias.
+
+O propósito desta secção não é o de induzi-lo a infringir quaisquer patentes ou
+reivindicação de direitos de propriedade de outros, ou a contestar a validade
+de quaisquer dessas reivindicações; esta secção tem como único propósito
+proteger a integridade dos sistemas de distribuição de software livre, que é
+implementado pela prática de licenças públicas. Várias pessoas têm contribuído
+generosamente e em grande escala para software distribuído usando este sistema,
+na certeza de que sua aplicação é feita de forma consistente; fica a critério
+do autor/doador decidir se ele ou ela está disposto(a) a distribuir software
+utilizando outro sistema, e um outro detentor de uma licença não pode impor
+esta ou qualquer outra escolha.
+
+Esta secção destina-se a tornar bastante claro o que se acredita ser
+consequência do restante desta Licença.
+
+8. Se a distribuição e/ou uso do Programa são restringidos em certos países por
+patentes ou direitos de autor, o detentor dos direitos de autor original, que
+colocou o Programa sob esta Licença, pode incluir uma limitação geográfica de
+distribuição, excluindo aqueles países, de forma a apenas permitir a
+distribuição nos países não excluídos. Nestes casos, esta Licença incorpora a
+limitação como se a mesma constasse escrita nesta Licença.
+
+9. A Free Software Foundation pode publicar versões revistas e/ou novas da
+Licença Pública Geral de tempos em tempos. Estas novas versões serão similares
+em espírito à versão actual, mas podem diferir em detalhes que resolvam novos
+problemas ou situações.
+
+A cada versão é dada um número distinto. Se o Programa especifica um número de
+versão específico desta Licença que se aplica a ele e a "qualquer nova versão",
+você tem a opção de aceitar os termos e condições daquela versão ou de qualquer
+outra versão.
+*/
+
+//translator(s): Pavel Dostal <pavel.dostal@xone.cz>
+$setCharset = "iso-8859-2";
+
+$byteUnits = array('Bytes', 'KB', 'MB', 'GB');
+
+$dayNameArray = array(1 =>"Pondìlí", 2 =>"Úterý", 3 =>"Støeda", 4 =>"Ètvrtek", 5 =>"Pátek", 6 =>"Sobota", 7 =>"Nedìle");
+
+$monthNameArray = array(1=> "Leden", "Únor", "Bøezen", "Duben", "Kvìten", "Èerven", "Èervenec", "Srpen", "Záøí", "Øíjen", "Listopad", "Prosinec"); 
+
+$status = array(0 => "Zakázka kompletní", 1 => "Kompletní", 2 => "Nenastartovaný", 3 => "Otevøený", 4 => "Pozastavený");
+
+$profil = array(0 => "Administrátor", 1 => "Project Manager", 2 => "User", 3 => "Zákazník", 4 => "Neaktivní", 5 => "Project Manager Administrator");
+
+$priority = array(0 => "¾ádná", 1 => "Velmi nízká", 2 => "Nízká", 3 => "Støední", 4 => "Vysoká", 5 => "Velmi vysoká");
+
+$statusTopic = array(0 => "Uzavøen", 1 => "Otevøen");
+$statusTopicBis = array(0 => "Ano", 1 => "Ne");
+
+$statusPublish = array(0 => "Ano", 1 => "Ne");
+
+$statusFile = array(0 => "Schváleno", 1 => "Schváleno se zmìnami", 2 => "Potøebuje schválit", 3 => "Schválení není potøeba", 4 => "Neschváleno");
+
+$phaseStatus = array(0 => "Nenastartovaný", 1 => "Otevøený", 2 => "Kompletní", 3 => "Pozastavený");
+
+$requestStatus = array(0 => "Nový", 1 => "Otevøený", 2 => "Kompletní");
+
+$strings["please_login"] = "Pøihla¹te se prosím";
+$strings["requirements"] = "Po¾adavky na systém";
+$strings["login"] = "Pøihlásit";
+$strings["no_items"] = "Neobsahuje ¾ádný záznam";
+$strings["logout"] = "Odhlásit";
+$strings["preferences"] = "Nastavení";
+$strings["my_tasks"] = "Moje úkoly";
+$strings["edit_task"] = "Uprav úkol";
+$strings["copy_task"] = "Kopíruj úkol";
+$strings["add_task"] = "Pøidej úkol";
+$strings["delete_tasks"] = "Sma¾ úkol";
+$strings["assignment_history"] = "Historie pøidìlování";
+$strings["assigned_on"] = "Pøidìlen kdy";
+$strings["assigned_by"] = "Pøidìlen od";
+$strings["to"] = "Pro";
+$strings["comment"] = "Komentáø";
+$strings["task_assigned"] = "Úkol pøidìlen pro ";
+$strings["task_unassigned"] = "Úkol pøidìlen pro : nepøidìlen (nepøidìlen)";
+$strings["edit_multiple_tasks"] = "Uprav více úkolù";
+$strings["tasks_selected"] = "Úkol vybrán. Zvol nové hodnoty pro tyto úkoly, nebo vyber [®ádná zmìna] pro ponechání souèasných hodnot.";
+$strings["assignment_comment"] = "Poznámka k povìøení";
+$strings["no_change"] = "[®ádná zmìna]";
+$strings["my_discussions"] = "Moje diskuze";
+$strings["discussions"] = "Diskuze";
+$strings["delete_discussions"] = "Sma¾ diskuze";
+$strings["delete_discussions_note"] = "Poznámka: Diskuze nemù¾e být znovu otevøena proto¾e byla smazána.";
+$strings["topic"] = "Téma";
+$strings["posts"] = "Zpráv";
+$strings["latest_post"] = "Poslední zpráva";
+$strings["my_reports"] = "Moje pøehledy";
+$strings["reports"] = "Pøehledy";
+$strings["create_report"] = "Vytvoøit pøehled";
+$strings["report_intro"] = "Vyberte parametry dotazu na pøehled a po dokonèení dotazu výsledek ulo¾te.";
+$strings["admin_intro"] = "Nastavení a konfigurace projektu.";
+$strings["copy_of"] = "Kopíruj z ";
+$strings["add"] = "Pøidat nový záznam";
+$strings["delete"] = "Sma¾";
+$strings["remove"] = "Odebrat";
+$strings["copy"] = "Kopíruj";
+$strings["view"] = "Zobraz";
+$strings["edit"] = "Edituj";
+$strings["update"] = "Aktualizovat";
+$strings["details"] = "Detaily";
+$strings["none"] = "®ádný";
+$strings["close"] = "Uzavøít";
+$strings["new"] = "Nový";
+$strings["select_all"] = "Vyber v¹e";
+$strings["unassigned"] = "Nepøidìlený";
+$strings["administrator"] = "Administrátor";
+$strings["my_projects"] = "Moje Projekty";
+$strings["project"] = "Projekt";
+$strings["active"] = "Aktivní";
+$strings["inactive"] = "Neaktivní";
+$strings["project_id"] = "ID projektu";
+$strings["edit_project"] = "Uprav projekt";
+$strings["copy_project"] = "Kopíruj projekt";
+$strings["add_project"] = "Pøidej projekt";
+$strings["clients"] = "Zákazníci";
+$strings["organization"] = "Zákazník";
+$strings["client_projects"] = "Projekty spoleènosti";
+$strings["client_users"] = "U¾ivatelé spoleènosti";
+$strings["edit_organization"] = "Edituj spoleènost";
+$strings["add_organization"] = "Pøidej spoleènost";
+$strings["organizations"] = "Spoleènosti";
+$strings["info"] = "Info";
+$strings["status"] = "Stav";
+$strings["owner"] = "Zadavatel";
+$strings["home"] = "Home";
+$strings["projects"] = "Projekty";
+$strings["files"] = "Soubory";
+$strings["search"] = "Hledat";
+$strings["admin"] = "Admin";
+$strings["user"] = "U¾ivatel";
+$strings["project_manager"] = "Project Manager";
+$strings["due"] = "Oèekávaný";
+$strings["task"] = "Úkol";
+$strings["tasks"] = "Úkoly";
+$strings["team"] = "Tým";
+$strings["add_team"] = "Pøidej èlena týmu";
+$strings["team_members"] = "Èlenové týmu";
+$strings["full_name"] = "Jméno a pøíjmení";
+$strings["title"] = "Titul";
+$strings["user_name"] = "U¾ivatelské jméno";
+$strings["work_phone"] = "Telefon do práce";
+$strings["priority"] = "Priorita";
+$strings["name"] = "Název";
+$strings["id"] = "ID";
+$strings["description"] = "Popis";
+$strings["phone"] = "Telefon";
+$strings["url"] = "URL";
+$strings["address"] = "Adresa";
+$strings["comments"] = "Poznámky";
+$strings["created"] = "Vytvoøeno";
+$strings["assigned"] = "Pøidìleno";
+$strings["modified"] = "Upraveno";
+$strings["assigned_to"] = "Pøidìleno";
+$strings["due_date"] = "Termín dokonèení";
+$strings["estimated_time"] = "Odhad doby (celkem)";
+$strings["actual_time"] = "Odpracovaná doba";
+$strings["delete_following"] = "Vymazat následující?";
+$strings["cancel"] = "Zru¹it";
+$strings["and"] = "a";
+$strings["administration"] = "Administrace";
+$strings["user_management"] = "Správa u¾ivatelù";
+$strings["system_information"] = "Informace o systému";
+$strings["product_information"] = "Informace o produktu";
+$strings["system_properties"] = "Systémové nastavení";
+$strings["create"] = "Vytvoøit";
+$strings["report_save"] = "Ulo¾te tento dotaz na pøehled pro jeho opìtovné spu¹tìní.";
+$strings["report_name"] = "Název pøehledu";
+$strings["save"] = "Ulo¾it";
+$strings["matches"] = "odpovídají";
+$strings["match"] = "odpovídá";
+$strings["report_results"] = "Výsledný pøehled";
+$strings["success"] = "V¹e ok";
+$strings["addition_succeeded"] = "Pøidání probìhlo v poøádku";
+$strings["deletion_succeeded"] = "Vymazání probìhlo v poøádku";
+$strings["report_created"] = "Pøehled vytvoøen";
+$strings["deleted_reports"] = "Pøehledy smazány";
+$strings["modification_succeeded"] = "Úprava probìhla v poøádku";
+$strings["errors"] = "Nalezena chyba!";
+$strings["blank_user"] = "U¾ivatel neexistuje.";
+$strings["blank_organization"] = "Zákazník nebyl nalezen.";
+$strings["blank_project"] = "Projekt nebyl nalezen.";
+$strings["user_profile"] = "U¾ivatelský profil";
+$strings["change_password"] = "Zmìnit heslo";
+$strings["change_password_user"] = "Zmìnit heslo u¾ivatele.";
+$strings["old_password_error"] = "Staré heslo nebylo zadáno správnì. Zadej jej prosím znovu.";
+$strings["new_password_error"] = "Ovìøení hesel nesedí. Zadej prosím znovu nové heslo (2x).";
+$strings["notifications"] = "Oznámení e-mailem";
+$strings["change_password_intro"] = "Zadej tvoje staré heslo pak vstup a potvrï tvoje nové heslo.";
+$strings["old_password"] = "Staré heslo";
+$strings["password"] = "Heslo";
+$strings["new_password"] = "Nové heslo";
+$strings["confirm_password"] = "Heslo znovu";
+$strings["email"] = "E-Mail";
+$strings["home_phone"] = "Telefon domù";
+$strings["mobile_phone"] = "Mobil";
+$strings["fax"] = "Fax";
+$strings["permissions"] = "Práva";
+$strings["administrator_permissions"] = "Administrátorská práva";
+$strings["project_manager_permissions"] = "Práva - project manager";
+$strings["user_permissions"] = "Práva - U¾ivatel";
+$strings["account_created"] = "U¾ivatel vytvoøen";
+$strings["edit_user"] = "Uprav u¾ivatele";
+$strings["edit_user_details"] = "Upravit detaily u¾ivatelského úètu.";
+$strings["change_user_password"] = "Zmìnit heslo u¾ivatele.";
+$strings["select_permissions"] = "Vyber práva tohoto u¾ivatele.";
+$strings["add_user"] = "Pøidej u¾ivatele";
+$strings["enter_user_details"] = "Zadej detaily pro nový u¾ivatelský úèet.";
+$strings["enter_password"] = "Zadej heslo u¾ivatele.";
+
+
+
+
+$strings["success_logout"] = "Odhlá¹ení bylo úspì¹né. Pro opìtovné pøihlá¹ení zadej u¾ivatelské jméno a heslo ní¾e.";
+$strings["invalid_login"] = "U¾ivatelské jméno a/nebo heslo nebylo zadáno ¹patnì. Zadej prosím znovu pøihla¹ovací údaje.";
+$strings["profile"] = "Profil";
+$strings["user_details"] = "Detaily u¾ivatelského úètu.";
+$strings["edit_user_account"] = "Upravit informace o mém úètu.";
+$strings["no_permissions"] = "Nemáte dostateèná práva pro tuto akci.";
+$strings["discussion"] = "Diskuze";
+$strings["retired"] = "Retired";
+$strings["last_post"] = "Poslední zpráva";
+$strings["post_reply"] = "Odpovìdìt";
+$strings["posted_by"] = "Odeslal";
+$strings["when"] = "Kdy";
+$strings["post_to_discussion"] = "Odeslat do diskuze";
+$strings["message"] = "Zpráva - text";
+$strings["delete_reports"] = "Sma¾ pøehled";
+$strings["delete_projects"] = "Sma¾ projekt";
+$strings["delete_organizations"] = "Smazat spoleènost?";
+$strings["delete_organizations_note"] = "Poznámka: Tímto vyma¾e¹ v¹echny u¾ivatele spoleènosti pro tuto spoleènost a odlouèí¹ v¹echny otevøené projekty této spoleènosti.";
+$strings["delete_messages"] = "Sma¾ zprávu";
+$strings["attention"] = "Upozornìní";
+$strings["delete_teamownermix"] = "Odstranìní v poøádku, ale zadavatel nemù¾e být odebrán z projektového týmu.";
+$strings["delete_teamowner"] = "Nemù¾e¹ odebrat zadavatele projektu z projektového týmu.";
+$strings["enter_keywords"] = "Zadej klíèové slovo";
+$strings["search_options"] = "Klíèové slovo a volby hledání";
+$strings["search_note"] = "Musí¹ zadat informace v poli pro hledání.";
+$strings["search_results"] = "Výsledek hledání";
+$strings["users"] = "U¾ivatelé";
+$strings["search_for"] = "Hledej";
+$strings["results_for_keywords"] = "Výsledek hledání klíèového slova";
+$strings["add_discussion"] = "Pøidej diskuzi";
+$strings["delete_users"] = "Smazat u¾ivatele?";
+$strings["reassignment_user"] = "Pøevedení projektù a úkolù";
+$strings["there"] = "Jsou zde";
+$strings["owned_by"] = "patøící u¾ivateli nahoøe.";
+$strings["reassign_to"] = "Pøed smazáním u¾ivatele znovu pøiøaï";
+$strings["no_files"] = "®ádné pøipojené soubory";
+$strings["published"] = "Publikované";
+$strings["project_site"] = "Project Site";
+$strings["approval_tracking"] = "Sledování souhlasu";
+$strings["size"] = "Velikost";
+$strings["add_project_site"] = "Pøidej do Project Site";
+$strings["remove_project_site"] = "Odeber z Project Site";
+$strings["more_search"] = "Více mo¾ností hledání";
+$strings["results_with"] = "Výsledky nalezeny s";
+$strings["search_topics"] = "Téma hledání";
+$strings["search_properties"] = "Vlastnosti hledání";
+$strings["date_restrictions"] = "Èasové omezení";
+$strings["case_sensitive"] = "Case Sensitive";
+$strings["yes"] = "Ano";
+$strings["no"] = "Ne";
+$strings["sort_by"] = "Seøadit podle";
+$strings["type"] = "Typ";
+$strings["date"] = "Datum";
+$strings["all_words"] = "v¹echny tato slova";
+$strings["any_words"] = "¾ádné z tìchto slov";
+$strings["exact_match"] = "exact match";
+$strings["all_dates"] = "V¹echny data";
+$strings["between_dates"] = "Mezi daty";
+$strings["all_content"] = "V¹echno";
+$strings["all_properties"] = "V¹echny vlastnosti";
+$strings["no_results_search"] = "Hledané slovo nebylo nalezeno.";
+$strings["no_results_report"] = "Pøehled vrátil prázdný výsledek.";
+$strings["schema_date"] = "YYYY/MM/DD";
+$strings["hours"] = "hodin";
+$strings["choice"] = "Zvolte";
+$strings["missing_file"] = "Chybìjící soubor !";
+$strings["project_site_deleted"] = "Project site byl v poøádku vymazán.";
+$strings["add_user_project_site"] = "U¾ivateli bylo úspì¹nì udìleno povolení k pøístupu do Project Site.";
+$strings["remove_user_project_site"] = "U¾ivatelské práva byly v poøádku odebrány.";
+$strings["add_project_site_success"] = "Pøidání do project site probìhlo v poøádku.";
+$strings["remove_project_site_success"] = "Odstranìní z project site probìhlo v poøádku.";
+$strings["add_file_success"] = "Pøidána 1 polo¾ka.";
+$strings["delete_file_success"] = "Odpojení vpoøádku.";
+$strings["update_comment_file"] = "Komentáø k souboru byl doplnìn v poøádku.";
+$strings["session_false"] = "Chyba session";
+$strings["logs"] = "Logování";
+$strings["logout_time"] = "Odhlásit po";
+$strings["noti_foot1"] = "Toto upozornìní bylo vygenerováno z SGD.";
+$strings["noti_foot2"] = "Pro shlédnutí Xone SGD Home Page, nav¹tivte:";
+$strings["noti_taskassignment1"] = "Nový úkol:";
+$strings["noti_taskassignment2"] = "Byl ti pøidìlen úkol:";
+$strings["noti_moreinfo"] = "Pro více informací, prosím nav¹tivte:";
+$strings["noti_prioritytaskchange1"] = "Zmìnìna priorita úkolu:";
+$strings["noti_prioritytaskchange2"] = "Priorita následujícího úkolu byla zmìnìna:";
+$strings["noti_statustaskchange1"] = "Zmìnìn stav úkolu:";
+$strings["noti_statustaskchange2"] = "Stav následujícího úkolu byl zmìnìn:";
+$strings["login_username"] = "Musíte zadat u¾ivatelské jméno.";
+$strings["login_password"] = "prosím, zadejte heslo.";
+$strings["login_clientuser"] = "Máte zákaznický úèet. Nemáte pøístup do Xone SGD s tímto úètem.";
+$strings["user_already_exists"] = "Ji¾ existuje u¾ivatel s tímto jménem. Prosím, zvolte jinou variantu u¾ivatelského jména.";
+$strings["noti_duedatetaskchange1"] = "Datum dokonèení úkolu bylo zmìnìno:";
+$strings["noti_duedatetaskchange2"] = "Datum dokonèení následujícího úkolu bylo zmìnìno:";
+$strings["company"] = "Spoleènost";
+$strings["show_all"] = "Zobraz v¹e";
+$strings["information"] = "Informace";
+$strings["delete_message"] = "Smazat tuto zprávu";
+$strings["project_team"] = "Projektový tým";
+$strings["document_list"] = "Seznam dokumentù";
+$strings["bulletin_board"] = "Nástìnka";
+$strings["bulletin_board_topic"] = "Téma nástìnky";
+$strings["create_topic"] = "Vytvoøit nové téma";
+$strings["topic_form"] = "Nové téma - formuláø";
+$strings["enter_message"] = "Zadej tvou zprávu";
+$strings["upload_file"] = "Nahrát nový soubor";
+$strings["upload_form"] = "Formuláø pro pøidání souboru";
+$strings["upload"] = "Nahrej";
+$strings["document"] = "Dokument";
+$strings["approval_comments"] = "Schválení komentáø";
+$strings["client_tasks"] = "Úkoly zákazníka";
+$strings["team_tasks"] = "Úkoly týmu";
+$strings["team_member_details"] = "Detail èlena projektového týmu";
+$strings["client_task_details"] = "Detaily úkolu zákazníka";
+$strings["team_task_details"] = "Detaily týmového úkolu";
+$strings["language"] = "Jazyk";
+$strings["welcome"] = "Vítejte";
+$strings["your_projectsite"] = "do Project Site";
+$strings["contact_projectsite"] = "Jestli¾e máte jakékoliv otázky kolem extranetu nebo informací nalezených zde, prosím kontaktujte zadavatele";
+$strings["company_details"] = "Detaily spoleènosti";
+$strings["database"] = "Záloha a obnovení databáze";
+$strings["company_info"] = "Uprav informace o spoleènosti";
+$strings["create_projectsite"] = "Vytvoøit Project Site";
+$strings["projectsite_url"] = "Project Site URL";
+$strings["design_template"] = "Design ¹ablona";
+$strings["preview_design_template"] = "náhled design ¹ablony";
+$strings["delete_projectsite"] = "Smazat Project Site";
+$strings["add_file"] = "Pøidej soubor";
+$strings["linked_content"] = "Pøipojené dokumenty";
+$strings["edit_file"] = "Upravit detaily souboru";
+$strings["permitted_client"] = "Pøípustní u¾ivatelé spoleènosti";
+$strings["grant_client"] = "udìlit povolení k prohlí¾ení Project Site";
+$strings["add_client_user"] = "Pøidat u¾ivatele spoleènosti";
+$strings["edit_client_user"] = "Upravit u¾ivatele spoleènosti";
+$strings["client_user"] = "U¾ivatel spoleènosti";
+$strings["client_change_status"] = "Zmìò tvùj stav ní¾e jakmile dokonèí¹ tento úkol";
+$strings["project_status"] = "Stav projektu";
+$strings["view_projectsite"] = "Zobrazit Project Site";
+$strings["enter_login"] = "Zadej u¾ivatelské jméno pro zaslání nového hesla / Zmìna hesla";
+$strings["send"] = "Poslat";
+$strings["no_login"] = "U¾ivatelské jméno nebylo nalezeno v databázi";
+$strings["email_pwd"] = "Heslo bylo posláno";
+$strings["no_email"] = "U¾ivatel nemá email";
+$strings["forgot_pwd"] = "Po¹li mi zapomenuté heslo!";
+$strings["project_owner"] = "Zmìny mù¾ete provádìt pouze ve vlastních projektech.";
+$strings["connected"] = "Pøipojený";
+$strings["session"] = "Session";
+$strings["last_visit"] = "Poslední pøihlá¹ení";
+$strings["compteur"] = "Poèet";
+$strings["ip"] = "Ip";
+$strings["task_owner"] = "Nejsi èlen týmu v tomto projektu";
+$strings["export"] = "Export";
+$strings["browse_cvs"] = "Procházet CVS";
+$strings["repository"] = "CVS schránka";
+$strings["reassignment_clientuser"] = "Úkol pøevést zpìt";
+$strings["organization_already_exists"] = "Toto jméno je ji¾ pou¾íváno v tomt systému. Prosím, zvolte jiné.";
+$strings["blank_organization_field"] = "Musí¹ zadat název spoleènosti (zákazníka).";
+$strings["blank_fields"] = "povinné pole";
+$strings["projectsite_login_fails"] = "Nemù¾eme potvrdit tuto kombinaci u¾ivatelského jména a hesla.";
+$strings["start_date"] = "Datum zahájení";
+$strings["completion"] = "Hotovo";
+$strings["update_available"] = "Je dostupná aktualizace!";
+$strings["version_current"] = "Právì pu¾íváte verzi";
+$strings["version_latest"] = "Poslední verze je";
+$strings["sourceforge_link"] = "stránku projektu naleznete na Sourceforge";
+$strings["demo_mode"] = "Demo mód. Tato akce není povolena.";
+$strings["setup_erase"] = "Sma¾te soubor setup.php!!";
+$strings["no_file"] = "Nebyl vybrán ¾ádný soubor";
+$strings["exceed_size"] = "Pøekroèena maximální velikost souboru";
+$strings["no_php"] = "Soubory *.php nejsou povoleny.";
+$strings["approval_date"] = "Datum schválení";
+$strings["approver"] = "Schválil";
+$strings["error_database"] = "Nepodaøilo se pøipojit k databázi";
+$strings["error_server"] = "Nepodaøilo se pøipojit k serveru";
+$strings["version_control"] = "Kontrola verze";
+$strings["vc_status"] = "Stav";
+$strings["vc_last_in"] = "Datum poslední zmìny";
+$strings["ifa_comments"] = "Schválení - komentáøe";
+$strings["ifa_command"] = "Zmìnit stav schválení";
+$strings["vc_version"] = "Verze";
+$strings["ifc_revisions"] = "Revize - pøehled";
+$strings["ifc_revision_of"] = "Revize verze";
+$strings["ifc_add_revision"] = "Pøidej revizi";
+$strings["ifc_update_file"] = "Aktualizovat soubor";
+$strings["ifc_last_date"] = "Datum poslední zmìny";
+$strings["ifc_version_history"] = "Verze - historie";
+$strings["ifc_delete_file"] = "Smazat soubor vèetnì v¹ech verzí a revizí";
+$strings["ifc_delete_version"] = "Sma¾ vybranou verzi";
+$strings["ifc_delete_review"] = "Sma¾ vybranou revizi";
+$strings["ifc_no_revisions"] = "V souèasné dobì zde nejsou ¾ádné revize tohoto dokumentu.";
+$strings["unlink_files"] = "Odpojené soubory";
+$strings["remove_team"] = "Odstranìní èlena týmu";
+$strings["remove_team_info"] = "Odstranit tyto u¾ivatele z projektového týmu?";
+$strings["remove_team_client"] = "Odstranìní práv pro zobrazení Project Site";
+$strings["note"] = "Poznámka";
+$strings["notes"] = "Poznámky";
+$strings["subject"] = "Pøedmìt";
+$strings["delete_note"] = "Smazat záznam poznámky";
+$strings["add_note"] = "Pøidej novou poznámku";
+$strings["edit_note"] = "Upravit záznam poznámky";
+$strings["version_increm"] = "Vyber verzi pro ulo¾ení:";
+$strings["url_dev"] = "Vývojová url";
+$strings["url_prod"] = "Koneèná url";
+$strings["note_owner"] = "Mù¾e¹ provádìt zmìny pouze ve vlastních poznámkách.";
+$strings["alpha_only"] = "V u¾ivatelském jménu jsou povoleny pouze písmena a èíslice.";
+$strings["edit_notifications"] = "Uprav nastavení oznámení e-mailem";
+$strings["edit_notifications_info"] = "Vyber události pøi kterých chce¹ poslat e-mailové oznámeni.";
+$strings["select_deselect"] = "Vyber/zru¹ v¹e";
+$strings["noti_addprojectteam1"] = "Pøidaní do projektového týmu :";
+$strings["noti_addprojectteam2"] = "Byli jste pøidáni do projektového týmu pro :";
+$strings["noti_removeprojectteam1"] = "Odstranìní z projektového týmu :";
+$strings["noti_removeprojectteam2"] = "Byli jste odstranìni z projektového týmu pro :";
+$strings["noti_newpost1"] = "Nová zpráva :";
+$strings["noti_newpost2"] = "Zpráva byla pøidaná k následující diskuzi :";
+$strings["edit_noti_taskassignment"] = "Mám pøidìlen nový úkol.";
+$strings["edit_noti_statustaskchange"] = "Zmìna stavu mého úkolu.";
+$strings["edit_noti_prioritytaskchange"] = "Zmìna priority mého úkolu.";
+$strings["edit_noti_duedatetaskchange"] = "Zmìna termínu dokonèení mého úkolu.";
+$strings["edit_noti_addprojectteam"] = "Jsem pøidán do projektového týmu.";
+$strings["edit_noti_removeprojectteam"] = "Jsem odebrán z projektového týmu.";
+$strings["edit_noti_newpost"] = "V diskuzi je nový pøíspìvek.";
+$strings["add_optional"] = "Add an optional /Pøidat mo¾nost volby/";
+$strings["assignment_comment_info"] = "Pøidat komentáøe o pøidìlování tohoto úkolu";
+$strings["my_notes"] = "Moje poznámky";
+$strings["edit_settings"] = "Upravit nastavení";
+$strings["max_upload"] = "Maximální velikost souboru";
+$strings["project_folder_size"] = "Velikost slo¾ky projektu";
+$strings["calendar"] = "Kalendáø";
+$strings["date_start"] = "Datum - start";
+$strings["date_end"] = "Datum - konec";
+$strings["time_start"] = "Èas - start";
+$strings["time_end"] = "Èas - konec";
+$strings["calendar_reminder"] = "Pøipomenout";
+$strings["shortname"] = "Zkratka";
+$strings["calendar_recurring"] = "Událost se opakuje ka¾dý týden v tento den";
+$strings["edit_database"] = "Upravit databázi";
+$strings["noti_newtopic1"] = "Nová diskuze:";
+$strings["noti_newtopic2"] = "Nová diskuze byla pøidána k následujícímu projektu:";
+$strings["edit_noti_newtopic"] = "Bylo vytvoøeno nové diskuzní téma.";
+$strings["today"] = "Dnes";
+$strings["previous"] = "Pøedchozí";
+$strings["next"] = "Následující";
+$strings["help"] = "Nápovìda";
+$strings["complete_date"] = "Datum dokonèení";
+$strings["scope_creep"] = "Mo¾nost zpo¾dìní";
+$strings["days"] = "Dní";
+$strings["logo"] = "Logo";
+$strings["remember_password"] = "Zapamatovat heslo";
+$strings["client_add_task_note"] = "Poznámka: Vkládaný úkol je registrován v databázi, objeví se zde nicménì jen jestli ho nìkdo pøidìlil èlenu týmu!";
+$strings["noti_clientaddtask1"] = "Úkol pøidán od klienta:";
+$strings["noti_clientaddtask2"] = "Nový úkol byl pøidán od klienta pøes project site do následujícího projektu:";
+$strings["phase"] = "Etapa";
+$strings["phases"] = "Etapy";
+$strings["phase_id"] = "ID etapy";
+$strings["current_phase"] = "Aktivní etapa(y)";
+$strings["total_tasks"] = "Celkem úkolù";
+$strings["uncomplete_tasks"] = "Nekompletní úkoly";
+$strings["no_current_phase"] = "®ádná etapa není v tuto chvíli aktivní";
+$strings["true"] = "Správný";
+$strings["false"] = "Chybný";
+$strings["enable_phases"] = "Povolit etapy";
+$strings["phase_enabled"] = "Povolené etapy";
+$strings["order"] = "Poøadí";
+$strings["options"] = "Volby";
+$strings["support"] = "Support";
+$strings["support_request"] = "Po¾adavek supportu";
+$strings["support_requests"] = "Po¾adavky supportu";
+$strings["support_id"] = "ID po¾adavku";
+$strings["my_support_request"] = "Moje po¾adavky supportu";
+$strings["introduction"] = "Úvod";
+$strings["submit"] = "Submit";
+$strings["support_management"] = "Support Management";
+$strings["date_open"] = "Datum zahájení";
+$strings["date_close"] = "Datum ukonèení";
+$strings["add_support_request"] = "Pøidat po¾adavek na support";
+$strings["add_support_response"] = "Pøidat odezvu supportu";
+$strings["respond"] = "Odezva";
+$strings["delete_support_request"] = "Po¾adavek Supportu byl smazán";
+$strings["delete_request"] = "Smazat po¾adavek supportu";
+$strings["delete_support_post"] = "Smazat po¹tu supportu";
+$strings["new_requests"] = "Nové po¾adavky";
+$strings["open_requests"] = "Otevøené po¾adavky";
+$strings["closed_requests"] = "Kompletní po¾adavky";
+$strings["manage_new_requests"] = "Upravit nové po¾adavky";
+$strings["manage_open_requests"] = "Upravit otevøené po¾adavky";
+$strings["manage_closed_requests"] = "Upravit dokonèené po¾adavky";
+$strings["responses"] = "Odezvy";
+$strings["edit_status"] = "Uprav stav";
+$strings["noti_support_request_new2"] = "You have submited a support request regarding: /Musíte uznat ¾ádost supportu týkající se:/ ";
+$strings["noti_support_post2"] = "Byla pøidána nová odezva do Va¹eho po¾adavku na support. Prosím, podívejte se na detaily ní¾e.";
+$strings["noti_support_status2"] = "Vá¹ po¾adavek na support byl upraven. Prosím, podívejte se na detaily ní¾e.";
+$strings["noti_support_team_new2"] = "Nový po¾adavek podpory byl pøidán do projektu: ";
+//2.0
+$strings["delete_subtasks"] = "Smazat podúlohy";
+$strings["add_subtask"] = "Pøidat podúlohu";
+$strings["edit_subtask"] = "Upravit podúlohu";
+$strings["subtask"] = "Podúloha";
+$strings["subtasks"] = "Podúlohy";
+$strings["show_details"] = "Uka¾ podrobnosti";
+$strings["updates_task"] = "Aktualizovat historii úkolu / Task update history /";
+$strings["updates_subtask"] = "Aktualizovat historii podúloh / Subtask update history /";
+//2.1
+$strings["go_projects_site"] = "Jdi do projects site";
+$strings["bookmark"] = "Zálo¾ka";
+$strings["bookmarks"] = "Zálo¾ky";
+$strings["bookmark_category"] = "Kategorie";
+$strings["bookmark_category_new"] = "Nová kategorie";
+$strings["bookmarks_all"] = "V¹echny";
+$strings["bookmarks_my"] = "Moje zálo¾ky";
+$strings["my"] = "Moje";
+$strings["bookmarks_private"] = "Soukromé";
+$strings["shared"] = "Sdílené";
+$strings["private"] = "Soukromé";
+$strings["add_bookmark"] = "Pøidej zálo¾ku";
+$strings["edit_bookmark"] = "Uprav zálo¾ku";
+$strings["delete_bookmarks"] = "Sma¾ zálo¾ku";
+$strings["team_subtask_details"] = "Detaily týmové podúlohy";
+$strings["client_subtask_details"] = "Detaily zákazníkovi podúlohy";
+$strings["client_change_status_subtask"] = "Zmìòte vá¹ stav dole, pokud jste dokonèili tuto podúlohu.";
+$strings["disabled_permissions"] = "Vyøazený úèet";
+$strings["user_timezone"] = "Èasová zóna (GMT)";
+//2.2
+$strings["project_manager_administrator_permissions"] = "Project Manager Administrator";
+$strings["bug"] = "Bug Tracking";
+//2.3
+$strings["report"] = "Report";
+$strings["license"] = "License";
+//2.4
+$strings["settings_notwritable"] = "Settings.php file is not writable";
+?>

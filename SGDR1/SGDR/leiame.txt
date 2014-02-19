@@ -1,0 +1,3 @@
+Trunk
+
+A pasta trunk contém os projetos que estão em desenvolvimento. Todas as atualizações efetuadas dia-a-dia são armazenadas na pasta trunk.

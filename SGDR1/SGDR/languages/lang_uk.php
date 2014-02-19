@@ -1,0 +1,746 @@
+<?php
+/*
+LICENÇA PÚBLICA GERAL GNU
+Versão 2, junho de 1991
+
+Copyright (C) 1989, 1991 Free Software Foundation, Inc. 675 Mass Ave,
+Cambridge, MA 02139, USA
+
+A qualquer pessoa é permitido copiar e distribuir cópias deste documento de
+licença, desde que sem qualquer alteração.
+
+Introdução
+
+As licenças de software são normalmente desenvolvidas para restringir a
+liberdade de compartilhá-lo e modifica-lo. Pelo contrário, a Licença Pública
+Geral GNU pretende garantir a sua liberdade de compartilhar e modificar o
+software livre -- garantindo que o software será livre para os seus
+utilizadores. Esta Licença Pública Geral aplica-se à maioria do software da
+Free Software Foundation e a qualquer outro programa ao qual o seu autor decida
+aplicá-la. (Algum software da FSF é cobertos pela Licença Pública Geral de
+Bibliotecas.) Também poderá aplicá-la aos seus programas.
+
+Quando nos referimos a software livre, estamo-nos a referir à liberdade e não
+ao preço. A Licença Pública Geral (GPL - General Public Licence - em Inglês.)
+foi desenvolvida para garantir a sua liberdade de distribuir cópias de software
+livre (e cobrar por isso, se quiser); receber o código-fonte ou ter acesso a
+ele, se quiser; poder modificar o software ou utilizar partes dele em novos
+programas livres; e que saiba que está no seu direito de o fazer.
+
+Para proteger seus direitos, precisamos fazer restrições que impeçam a qualquer
+um negar estes direitos ou solicitar que você abdique deles. Estas restrições
+traduzem-se em certas responsabilidades para si, caso venha a distribuir cópias
+do software, ou modificá-lo.
+
+Por exemplo, se você distribuir cópias de um programa sobre este tipo de
+licenciamento, gratuitamente ou por alguma quantia, tem que fornecer igualmente
+todos os direitos que possui sobre ele. Tem igualmente que garantir que os
+destinatários recebam ou possam obter o código-fonte. Além disto, tem que
+fornecer-lhes estes termos para que possam conhecer seus direitos.
+
+Nós protegemos seus direitos por duas formas que se completam: (1) com
+copyright do software e (2) com a oferta desta licença, que lhe dá permissão
+legal para copiar, distribuir e/ou modificar o software.
+
+Além disso, tanto para a protecção do autor quanto a nossa, gostaríamos de
+certificar-nos de que todos entendam que não há qualquer garantia sobre o
+software livre. Se o software é modificado por alguém e redistribuído, queremos
+que seus destinatários saibam que o que eles obtiveram não é original, de forma
+que qualquer problema introduzido por terceiros não interfira na reputação do
+autor original.
+
+Finalmente, qualquer programa é ameaçado constantemente por patentes de
+software. Queremos evitar o perigo de que distribuidores de software livre
+obtenham patentes individuais sobre o software, o que teria o efeito de tornar
+o software proprietário. Para prevenir isso, deixamos claro que qualquer
+patente tem que ser licenciada para uso livre e gratuito por qualquer pessoa,
+ou então que nem necessite ser licenciada.
+
+Os termos e condições precisas para cópia, distribuição e modificação
+encontram-se abaixo:
+
+LICENÇA PÚBLICA GERAL GNU TERMOS E CONDIÇÕES PARA CÓPIA, DISTRIBUIÇÃO E
+MODIFICAÇÃO
+
+0. Esta licença aplica-se a qualquer programa ou outro trabalho que contenha um
+aviso colocado pelo detentor dos direitos autorais informando que aquele pode
+ser distribuído sob as condições desta Licença Pública Geral. O "Programa"
+abaixo refere-se a qualquer programa ou trabalho e "trabalho baseado no
+Programa" significa tanto o Programa em si, como quaisquer trabalhos derivados,
+de acordo com a lei de direitos de autor: isto quer dizer um trabalho que
+contenha o Programa ou parte dele, tanto na forma original ou modificado, e/ou
+tradução para outros idiomas. ***(Doravante o termo "modificação" ou sinónimos
+serão usados livremente.) *** Cada licenciado é mencionado como "você".
+
+Actividades outras que a cópia, a distribuição e modificação não estão cobertas
+por esta Licença; elas estão fora do seu âmbito. O acto de executar o Programa
+não é restringido e o resultado do Programa é coberto pela licença apenas se o
+seu conteúdo contenha trabalhos baseados no Programa (independentemente de
+terem sido gerados pela execução do Programa). Este último ponto depende das
+funcionalidades específicas de cada programa.
+
+1. Você pode copiar e distribuir cópias fiéis do código-fonte do Programa da
+mesma forma que você o recebeu, usando qualquer meio, deste que inclua em cada
+cópia um aviso de direitos de autor e uma declaração de inexistência de
+garantias; mantenha intactos todos os avisos que se referem a esta Licença e à
+ausência total de garantias; e forneça aos destinatários do Programa uma cópia
+desta Licença, em conjunto com o Programa.
+
+Você pode cobrar pelo acto físico de transferir uma cópia e pode,
+opcionalmente, oferecer garantias em troca de pagamento.
+
+2. Você pode modificar sua cópia ou cópias do Programa, ou qualquer parte dele,
+gerando assim um trabalho derivado, copiar e distribuir essas modificações ou
+trabalhos sob os termos da secção 1 acima, desde que se enquadre nas seguintes
+condições:
+
+a) Os arquivos modificados devem conter avisos proeminentes afirmando que você
+alterou os arquivos, incluindo a data de qualquer alteração.
+
+b) Deve ser licenciado, sob os termos desta Licença, integralmente e sem custo
+algum para terceiros, qualquer trabalho seu que contenha ou seja derivado do
+Programa ou de parte dele.
+
+c) Se qualquer programa modificado, quando executado, lê normalmente comandos
+interactivamente, tem que fazer com que, quando iniciado o uso interactivo,
+seja impresso ou mostrado um anúncio de que não há qualquer garantia (ou então
+que você fornece a garantia) e que os utilizadores podem redistribuir o
+programa sob estas condições, ainda informando os utilizadores como consultar
+uma cópia desta Licença. (Excepção: se o Programa em si é interactivo mas
+normalmente não imprime estes tipos de anúncios, então o seu trabalho derivado
+não precisa imprimir um anúncio.)
+
+Estas exigências aplicam-se ao trabalho derivado como um todo. Se secções
+identificáveis de tal trabalho não são derivadas do Programa, e podem ser
+razoavelmente consideradas trabalhos independentes e separados por si só, então
+esta Licença, e seus termos, não se aplicam a estas secções caso as distribua
+como um trabalho separado. Mas se distribuir as mesmas secções como parte de um
+todo que constitui trabalho derivado, a distribuição como um todo tem que
+enquadrar-se nos termos desta Licença, cujos direitos para outros licenciados
+se estendem ao todo, portanto também para toda e qualquer parte do programa,
+independente de quem a escreveu.
+
+Desta forma, esta secção não tem a intenção de reclamar direitos ou contestar
+seus direitos sobre o trabalho escrito completamente por si; ao invés disso, a
+intenção é a de exercitar o direito de controlar a distribuição de trabalhos,
+derivados ou colectivos, baseados no Programa.
+
+Adicionalmente, a mera adição ao Programa (ou a um trabalho derivado deste) de
+um outro trabalho num volume de armazenamento ou meio de distribuição não faz
+esse outro trabalho seja incluído no âmbito desta Licença.
+
+3. Você pode copiar e distribuir o Programa (ou trabalho derivado, conforme
+descrito na Secção 2) em código-objecto ou em forma executável sob os termos
+das Secções 1 e 2 acima, desde que cumpra uma das seguintes alienas:
+
+a) O faça acompanhar com o código-fonte completo e em forma acessível por
+máquinas, código esse que tem que ser distribuído sob os termos das Secções 1 e
+2 acima e em meio normalmente utilizado para o intercâmbio de software; ou,
+
+b) O acompanhe com uma oferta escrita, válida por pelo menos três anos, de
+fornecer a qualquer um, com um custo não superior ao custo de distribuição
+física do material, uma cópia do código-fonte completo e em forma acessível por
+máquinas,  código esse que tem que ser distribuído sob os termos das Secções 1
+e 2 acima e em meio normalmente utilizado para o intercâmbio de software; ou,
+
+c) O acompanhe com a informação que você recebeu em relação à oferta de
+distribuição do código-fonte correspondente. (Esta alternativa é permitida
+somente em distribuição não comerciais, e apenas se você recebeu o programa em
+forma de código-objecto ou executável, com uma oferta de acordo com a Subsecção
+b) acima.)
+
+O código-fonte de um trabalho corresponde à forma de trabalho preferida para se
+fazer modificações. Para um trabalho em forma executável, o código-fonte
+completo significa todo o código-fonte de todos os módulos que ele contém, mais
+quaisquer arquivos de definição de "interface", mais os "scripts" utilizados
+para se controlar a compilação e a instalação do executável. Contudo, como
+excepção especial, o código-fonte distribuído não precisa incluir qualquer
+componente normalmente distribuído (tanto em forma original quanto binária) com
+os maiores componentes (o compilador, o "kernel" etc.) do sistema operativo sob
+o qual o executável funciona, a menos que o componente em si acompanhe o
+executável.
+
+Se a distribuição do executável ou código-objecto é feita através da oferta de
+acesso a cópias em algum lugar, então oferecer o acesso equivalente a cópia, no
+mesmo lugar, do código-fonte, equivale à distribuição do código-fonte, mesmo
+que terceiros não sejam compelidos a copiar o código-fonte em conjunto com o
+código-objecto.
+
+4. Você não pode copiar, modificar, sublicenciar ou distribuir o Programa,
+excepto de acordo com as condições expressas nesta Licença. Qualquer outra
+tentativa de cópia, modificação, sublicenciamento ou distribuição do Programa
+não é valida, e cancelará automaticamente os direitos que lhe foram fornecidos
+por esta Licença. No entanto, terceiros que receberam de si cópias ou direitos,
+fornecidos sob os termos desta Licença, não terão a sua licença terminada,
+desde que permaneçam em total concordância com ela.
+
+5. Você não é obrigado a aceitar esta Licença já que não a assinou. No entanto,
+nada mais lhe dará permissão para modificar ou distribuir o Programa ou
+trabalhos derivados deste. Estas acções são proibidas por lei, caso você não
+aceite esta Licença. Desta forma, ao modificar ou distribuir o Programa (ou
+qualquer trabalho derivado do Programa), você estará a indicar a sua total
+concordância com os termos desta Licença, nomeadamente os termos e condições
+para copiar, distribuir ou modificar o Programa, ou trabalhos baseados nele.
+
+6. Cada vez que redistribuir o Programa (ou qualquer trabalho derivado), os
+destinatários adquirirão automaticamente do autor original uma licença para
+copiar, distribuir ou modificar o Programa, sujeitos a estes termos e
+condições. Você não poderá impor aos destinatários qualquer outra restrição ao
+exercício dos direitos então adquiridos. Você não é responsável em garantir a
+concordância de terceiros a esta Licença.
+
+7. Se, em consequência de decisões judiciais ou alegações de violação de
+patentes ou quaisquer outras razões (não limitadas a assuntos relacionados a
+patentes), lhe forem impostas condições (por ordem judicial, acordos ou outras
+formas) e que contradigam as condições desta Licença, elas não o livram das
+condições desta Licença. Se não puder distribuir de forma a satisfazer
+simultaneamente suas obrigações para com esta Licença e para com as outras
+obrigações pertinentes, então como consequência você não poderá distribuir o
+Programa. Por exemplo, se uma licença de patente não permitir a redistribuição,
+sem obrigação ao pagamento de "royalties", por todos aqueles que receberem
+cópias directa ou indirectamente de si, então a única forma de você satisfazer
+a licença de patente e a esta Licença seria a de desistir completamente de
+distribuir o Programa.
+
+Se qualquer parte desta secção for considerada inválida ou não aplicável em
+qualquer circunstância particular, o restante da secção aplica-se, e a secção
+como um todo aplicar-se-á em outras circunstâncias.
+
+O propósito desta secção não é o de induzi-lo a infringir quaisquer patentes ou
+reivindicação de direitos de propriedade de outros, ou a contestar a validade
+de quaisquer dessas reivindicações; esta secção tem como único propósito
+proteger a integridade dos sistemas de distribuição de software livre, que é
+implementado pela prática de licenças públicas. Várias pessoas têm contribuído
+generosamente e em grande escala para software distribuído usando este sistema,
+na certeza de que sua aplicação é feita de forma consistente; fica a critério
+do autor/doador decidir se ele ou ela está disposto(a) a distribuir software
+utilizando outro sistema, e um outro detentor de uma licença não pode impor
+esta ou qualquer outra escolha.
+
+Esta secção destina-se a tornar bastante claro o que se acredita ser
+consequência do restante desta Licença.
+
+8. Se a distribuição e/ou uso do Programa são restringidos em certos países por
+patentes ou direitos de autor, o detentor dos direitos de autor original, que
+colocou o Programa sob esta Licença, pode incluir uma limitação geográfica de
+distribuição, excluindo aqueles países, de forma a apenas permitir a
+distribuição nos países não excluídos. Nestes casos, esta Licença incorpora a
+limitação como se a mesma constasse escrita nesta Licença.
+
+9. A Free Software Foundation pode publicar versões revistas e/ou novas da
+Licença Pública Geral de tempos em tempos. Estas novas versões serão similares
+em espírito à versão actual, mas podem diferir em detalhes que resolvam novos
+problemas ou situações.
+
+A cada versão é dada um número distinto. Se o Programa especifica um número de
+versão específico desta Licença que se aplica a ele e a "qualquer nova versão",
+você tem a opção de aceitar os termos e condições daquela versão ou de qualquer
+outra versão.
+*/
+
+//translator(s): Roman Zinchenko
+$setCharset = "CP-1251";
+
+$byteUnits = array('Bytes', 'KB', 'MB', 'GB');
+
+$dayNameArray = array(1 =>"Monday", 2 =>"Tuesday", 3 =>"Wednesday", 4 =>"Thursday", 5 =>"Friday", 6 =>"Saturday", 7 =>"Sunday");
+
+$monthNameArray = array(1=> "Ñ³÷åíü", "Ëþòèé", "Áåðåçåíü", "Êâ³òåíü", "Òðàâåíü", "×åðâåíü", "Ëèïåíü", "Ñåðïåíü", "Âåðåñåíü", "Æîâòåíü", "Ëèñòîïàä", "Ãðóäåíü"); 
+
+$status = array(0 => "Çàâåðøåíî ðîáîòó ç îðãàí³çàö³ºþ", 1 => "Çàâåðøåíèé", 2 => "Íå ðîçïî÷àòèé", 3 => "Â ðîáîò³", 4 => "Ïðèçóïèíåíèé");
+
+$profil = array(0 => "Àäì³í³ñòðàòîð", 1 => "Ìåíåäæåð ïðîåêòó", 2 => "Êîðèñòóâà÷", 3 => "Êîðèñòóâà÷-ïðåäñòàâíèê îðãàí³çàö³¿", 4 => "Disabled", 5 => "Project Manager Administrator");
+
+$priority = array(0 => "Íóëüîâà", 1 => "Äóæå íèçüêà", 2 => "Íèçüêà", 3 => "Ñåðåäíÿ", 4 => "Âèñîêà", 5 => "Äóæå âèñîêà");
+
+$statusTopic = array(0 => "Çàêðèòà", 1 => "Â³äêðèòà");
+$statusTopicBis = array(0 => "òàê", 1 => "í³");
+
+$statusPublish = array(0 => "òàê", 1 => "í³");
+
+$statusFile = array(0 => "ñõâàëåíî", 1 => "ñõâàëåíî ç³ çì³íàìè", 2 => "ïîòðåáóº ñõâàëåííÿ", 3 => "íå ïîòðåáóº ñõâàëåííÿ", 4 => "íå ñõâàëåíî");
+
+$phaseStatus = array(0 => "Not started", 1 => "Open", 2 => "Complete", 3 => "Suspended");
+
+$requestStatus = array(0 => "New", 1 => "Open", 2 => "Complete");
+
+$strings["please_login"] = "Áóäü ëàñêà, àâòîðèçóéòåñü";
+$strings["requirements"] = "Âèìîãè äî ñèñòåìè";
+$strings["login"] = "Óâ³éòè";
+$strings["no_items"] = "íåìàº îá'ºêò³â äëÿ â³äîáðàæåííÿ";
+$strings["logout"] = "Âèõ³ä";
+$strings["preferences"] = "Íàñòðîéêè";
+$strings["my_tasks"] = "Ìî¿ çàâäàííÿ";
+$strings["edit_task"] = "Ðåäàãóâàòè çàâäàííÿ";
+$strings["copy_task"] = "Ñêîï³þâàòè çàâäàííÿ";
+$strings["add_task"] = "Äîäàòè çàâäàííÿ";
+$strings["delete_tasks"] = "Çíèùèòè çàâäàííÿ";
+$strings["assignment_history"] = "²ñòîð³ÿ çàâäàííÿ";
+$strings["assigned_on"] = "×àñ ïðèçíà÷åííÿ";
+$strings["assigned_by"] = "Õòî ïðèçíà÷èâ";
+$strings["to"] = "Êîìó";
+$strings["comment"] = "Êîìåíòàð";
+$strings["task_assigned"] = "Çàâäàííÿ ïîñòàâëåíî";
+$strings["task_unassigned"] = "Â³ñóòí³é â³äïîâ³äàëüíèé ïî çàâäàííþ";
+$strings["edit_multiple_tasks"] = "Â³äðåäàãóâàòè äåê³ëüêà çàâäàíü";
+$strings["tasks_selected"] = "âèáðàíèõ çàâäàíü. Âèáåð³òü íîâ³ ïàðàìåòðè öèõ çàâäàíü àáî îáåð³òü [áåç çì³í] äëÿ çáåðåæåííÿ ³ñíóþ÷èõ ïàðàìåòð³â.";
+$strings["assignment_comment"] = "Êîìåíòàð äî äîðó÷åííÿ";
+$strings["no_change"] = "[áåç çì³í]";
+$strings["my_discussions"] = "Ìî¿ îáãîâîðåííÿ";
+$strings["discussions"] = "îáãîâîðåíü";
+$strings["delete_discussions"] = "çíèùèòè îáãîâîðåííÿ";
+$strings["delete_discussions_note"] = "Ïðèì³òêà: çíèùåíå îáãîâîðåíííÿ íå â³äíîâëþºòüñÿ.";
+$strings["topic"] = "Òåìè";
+$strings["posts"] = "Ïîâ³äîìëåííÿ";
+$strings["latest_post"] = "Îñòàíí³ ïîâ³äîìëåííÿ";
+$strings["my_reports"] = "Ìî¿ çâ³òè";
+$strings["reports"] = "Çâ³òè";
+$strings["create_report"] = "Ñòâîðèòè çâ³ò";
+$strings["report_intro"] = "Îáåð³òü ïàðàìåòðè çâ³òó çà çàâäàííÿì òà ï³ñëÿ ãåíåðàö³¿ çâ³òó çáåðåæ³òü éîãî íà ñòîð³íö³ ðåçóëüòàò³â.";
+$strings["admin_intro"] = "Ïàðàìåòðè òà êîíô³ãóðàö³ÿ ïðîåêòó.";
+$strings["copy_of"] = "Êîï³ÿ";
+$strings["add"] = "Äîäàòè";
+$strings["delete"] = "Çíèùèòè";
+$strings["remove"] = "Âèäàëèòè";
+$strings["copy"] = "Êîïþâàòè";
+$strings["view"] = "Ïåðåãëÿíóòè";
+$strings["edit"] = "Ðåäàãóâàòè";
+$strings["update"] = "Îíîâèòè";
+$strings["details"] = "Äåòàë³";
+$strings["none"] = "Æîäåí ç";
+$strings["close"] = "Çàêðèòè";
+$strings["new"] = "Íîâèé";
+$strings["select_all"] = "Âèáðàòè âñ³";
+$strings["unassigned"] = "Íå ïðèçíà÷åíî";
+$strings["administrator"] = "Àäì³í³ñòðàòîð";
+$strings["my_projects"] = "Mî¿ ïðîåêòè";
+$strings["project"] = "Ïðîåêò";
+$strings["active"] = "àêòèâíèé";
+$strings["inactive"] = "íåàêòèâíèé";
+$strings["project_id"] = "¹ ïðîåêòó";
+$strings["edit_project"] = "Ðåäàãóâàòè ïðîåêò";
+$strings["copy_project"] = "Êîï³þâàòè ïðîåêò";
+$strings["add_project"] = "Äîäàòè ïðîåêò";
+$strings["clients"] = "Îðãàí³çàö³¿";
+$strings["organization"] = "Îðãàí³çàö³ÿ";
+$strings["client_projects"] = "Ïðîåêòè, ùî çä³éñíþºòüñÿ ç îðãàí³çàö³ºþ";
+$strings["client_users"] = "Êîðèñòóâà÷³ â³ä îðãàí³çàö³¿";
+$strings["edit_organization"] = "Ðåäàãóâàòè äàí³ îðãàí³çàö³¿";
+$strings["add_organization"] = "Äîäàòè îðãàí³çàö³þ";
+$strings["organizations"] = "Îðãàí³çàö³¿";
+$strings["info"] = "²íôî";
+$strings["status"] = "Ñòàòóñ";
+$strings["owner"] = "Âëàñíèê";
+$strings["home"] = "Ãîëîâíà ñòîð³íêà";
+$strings["projects"] = "Ïðîåêòè";
+$strings["files"] = "Ôàéëè";
+$strings["search"] = "Ïîøóê";
+$strings["admin"] = "Àäì³í³ñòðàòîð";
+$strings["user"] = "Êîðèñòóâà÷";
+$strings["project_manager"] = "Ìåíåäæåð ïðîåêòó";
+$strings["due"] = "Òåðì³í âèêîíàííÿ";
+$strings["task"] = "Çàâäàííÿ";
+$strings["tasks"] = "Çàâäàííÿ";
+$strings["team"] = "Êîìàíäà";
+$strings["add_team"] = "Äîäàòè ÷ëåí³â êîìàíäè";
+$strings["team_members"] = "×ëåíè êîìàíäè";
+$strings["full_name"] = "Ïîâíå ³ì'ÿ";
+$strings["title"] = "Ïîñàäà";
+$strings["user_name"] = "³ì'ÿ êîðèñòóâà÷à";
+$strings["work_phone"] = "ðîáî÷èé òåëåôîí";
+$strings["priority"] = "ïð³îðèòåòí³ñòü";
+$strings["name"] = "³ì'ÿ";
+$strings["id"] = "¹";
+$strings["description"] = "Îïèñ";
+$strings["phone"] = "òåëåôîí";
+$strings["url"] = "URL";
+$strings["address"] = "àäðåñà";
+$strings["comments"] = "êîìåíòàð³";
+$strings["created"] = "ñòâîðåíî";
+$strings["assigned"] = "äîðó÷åíî";
+$strings["modified"] = "çì³íåíî";
+$strings["assigned_to"] = "Êîìó ïðèçíà÷åíî";
+$strings["due_date"] = "òåðì³í âèêîíàííÿ";
+$strings["estimated_time"] = "ïîòð³áíèé ÷àñ";
+$strings["actual_time"] = "ïîòî÷íèé ÷àñ";
+$strings["delete_following"] = "Çíèùèòè?";
+$strings["cancel"] = "Ñêàñóâàòè";
+$strings["and"] = "òà";
+$strings["administration"] = "Àäì³í³ñòðàòîð";
+$strings["user_management"] = "Àäì³í³ñòðóâàííÿ êîðèñòóâà÷³â";
+$strings["system_information"] = "Ñèñòåìíà ³íôîðìàö³ÿ";
+$strings["product_information"] = "²íôîðìàö³ÿ ïðî ïðîäóêò";
+$strings["system_properties"] = "Óñòàíîâêè ñèñòåìè";
+$strings["create"] = "Ñòâîðèòè";
+$strings["report_save"] = "Çáåðåæ³òü çàïèò äëÿ çâ³òó íà ñâî¿é äîìàøí³é ñòîð³íö³, ùîá âè ìîãëè ùå ðàç ñòâîðèòè çâ³ò çà öèìè ïàðàìåòðàìè.";
+$strings["report_name"] = "Íàçâà çâ³òó";
+$strings["save"] = "Çáåðåãòè";
+$strings["matches"] = "Â³äïîâ³äí³ñòü";
+$strings["match"] = "Â³äïîâ³äí³ñòü";
+$strings["report_results"] = "Ðåçóëüòàòè çâ³òó";
+$strings["success"] = "Óñï³øíî";
+$strings["addition_succeeded"] = "óñï³øíå äîïîâíåííÿ";
+$strings["deletion_succeeded"] = "óñï³øíå çíèùåííÿ";
+$strings["report_created"] = "ñòâîðåíèé çâ³ò";
+$strings["deleted_reports"] = "çíèùåí³ çâ³òè";
+$strings["modification_succeeded"] = "óñï³øíà çì³íà";
+$strings["errors"] = "Ïîìèëêà!";
+$strings["blank_user"] = "Íåìîæëèâî çíàéòè êîðèñòóâà÷à.";
+$strings["blank_organization"] = "Íåìîæëèâî çíàéòè îðãàí³çàö³þ.";
+$strings["blank_project"] = "Íåìîæëèâî çíàéòè ïðîåêò.";
+$strings["user_profile"] = "Ïðîô³ëü êîðèñòóâà÷à";
+$strings["change_password"] = "Çì³íèòè ïàðîëü";
+$strings["change_password_user"] = "Çì³íèòè ïàðîëü êîðèñòóâà÷à.";
+$strings["enter_password"] = "Ââåä³òü ïàðîëü êîðèñòóâà÷à.";
+$strings["old_password_error"] = "Ñòàðèé ïàðîëü, ÿêèé âè íàáðàëè, íåïðàâèëüíèé. Áóäü ëàñêà, ââåä³òü ùå ðàç âàø ñòàðèé ïàðîëü.";
+$strings["new_password_error"] = "Äâà ââåäåí³ âàìè ïàðîë³ íå çá³ãàþòüñÿ. Áóäü ëàñêà, ââåä³òü ùå ðàç âàø íîâèé ïàðîëü.";
+$strings["notifications"] = "Ïîâ³äîìëåííÿ";
+$strings["change_password_intro"] = "Ââåä³òü âàø ñòàðèé ïàðîëü, ïîò³ì ââåä³òü ³ ï³äòâåðä³òü âàø íîâèé ïàðîëü.";
+$strings["old_password"] = "Ñòàðèé ïàðîëü";
+$strings["password"] = "Ïàðîëü";
+$strings["new_password"] = "Íîâèé ïàðîëü";
+$strings["confirm_password"] = "Ï³äòâåðä³òü ïàðîëü";
+$strings["email"] = "Eëåêòðîííà ïîøòà";
+$strings["home_phone"] = "Äîìàøí³é òåëåôîí";
+$strings["mobile_phone"] = "Moá³ëüíèé òåëåôîí";
+$strings["fax"] = "ôàêñ";
+$strings["permissions"] = "Ïðàâà";
+$strings["administrator_permissions"] = "Ïðàâà àäì³í³ñòðàòîðà";
+$strings["project_manager_permissions"] = "Ïðàâà ìåíåäæåðà ïðîåêòó";
+$strings["user_permissions"] = "Ïðàâà êîðèñòóâà÷à";
+$strings["account_created"] = "Ñòâîðåíî îáë³êîâèé çàïèñ";
+$strings["edit_user_details"] = "Ðåäàãóâàòè îáë³êîâîãî çàïèñó êîðèñòóâà÷à.";
+$strings["change_user_password"] = "Çì³íèòè ïàðîëü êîðèñòóâà÷à.";
+$strings["select_permissions"] = "Âèçíà÷èòè ïðàâà äëÿ äàíîãî êîðèñòóâà÷à";
+$strings["add_user"] = "Äîäàòè êîðèñòóâà÷à";
+$strings["enter_user_details"] = "Ââåä³òü äàí³ äî îáë³êîâîãî çàïèñó êîðèñòóâà÷à, ÿêèé âè ñòâîðþºòå.";
+$strings["enter_password"] = "Ââåä³òü ïàðîëü êîðèñòóâà÷à.";
+$strings["success_logout"] = "Âè óñï³øíî âèéøëè ç ñèñòåìè. Âè ìîæåòå çíîâó óâ³éòè â ñèñòåìó, ÿêùî ââåäåòå íèæ÷å ³ì'ÿ êîðèñòóâà÷à ³ ïàðîëü.";
+$strings["invalid_login"] = "Ââåäåíå âàìè ³ì'ÿ êîðèñòóâà÷à òà/àáî ïàðîëü íåïðàâèëüí³. Áóäü ëàñêà, ââåä³òü çíîâó âàø³ ïàðàìåòðè äîñòóïó.";
+$strings["profile"] = "Ïðîô³ëü";
+$strings["user_details"] = "Äàí³ îáë³êîâîãî çàïèñó êîðèñòóâà÷à.";
+$strings["edit_user_account"] = "Â³äðåäàãóéòå âàø îáë³êîâèé çàïèñ.";
+$strings["no_permissions"] = "Ó âàñ íåìàº íåîáõ³äíèõ ïðàâ äëÿ òàêî¿ îïåðàö³¿.";
+$strings["discussion"] = "Îáãîâîðåííÿ";
+$strings["retired"] = "Óñóíåíî";
+$strings["last_post"] = "Îñòàííº ïîâ³äîìëåííÿ";
+$strings["post_reply"] = "Ðîçì³ñòèòè â³äïîâ³äü";
+$strings["posted_by"] = "Àâòîð";
+$strings["when"] = "Êîëè";
+$strings["post_to_discussion"] = "Ðîçì³ñòèòè äëÿ îáãîâîðåííÿ";
+$strings["message"] = "Ïîâ³äîìëåííÿ";
+$strings["delete_reports"] = "Çíèùèòè çâ³òè";
+$strings["delete_projects"] = "Çíèùèòè ïðîåêòè";
+$strings["delete_organizations"] = "Çíèùèòè îðãàí³çàö³¿";
+$strings["delete_organizations_note"] = "Óâàãà: Öÿ îïåðàö³ÿ çíèùèòü âñ³õ êîðèñòóâà÷³â â³ä öèõ îðãàí³çàö³é òà â³ä'ºäíàº âñ³ â³äêðèò³ ïðîåêòè â³ä öèõ îðãàí³çàö³é.";
+$strings["delete_messages"] = "Çíèùèòè ïîâ³äîìëåííÿ";
+$strings["attention"] = "Óâàãà";
+$strings["delete_teamownermix"] = "Âèêëþ÷åíî óñï³øíî, àëå ìåíåäæåðà ïðîåêòó íå ìîæíà âèêëþ÷èòè ç êîìàíäè ïðîåêòó.";
+$strings["delete_teamowner"] = "Âè íå ìîæåòå óñóíóòè ìåíåäæåðà ïðîåêòó ç êîìàíäè ïðîåêòó.";
+$strings["enter_keywords"] = "Ââåä³òü êëþ÷îâå ñëîâî";
+$strings["search_options"] = "Êëþ÷îâå ñëîâî òà âàð³àíòè ïîøóêó";
+$strings["search_note"] = "Âè ìàºòå ââåñòè ³íôîðìàö³þ â ïîøóêîâó ôîðìó.";
+$strings["search_results"] = "Ðåçóëüòàòè ïîøóêó";
+$strings["users"] = "Êîðèñòóâà÷³";
+$strings["search_for"] = "Øóêàòè";
+$strings["results_for_keywords"] = "Ðåçóëüòàòè ïîøóêó çà êëþ÷îâèìè ñëîâàìè";
+$strings["add_discussion"] = "Äîäàòè îáãîâîðåííÿ";
+$strings["delete_users"] = "Çíèùèòè îáë³êîâèé çàïèñ êîðèñòóâà÷à";
+$strings["reassignment"] = "Ïåðåïðîèçíà÷åííÿ ïðîåêòó òà çàâäàííÿ";
+$strings["there"] = "Òàì";
+$strings["owned_by"] = "Âèêîíóºòüñÿ çãàäàíèì êîðèñòóâà÷åì.";
+$strings["reassign_to"] = "Ïåðåä òèì ÿê âèêëþ÷èòè êîðèñòóâà÷à, ïðèçíà÷òå êîðèñòóâà÷åâ³";
+$strings["no_files"] = "Æîäíîãî ïðèêð³ïëåíîãî ôàéëó";
+$strings["published"] = "Îïóáë³êîâàíî";
+$strings["project_site"] = "Ñàéò ïðîåêòó";
+$strings["approval_tracking"] = "Ñòàòóñ äîêóìåíòó";
+$strings["size"] = "Ðîçì³ð";
+$strings["add_project_site"] = "Äîäàòè äî ñàéòó ïðîåêòó";
+$strings["remove_project_site"] = "Çíÿòè ç ñàéòó ïðîåêòó";
+$strings["more_search"] = "Äîäàòêîâ³ ìîæëèâîñò³ ïîøóêó";
+$strings["results_with"] = "Çíàéòè ðåçóëüòàòè ç";
+$strings["search_topics"] = "Òåìè ïîøóêó";
+$strings["search_properties"] = "Ïàðàìåòðè ïîøóêó";
+$strings["date_restrictions"] = "Îáìåæåííÿ çà äàòîþ";
+$strings["case_sensitive"] = "Ç óðàõóâàííÿì ðåºñòðà êëàâ³àòóðè";
+$strings["yes"] = "Òàê";
+$strings["no"] = "Í³";
+$strings["sort_by"] = "Ñîðòóâàòè çà";
+$strings["type"] = "Òèï";
+$strings["date"] = "Äàòà";
+$strings["all_words"] = "Âñ³ ñëîâà";
+$strings["any_words"] = "Áóäü-ÿêå ç³ ñë³â";
+$strings["exact_match"] = "Ïîâíèé çá³ã";
+$strings["all_dates"] = "Âñ³ äàòè";
+$strings["between_dates"] = "Ì³æ äàòàìè";
+$strings["all_content"] = "Âåñü çì³ñò";
+$strings["all_properties"] = "Âñ³ ïàðàìåòðè";
+$strings["no_results_search"] = "Ïîøóê áåç ðåçóëüòàò³â.";
+$strings["no_results_report"] = "Çâ³ò áåç ðåçóëüòàò³â.";
+$strings["schema_date"] = "ð³ê/ì³ñÿöü/äåíü";
+$strings["hours"] = "ãîäèíè";
+$strings["choice"] = "Âèá³ð";
+$strings["missing_file"] = "Ôàéë â³äñóòí³é !";
+$strings["project_site_deleted"] = "Ñàéò ïðîåêòó óñï³øíî çíèùåíî.";
+$strings["add_user_project_site"] = "Êîðèñòóâà÷ óñï³øíî îòðèìàâ äîçâ³ë íà äîñòóï äî ñàéòó ïðîåêòó.";
+$strings["remove_user_project_site"] = "Äîçâ³ë êîðèñòóâà÷à ñêàñîâàíî.";
+$strings["add_project_site_success"] = "Äîïîâíåííÿ äî ñàéòó ïðîåêòó óñï³øíå.";
+$strings["remove_project_site_success"] = "Óñï³øíî âèäàëåíî ç ñàéòó ïðîåêòó.";
+$strings["add_file_success"] = "Îäèí çì³ñòîâèé åëåìåíò ïðèºäíàíî.";
+$strings["delete_file_success"] = "Óñï³øíî â³ä'ºäíàíî.";
+$strings["update_comment_file"] = "Êîìåíòàð³ äî ôàéëó óñï³øíî îíîâëåíî.";
+$strings["session_false"] = "Ïîìèëêà ñåñ³¿";
+$strings["logs"] = "Logs";
+$strings["logout_time"] = "Àâòîìàòè÷íèé âèõ³ä ç ñèñòåìè";
+$strings["noti_foot1"] = "Öå ïîâ³äîìëåííÿ ñòâîðåíå SGD.";
+$strings["noti_foot2"] = "Äëÿ ïåðåãëÿäó âàøî¿ ñòîð³íêè SGD â³äâ³äàéòå:";
+$strings["noti_taskassignment1"] = "Íîâå çàâäàííÿ:";
+$strings["noti_taskassignment2"] = "Âàì ïîñòàâëåíî çàâäàííÿ:";
+$strings["noti_moreinfo"] = "Çà äîäàòêîâîþ ³íôîðìàö³ºþ çâåðòàéòåñü äî:";
+$strings["noti_prioritytaskchange1"] = "Çì³íåíî ïð³îðèòåòí³ñòü çàâäàííÿ:";
+$strings["noti_prioritytaskchange2"] = "Çì³íåíî ïð³îðèòåòí³ñòü íàñòóïíîãî çàâäàííÿ:";
+$strings["noti_statustaskchange1"] = "Çì³íåíî ñòàòóñ çàâäàííÿ:";
+$strings["noti_statustaskchange2"] = "çì³íåíî ñòàòóñ íàñòóïíîãî çàâäàííÿ:";
+$strings["login_username"] = "Âââåä³òü ³ì'ÿ êîðèñòóâà÷à.";
+$strings["login_password"] = "Áóäü ëàñêà, ââåä³òü ïàðîëü.";
+$strings["login_clientuser"] = "Öå îáë³êîâèé çàïèñ êîðèñòóâà÷à. Âè íå ìîæåòå êîðèñòóâàòèñÿ SGD ç îáë³êîâèì çàïèñîì îðãàí³çàö³¿-êîðèñòóâà÷à.";
+$strings["user_already_exists"] = "Êîðèñòóâà÷ ç òàêèì ³ì'ÿì âæå ³ñíóº. Áóäü ëàñêà, îáåð³òü ³íøå ³ì'ÿ.";
+$strings["noti_duedatetaskchange1"] = "Çì³íåíî äàòó âèêîíàííÿ çàâäàííÿ:";
+$strings["noti_duedatetaskchange2"] = "Äàòó âèêîíàííÿ íàñòóïíîãî çàâäàííÿ çì³íåíî:";
+$strings["company"] = "Êîìïàí³ÿ";
+$strings["show_all"] = "Ïîêàçàòè âñå";
+$strings["information"] = "²íôîðìàö³ÿ";
+$strings["delete_message"] = "Çíèùèòè öå ïîâ³äîìëåííÿ";
+$strings["project_team"] = "Êîìàíäà ïðîåêòó";
+$strings["document_list"] = "Ïåðåë³ê äîêóìåíò³â";
+$strings["bulletin_board"] = "Äîøêà îãîëîøåíü";
+$strings["bulletin_board_topic"] = "Òåìè äîøêè îãîëîøåíü";
+$strings["create_topic"] = "Ñòâîðèòè íîâó òåìó";
+$strings["topic_form"] = "Òåìàòè÷íèé ôîðóì";
+$strings["enter_message"] = "Äîäàéòå ñâîº ïîâ³äîìëåííÿ";
+$strings["upload_file"] = "Çàâàíòàæåííÿ ôàéë";
+$strings["upload_form"] = "Ôîðìà çàâàíòàæåííÿ";
+$strings["upload"] = "Çàâàíòàæèòè";
+$strings["document"] = "Äîêóìåíò";
+$strings["approval_comments"] = "Êîìåíòàð³ ïðè ñõâàëåíí³";
+$strings["client_tasks"] = "Çàâäàííÿ îðãàí³çàö³¿";
+$strings["team_tasks"] = "Çàâäàííÿ äëÿ êîìàíäè";
+$strings["team_member_details"] = "²íôîðìàö³ÿ  ïðî ÷ëåí³â êîìàíäè ïðîåêòó";
+$strings["client_task_details"] = "Äåòàë³çîâàí³ çàâäàííÿ îðãàí³çàö³¿";
+$strings["team_task_details"] = "Äåòàë³çîâàí³ çàâäàííÿ êîìàíäè";
+$strings["language"] = "Ìîâà";
+$strings["welcome"] = "Ëàñêàâî ïðîñèìî";
+$strings["your_projectsite"] = "äî ñàéòó Âàøîãî ïðîåêòó";
+$strings["contact_projectsite"] = "ßêùî âè ìàºòå áóäü-ÿê³ ïèòàííÿ ùîäî åêñòðàíåòó àáî çíàéäåíî¿ òóò ³íôîðìàö³¿, áóäü ëàñêà, çâåðòàéòåñü äî êåð³âíèêà ïðîåêòó";
+$strings["company_details"] = "²íôîðìàö³ÿ ïðî êîìïàí³þ";
+$strings["database"] = "Ðåçåðâóâàòè ³ â³äíîâèòè áàçó äàíèõ";
+$strings["company_info"] = "Â³äðåäàãóéòå ³íôîðìàö³þ ïðî âàøó êîìïàí³þ";
+$strings["create_projectsite"] = "Ñòâîðèòè ñàéò ïðîåêòó";
+$strings["projectsite_url"] = "URL ñàéòó ïðîåêòó";
+$strings["design_template"] = "Øàáëîí äèçàéíó";
+$strings["preview_design_template"] = "Ïåðåãëÿíóòè øàáëîí äèçàéíó";
+$strings["delete_projectsite"] = "Çíèùèòè ñàéò ïðîåêòó";
+$strings["add_file"] = "Äîäàòè ôàéë";
+$strings["linked_content"] = "Ïðèºäíàíà ³íôîðìàö³ÿ";
+$strings["edit_file"] = "Ðåäàãóâàòè ³íôîðìàö³þ ïðî ôàéë";
+$strings["permitted_client"] = "Äîïóùåí³ êîðèñòóâà÷³ â³ä îðãàí³çàö³¿";
+$strings["grant_client"] = "Äàòè äîçâ³ë äëÿ ïåðåãëÿäó ñàéòó ïðîåêòó";
+$strings["add_client_user"] = "Äîäàòè îðãàí³çàö³þ-êîðèñòóâà÷à";
+$strings["edit_client_user"] = "Ðåäàãóâàòè ³íôîðìàö³þ ïðî îðãàí³çàö³þ-êîðèñòóâà÷à";
+$strings["client_user"] = "Îðãàí³çàö³ÿ-êîðèñòóâà÷";
+$strings["client_change_status"] = "Çì³í³òü ñòàòóñ ï³ñëÿ òîãî, ÿê çàâåðøèòå öå çàâäàííÿ";
+$strings["project_status"] = "Ñòàòóñ ïðîåêòó";
+$strings["view_projectsite"] = "Ïåðåãëÿíóòè ñàéò ïðîåêòó";
+$strings["enter_login"] = "Äëÿ îòðèìàííÿ ïàðîëÿ ââåä³òü ³ì'ÿ êîðèñòóâà÷à";
+$strings["send"] = "Íàä³ñëàòè";
+$strings["no_login"] = "²ì'ÿ êîðèñòóâà÷à íå çíàéäåíå ó áàç³ äàíèõ";
+$strings["email_pwd"] = "Íàä³ñëàíî ïàðîëü";
+$strings["no_email"] = "Êîðèñòóâà÷ áåç åëåêòðîííî¿ ïîøòè";
+$strings["forgot_pwd"] = "Çàáóëè ïàðîëü?";
+$strings["project_owner"] = "Âè ìîæåòå âíîñèòè çì³íè ëèøå äî âëàñíîãî ïðîåêòó.";
+$strings["connected"] = "Â ñèñòåì³";
+$strings["session"] = "Ñåññ³ÿ";
+$strings["last_visit"] = "Îñòàíí³é âõ³ä";
+$strings["compteur"] = "Ë³÷èëüíèê";
+$strings["ip"] = "Ip";
+$strings["task_owner"] = "Âè íå íàëåæèòå äî êîìàíäè öüîãî ïðîåêòó";
+$strings["export"] = "Åêñïîðò";
+$strings["browse_cvs"] = "Ïåðåãëÿä CVS";
+$strings["repository"] = "CVS Ðåïîçèòîð³é";
+$strings["reassignment_clientuser"] = "Äåëåãóâàííÿ çàâäàííÿ";
+$strings["organization_already_exists"] = "Â ñèñòåì³ âæå âèêîðèñòîâóºòüñÿ òàêå ³ì'ÿ êîðèñòóâà÷à. Áóäü-ëàñêà, âèáåð³òü ³íøå.";
+$strings["blank_organization_field"] = "Âè ìàºòå ââåñòè íàçâó îðãàí³çàö³¿-êë³ºíòà.";
+$strings["blank_fields"] = "Îáîâ'ÿçêîâ³ ïîëÿ";
+$strings["projectsite_login_fails"] = "Ìè íå ìîæåìî ï³äòâåðäèòè êîìá³íàö³þ ³ìåí³ òà ïàðîëÿ êîðèñòóâà÷à.";
+$strings["start_date"] = "Äàòà ïî÷àòêó";
+$strings["completion"] = "Çàâåðøåííÿ";
+$strings["update_available"] = "ª ïîíîâëåííÿ!";
+$strings["version_current"] = "Âè êîðèñòóºòåñÿ âåðñ³ºþ";
+$strings["version_latest"] = "Îñòàííÿ âåðñ³ÿ";
+$strings["sourceforge_link"] = "Çàâ³òàéòå íà ñòîð³íêó ïðîåêòó íà Sourceforge";
+$strings["demo_mode"] = "Äåìîðåæèì. Öÿ ä³ÿ íå äîçâîëåíà.";
+$strings["setup_erase"] = "Çíèù³òü ôàéë setup.php!!";
+$strings["no_file"] = "Íå âèáðàíî æîäíîãî ôàéëà";
+$strings["exceed_size"] = "Ïåðåâèùåííÿ ìàêñèìàëüíîãî ðîçì³ðó ôàéëà";
+$strings["no_php"] = "Ôàéëè Php çàáîðîíåí³";
+$strings["approval_date"] = "Äàòà çàòâåðäæåííÿ";
+$strings["approver"] = "Çàòâåðäæóº";
+
+$strings["error_database"] = "Can't connect to database";
+$strings["error_server"] = "Can't connect to server";
+$strings["version_control"] = "Version Control";
+$strings["vc_status"] = "Status";
+$strings["vc_last_in"] = "Date last modified";
+$strings["ifa_comments"] = "Approval comments";
+$strings["ifa_command"] = "Change approval status";
+$strings["vc_version"] = "Version";
+$strings["ifc_revisions"] = "Peer Reviews";
+$strings["ifc_revision_of"] = "Review of version";
+$strings["ifc_add_revision"] = "Add Peer Review";
+$strings["ifc_update_file"] = "Update file";
+$strings["ifc_last_date"] = "Date last modified";
+$strings["ifc_version_history"] = "Version History";
+$strings["ifc_delete_file"] = "Delete file and all child versions & reviews";
+$strings["ifc_delete_version"] = "Delete Selected Version";
+$strings["ifc_delete_review"] = "Delete Selected Review";
+$strings["ifc_no_revisions"] = "There are currently no revisions of this document";
+$strings["unlink_files"] = "Unlink Files";
+$strings["remove_team"] = "Remove Team Members";
+$strings["remove_team_info"] = "Remove these users from the project team?";
+$strings["remove_team_client"] = "Remove Permission to View Project Site";
+$strings["note"] = "Note";
+$strings["notes"] = "Notes";
+$strings["subject"] = "Subject";
+$strings["delete_note"] = "Delete Notes Entries";
+$strings["add_note"] = "Add Note Entry";
+$strings["edit_note"] = "Edit Note Entry";
+$strings["version_increm"] = "Select the version change to apply:";
+$strings["url_dev"] = "Development site url";
+$strings["url_prod"] = "Final site url";
+$strings["note_owner"] = "You can make changes only on your own notes.";
+$strings["alpha_only"] = "Alpha-numeric only in login";
+$strings["edit_notifications"] = "Edit E-mail Notifications";
+$strings["edit_notifications_info"] = "Select events for which you wish to receive E-mail notification.";
+$strings["select_deselect"] = "Select/Deselect All";
+$strings["noti_addprojectteam1"] = "Added to project team :";
+$strings["noti_addprojectteam2"] = "You have been added to the project team for :";
+$strings["noti_removeprojectteam1"] = "Removed from project team :";
+$strings["noti_removeprojectteam2"] = "You have been removed from the project team for :";
+$strings["noti_newpost1"] = "New post :";
+$strings["noti_newpost2"] = "A post was added to the following discussion :";
+$strings["edit_noti_taskassignment"] = "I am assigned to a new task.";
+$strings["edit_noti_statustaskchange"] = "The status of one of my tasks changes.";
+$strings["edit_noti_prioritytaskchange"] = "The priority of one of my tasks changes.";
+$strings["edit_noti_duedatetaskchange"] = "The due date of one of my tasks changes.";
+$strings["edit_noti_addprojectteam"] = "I am added to a project team.";
+$strings["edit_noti_removeprojectteam"] = "I am removed from a project team.";
+$strings["edit_noti_newpost"] = "A new post is made to a discussion.";
+$strings["add_optional"] = "Add an optional";
+$strings["assignment_comment_info"] = "Add comments about the assignment of this task";
+$strings["my_notes"] = "My Notes";
+$strings["edit_settings"] = "Edit settings";
+$strings["max_upload"] = "Max file size";
+$strings["project_folder_size"] = "Project folder size";
+$strings["calendar"] = "Calendar";
+$strings["date_start"] = "Start date";
+$strings["date_end"] = "End date";
+$strings["time_start"] = "Start time";
+$strings["time_end"] = "End time";
+$strings["calendar_reminder"] = "Reminder";
+$strings["shortname"] = "Short name";
+$strings["calendar_recurring"] = "Event recurs every week on this day";
+$strings["edit_database"] = "Edit database";
+$strings["noti_newtopic1"] = "New discussion :";
+$strings["noti_newtopic2"] = "A new discussion was added to the following project :";
+$strings["edit_noti_newtopic"] = "A new discussion topic was created.";
+$strings["today"] = "Today";
+$strings["previous"] = "Previous";
+$strings["next"] = "Next";
+$strings["help"] = "Help";
+$strings["complete_date"] = "Complete date";
+$strings["scope_creep"] = "Scope creep";
+$strings["days"] = "Days";
+$strings["logo"] = "Logo";
+$strings["remember_password"] = "Remember Password";
+$strings["client_add_task_note"] = "Note: The entered task is registered into the data base, appears here however only if it one assigned to a team member!";
+$strings["noti_clientaddtask1"] = "Task added by client :";
+$strings["noti_clientaddtask2"] = "A new task was added by client from project site to the following project :";
+$strings["phase"] = "Phase";
+$strings["phases"] = "Phases";
+$strings["phase_id"] = "Phase ID";
+$strings["current_phase"] = "Active phase(s)";
+$strings["total_tasks"] = "Total Tasks";
+$strings["uncomplete_tasks"] = "Uncompleted Tasks";
+$strings["no_current_phase"] = "No phase is currently active";
+$strings["true"] = "True";
+$strings["false"] = "False";
+$strings["enable_phases"] = "Enable Phases";
+$strings["phase_enabled"] = "Phase Enabled";
+$strings["order"] = "Order";
+$strings["options"] = "Options";
+$strings["support"] = "Support";
+$strings["support_request"] = "Support Request";
+$strings["support_requests"] = "Support Requests";
+$strings["support_id"] = "Request ID";
+$strings["my_support_request"] = "My Support Requests";
+$strings["introduction"] = "Introduction";
+$strings["submit"] = "Submit";
+$strings["support_management"] = "Support Management";
+$strings["date_open"] = "Date Opened";
+$strings["date_close"] = "Date Closed";
+$strings["add_support_request"] = "Add Support Request";
+$strings["add_support_response"] = "Add Support Response";
+$strings["respond"] = "Respond";
+$strings["delete_support_request"] = "Support request deleted";
+$strings["delete_request"] = "Delete support request";
+$strings["delete_support_post"] = "Delete support post";
+$strings["new_requests"] = "New requests";
+$strings["open_requests"] = "Open requests";
+$strings["closed_requests"] = "Complete requests";
+$strings["manage_new_requests"] = "Manage new requests";
+$strings["manage_open_requests"] = "Manage open requests";
+$strings["manage_closed_requests"] = "Manage complete requests";
+$strings["responses"] = "Responses";
+$strings["edit_status"] = "Edit Status";
+$strings["noti_support_request_new2"] = "You have submited a support request regarding: ";
+$strings["noti_support_post2"] = "A new response has been added to your support request. Please review the details below.";
+$strings["noti_support_status2"] = "Your support request has been updated. Please review the details below.";
+$strings["noti_support_team_new2"] = "A new support request has been added to project: ";
+//2.0
+$strings["delete_subtasks"] = "Delete subtasks";
+$strings["add_subtask"] = "Add subtask";
+$strings["edit_subtask"] = "Edit subtask";
+$strings["subtask"] = "Subtask";
+$strings["subtasks"] = "Subtasks";
+$strings["show_details"] = "Show details";
+$strings["updates_task"] = "Task update history";
+$strings["updates_subtask"] = "Subtask update history";
+//2.1
+$strings["go_projects_site"] = "Go to projects site";
+$strings["bookmark"] = "Bookmark";
+$strings["bookmarks"] = "Bookmarks";
+$strings["bookmark_category"] = "Category";
+$strings["bookmark_category_new"] = "New category";
+$strings["bookmarks_all"] = "All";
+$strings["bookmarks_my"] = "My Bookmarks";
+$strings["my"] = "My";
+$strings["bookmarks_private"] = "Private";
+$strings["shared"] = "Shared";
+$strings["private"] = "Private";
+$strings["add_bookmark"] = "Add bookmark";
+$strings["edit_bookmark"] = "Edit bookmark";
+$strings["delete_bookmarks"] = "Delete bookmarks";
+$strings["team_subtask_details"] = "Team Subtask Details";
+$strings["client_subtask_details"] = "Client Subtask Details";
+$strings["client_change_status_subtask"] = "Change your status below when you have completed this subtask";
+$strings["disabled_permissions"] = "Disabled account";
+$strings["user_timezone"] = "Timezone (GMT)";
+//2.2
+$strings["project_manager_administrator_permissions"] = "Project Manager Administrator";
+$strings["bug"] = "Bug Tracking";
+//2.3
+$strings["report"] = "Report";
+$strings["license"] = "License";
+//2.4
+$strings["settings_notwritable"] = "Settings.php file is not writable";
+?>

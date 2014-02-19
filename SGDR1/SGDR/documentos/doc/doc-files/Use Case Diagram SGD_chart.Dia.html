@@ -1,0 +1,64 @@
+<HTML>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<SCRIPT LANGUAGE = "JavaScript">
+function loadImage() {
+try{ if((parseInt ( navigator.appVersion.charAt(0) )  >=4)  && ( (navigator.appName.indexOf("Microsoft") != -1)  || (navigator.appName.indexOf("Sun") != -1))) {
+  if (parent.isAppletFirstTime == true) {
+     parent.isAppletFirstTime = false;
+     return;
+  }
+  if (parent.appletFrame.document.navigApplet == null) {
+return; }
+  var imageFileName = "doc-images/Use Case Diagram SGD_UseCaseDiagram.gif";
+  var myWidth = document.body.scrollWidth;
+  if (myWidth <= document.body.clientWidth){
+    if (document.images[0].width>0){
+		myWidth = document.images[0].width+25;
+    } else {
+		myWidth = -1;
+    }
+  }
+  var myHeight = document.body.scrollHeight;
+  if (myHeight <= document.body.clientHeight){
+    if (document.images[0].height>0){
+		myHeight = document.images[0].height+25;
+    } else {
+		myHeight = -1;
+    }
+  }
+    parent.appletFrame.document.navigApplet.loadView(imageFileName, myWidth, myHeight);
+  resizeSpot();
+  moveSpot();
+ }}catch(Exception){
+}
+}
+
+function resizeSpot() {
+try{ if((parseInt ( navigator.appVersion.charAt(0) )  >=4)  && ( (navigator.appName.indexOf("Microsoft") != -1)  || (navigator.appName.indexOf("Sun") != -1))) {
+   if (parent.appletFrame.document.navigApplet == null) { return; }
+    parent.appletFrame.document.navigApplet.setSpotSize(document.body.clientWidth, document.body.clientHeight);
+    parent.appletFrame.document.navigApplet.repaint();
+ }}catch(Exception){}
+}
+
+function moveSpot() {
+try{ if((parseInt ( navigator.appVersion.charAt(0) )  >=4)  && ( (navigator.appName.indexOf("Microsoft") != -1)  || (navigator.appName.indexOf("Sun") != -1))) {
+   if (parent.appletFrame.document.navigApplet == null) { return; }
+    parent.appletFrame.document.navigApplet.moveSpot(document.body.scrollLeft, document.body.scrollTop);
+ }}catch(Exception){}
+}
+
+</SCRIPT>
+<STYLE>
+A:link {text-decoration: underline; color: blue;}
+A:visited {text-decoration: underline; color: darkmagenta;}
+#f0 { font-family: "Helvetica"; font-size: 10pt;  }
+#f1 { font-family: "Times New Roman"; font-size: 14pt;  }
+#f2 { font-family: "Times New Roman"; font-size: 14pt; font-weight: bold;  }
+</STYLE>
+<BODY BGCOLOR="white" onLoad="loadImage()" onResize="resizeSpot()" onScroll="moveSpot()">
+<BASEFONT ID="f0">
+<DIV STYLE="margin-top:6pt;"><FONT ID="f2">Use Case Diagram</FONT> <FONT ID="f1">Use Case Diagram SGD</FONT></DIV>
+<DIV STYLE="margin-top:8pt;margin-left:1pt;"><IMG SRC="../doc-images/Use Case Diagram SGD_UseCaseDiagram.gif" USEMAP="#M1"><MAP NAME="M1"><AREA SHAPE="rect" COORDS="290,110,447,150" HREF="../package-summary.html#R5" TARGET="detailsFrame"><AREA SHAPE="rect" COORDS="290,30,451,67" HREF="../package-summary.html#R4" TARGET="detailsFrame"><AREA SHAPE="rect" COORDS="290,330,453,370" HREF="../package-summary.html#R6" TARGET="detailsFrame"><AREA SHAPE="rect" COORDS="510,290,621,377" HREF="../package-summary.html#R3" TARGET="detailsFrame"><AREA SHAPE="rect" COORDS="290,210,450,250" HREF="../package-summary.html#R7" TARGET="detailsFrame"><AREA SHAPE="rect" COORDS="70,70,202,157" HREF="../package-summary.html#R2" TARGET="detailsFrame"><AREA SHAPE="rect" COORDS="490,110,632,197" HREF="../package-summary.html#R1" TARGET="detailsFrame"></MAP></DIV>
+</BODY>
+</HTML>
